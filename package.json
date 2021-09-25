@@ -1,0 +1,22 @@
+{
+  "name": "trade.com",
+  "version": "1.0.0",
+  "description": "Proyecto Analisis y Diseño 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LouisGonzalez/Trade.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LouisGonzalez/Trade.com/issues"
+  },
+  "homepage": "https://github.com/LouisGonzalez/Trade.com#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

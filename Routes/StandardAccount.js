@@ -1,6 +1,6 @@
 const express = require('express');
 const Router = express.Router();
-const Standard = require('../database/models/StandardAccount');
+const Standard = require('../Model/CRUDS/StandardAccount');
 
 Router.get('/', (req, res) => {
     res.send('Funcionando');

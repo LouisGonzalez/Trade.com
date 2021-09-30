@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const sequelize = require("./database/db");
+const sequelize = require("./Model/db");
 
 
-const Models = require('./database/CreateModels');
+const Models = require('./Model/CreateModels');
 const PORT = process.env.PORT || 3000;
 
 

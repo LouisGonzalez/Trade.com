@@ -1,3 +1,3 @@
-const Account = require('./models/Account');
-const Business = require('./models/BusinessAccount');
-const Standard = require('./models/StandardAccount');
+const Account = require('./CRUDS/Account');
+//const Business = require('./models/BusinessAccount');
+const Standard = require('./CRUDS/StandardAccount');

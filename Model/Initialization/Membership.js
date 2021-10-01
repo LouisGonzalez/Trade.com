@@ -1,6 +1,6 @@
 //AFILIACION
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const sequelize = require('../Db');
 
 //Creacion del modelo
 const Membership = sequelize.define('Membership' ,{

@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const { primaryKeyAttribute } = require('../../../../COMERCIO ELECTRONICO/database/models/Account');
-const sequelize = require('../db');
+const sequelize = require('../Db');
 
 //Creacion del modelo
 

@@ -17,7 +17,8 @@ const StandardAccount = sequelize.define('StandardAccount', {
     },
     username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     fecha_nacimiento: {
         type: DataTypes.DATE,

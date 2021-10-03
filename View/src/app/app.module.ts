@@ -6,6 +6,11 @@ import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ProfileUserComponent } from './components/profile-user/profile-user.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { StackProductComponent } from './components/stack-product/stack-product.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +18,12 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     LoginComponent,
     SignInComponent,
     SignUpComponent,
-    HomePageComponent
+    HomePageComponent,
+    EditUserComponent,
+    ProfileUserComponent,
+    AddProductComponent,
+    EditProductComponent,
+    StackProductComponent
   ],
   imports: [
     BrowserModule

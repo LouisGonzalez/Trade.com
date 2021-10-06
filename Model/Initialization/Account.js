@@ -4,6 +4,10 @@ const sequelize = require('../Db');
 //Creacion de modelo
 
 const Account = sequelize.define('Account',{
+    user: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     fecha_creacion: {
         type: DataTypes.DATE,
         allowNull: false

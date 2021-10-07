@@ -3,12 +3,12 @@ const sequelize = require('../Db');
 
 //Creacion de modelo
 const BusinessAccount = sequelize.define('BusinessAccount',{
-    id_cuenta: {
-        type: DataTypes.INTEGER,
+    username: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     empresa: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(75),
         allowNull: false
     },
     mision: {
@@ -23,7 +23,7 @@ const BusinessAccount = sequelize.define('BusinessAccount',{
 } , {
         sequelize,
         modelName: 'BusinessAccount',
-        tableName: 'CuentaEmpresarial',
+        tableName: 'Cuenta_empresarial',
         timestamps: false
 
 });

@@ -13,11 +13,12 @@ app.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);
 
     //Conexion a la base de datos
-    sequelize.sync({force: true}).then(() => {
+    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
+        sequelize.sync({force: true}).then(() => {
         console.log("Conexion establecida");
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
-    })
+    }))
 })
 
 

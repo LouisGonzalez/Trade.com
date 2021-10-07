@@ -3,35 +3,30 @@ const sequelize = require('../Db');
 
 //Creacion de modelo
 const StandardAccount = sequelize.define('StandardAccount', {
-    id_cuenta: {
-        type: DataTypes.INTEGER,
+    username: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     nombres: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     apellidos: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
     fecha_nacimiento: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
     },
     fecha_creacion_cuenta: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
     }
 } , {    
     sequelize,
     modelName: 'StandardAccount',
-    tableName: 'CuentaEstandar',
+    tableName: 'Cuenta_estandar',
     timestamps: false
 });
 

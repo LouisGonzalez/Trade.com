@@ -4,8 +4,8 @@ const sequelize = require('../Db');
 //Creacion del modelo
 
 const Post = sequelize.define('Post', {
-    id_cuenta: {
-        type: DataTypes.INTEGER,
+    cuenta: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     fecha_publicacion: {
@@ -17,7 +17,7 @@ const Post = sequelize.define('Post', {
         allowNull: false
     },
     divisa: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false
     },
     intercambio: {

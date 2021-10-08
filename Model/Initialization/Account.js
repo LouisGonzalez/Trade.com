@@ -6,7 +6,9 @@ const sequelize = require('../Db');
 const Account = sequelize.define('Account',{
     user: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: false
     },
     fecha_creacion: {
         type: DataTypes.DATE,

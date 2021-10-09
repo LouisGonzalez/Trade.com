@@ -3,9 +3,11 @@ const sequelize = require('../Db');
 
 //Creacion de modelo
 const StandardAccount = sequelize.define('StandardAccount', {
-    username: {
+    user: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: false
     },
     nombres: {
         type: DataTypes.STRING(100),

@@ -33,13 +33,6 @@ function oneAccount(req,res){
     })
 }
 
-/* DE prueba */
-function oneAccount2(pk){
-    Account.findByPk(pk).then(Account => {
-        console.log(Account);
-
-    })
-}
 
 function deleteAccount(req, res){
     Account.destroy({
@@ -69,5 +62,5 @@ function updateAccount(req,res){
 }
 
 module.exports = {
-    createAccount, oneAccount, deleteAccount, updateAccount, createAccountLogger, oneAccount2
+    createAccount, oneAccount, deleteAccount, updateAccount, createAccountLogger
 }

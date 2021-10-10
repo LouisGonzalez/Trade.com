@@ -9,7 +9,7 @@ const Service = sequelize.define('Service', {
         allowNull: false
     },
     tipo_servicio: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false
     }
 } , {

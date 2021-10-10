@@ -10,7 +10,7 @@ const BusinessAccount = sequelize.define('BusinessAccount',{
         autoIncrement: false        
     },
     empresa: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(75),
         allowNull: false
     },
     mision: {
@@ -25,7 +25,7 @@ const BusinessAccount = sequelize.define('BusinessAccount',{
 } , {
         sequelize,
         modelName: 'BusinessAccount',
-        tableName: 'CuentaEmpresarial',
+        tableName: 'Cuenta_empresarial',
         timestamps: false
 
 });

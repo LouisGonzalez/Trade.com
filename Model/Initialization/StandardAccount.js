@@ -10,21 +10,25 @@ const StandardAccount = sequelize.define('StandardAccount', {
         autoIncrement: false        
     },
     nombres: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     apellidos: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     fecha_nacimiento: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
-    }    
+    },
+    fecha_creacion_cuenta: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    }
 } , {    
     sequelize,
     modelName: 'StandardAccount',
-    tableName: 'CuentaEstandar',
+    tableName: 'Cuenta_estandar',
     timestamps: false
 });
 

@@ -20,15 +20,15 @@ const Account = sequelize.define('Account',{
         allowNull: false
     },
     pais: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false
     },
     telefono: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.BIGINT(10),
         allowNull: false
     },
     correo: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(75),
         allowNull: false
     },
     extension: {
@@ -36,7 +36,7 @@ const Account = sequelize.define('Account',{
         allowNull: false
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(75),
         allowNull: false
     },
     fecha_creacion_cuenta: {

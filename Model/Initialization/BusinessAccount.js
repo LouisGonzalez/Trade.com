@@ -5,7 +5,9 @@ const sequelize = require('../Db');
 const BusinessAccount = sequelize.define('BusinessAccount',{
     id_cuenta: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey:true,
+        autoIncrement: false        
     },
     empresa: {
         type: DataTypes.STRING,

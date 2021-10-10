@@ -3,9 +3,11 @@ const sequelize = require('../Db');
 
 //Creacion de modelo
 const BusinessAccount = sequelize.define('BusinessAccount',{
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false
+    id_cuenta: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey:true,
+        autoIncrement: false        
     },
     empresa: {
         type: DataTypes.STRING(75),

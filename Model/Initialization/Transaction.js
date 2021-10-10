@@ -10,11 +10,11 @@ const Transaction = sequelize.define('Transaction', {
         autoIncrement: false
     },
     cuenta_emisora: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     cuenta_receptora: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     monto: {

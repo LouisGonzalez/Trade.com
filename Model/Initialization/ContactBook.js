@@ -3,11 +3,11 @@ const sequelize = require('../Db');
 
 const Contact = sequelize.define('Contact', {
     cuenta: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     cuenta_contacto: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     descripcion: {

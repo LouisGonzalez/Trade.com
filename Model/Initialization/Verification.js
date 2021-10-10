@@ -12,7 +12,7 @@ const Verification = sequelize.define('Verification', {
         type: DataTypes.DATE
     },
     cuenta: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull:false
     }
 } , {

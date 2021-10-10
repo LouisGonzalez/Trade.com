@@ -31,7 +31,7 @@ const Wallet = require('./Initialization/Wallet');
 Account.hasOne(Standard, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'username',
+        name: 'cuenta_general',
         allowNull: false
     }
 });
@@ -40,7 +40,7 @@ Account.hasOne(Standard, {
 Account.hasOne(Business, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'username',
+        name: 'cuenta_general',
         allowNull: false
     }
 });

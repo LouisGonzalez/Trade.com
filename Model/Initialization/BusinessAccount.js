@@ -9,6 +9,10 @@ const BusinessAccount = sequelize.define('BusinessAccount',{
         primaryKey:true,
         autoIncrement: false        
     },
+    cuenta_general: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     empresa: {
         type: DataTypes.STRING(75),
         allowNull: false

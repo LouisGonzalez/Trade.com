@@ -5,11 +5,11 @@ const sequelize = require('../Db');
 
 const Conversation = sequelize.define('Conversation', {
     cuenta_emisora: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     cuenta_receptora: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     anonimo: {

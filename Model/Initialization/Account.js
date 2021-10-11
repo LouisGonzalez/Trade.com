@@ -38,10 +38,6 @@ const Account = sequelize.define('Account',{
     password: {
         type: DataTypes.STRING(75),
         allowNull: false
-    },
-    fecha_creacion_cuenta: {
-        type: DataTypes.DATE,
-        allowNull: false
     }
 } , {
     sequelize,

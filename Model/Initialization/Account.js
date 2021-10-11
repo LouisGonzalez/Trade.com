@@ -39,9 +39,9 @@ const Account = sequelize.define('Account',{
         type: DataTypes.STRING(75),
         allowNull: false
     },
-    fecha_creacion_cuenta: {
-        type: DataTypes.DATE,
-        allowNull: false
+    activa:{
+        type: DataTypes.BOOLEAN,
+        allowNull:false
     }
 } , {
     sequelize,

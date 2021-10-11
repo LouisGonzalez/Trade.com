@@ -8,12 +8,11 @@ async function createAccountLogger(req, pass){
     return await Account.create({
         id_cuenta: req.body.id,
         user: req.body.user,
-        fecha_creacion: req.body.fecha_creacion,
+        fecha_creacion: Date.now(),
         pais: req.body.pais,
         telefono: req.body.telefono,
         correo: req.body.correo,
         extension: req.body.extension,
-        fecha_creacion_cuenta: Date.now(),
         password: pass        
     })     
 }

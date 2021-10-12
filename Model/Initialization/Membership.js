@@ -9,7 +9,7 @@ const Membership = sequelize.define('Membership' ,{
         allowNull: false
     },
     id_usuario: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     fecha_afiliacion: {

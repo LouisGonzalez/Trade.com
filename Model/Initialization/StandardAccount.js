@@ -8,6 +8,7 @@ const StandardAccount = sequelize.define('StandardAccount', {
         allowNull: false,
         primaryKey: true,
         autoIncrement: false
+    },
     nombres: {
         type: DataTypes.STRING(100),
         allowNull: false

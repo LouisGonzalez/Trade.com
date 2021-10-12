@@ -1,6 +1,6 @@
 
 
-    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50 container-login100">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
@@ -8,77 +8,79 @@
                 </div>
                 <div class="card-body">
                     <form method="POST">
-                        <div class="form-row m-b-55">
-                            <div class="name">Name *</div>
+                        <div class="form-row m-b-40">
+                            <div class="name font-robo">Name *</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="first_name" required>
-                                            <label class="label--desc">first name</label>
+                                            <input class="input--style-5 font-robo" type="text" name="first_name" placeholder="First Name" required>
+                                            <label class="label--desc input100 font-robo">First name</label>
                                         </div>
                                     </div>
+                                    <!-- <span class="contenedor-2"></span> -->
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="last_name" required>
-                                            <label class="label--desc">last name</label>
+                                            <input class="input--style-5 font-robo" type="text" name="last_name" placeholder="Last name" required>
+                                            <label class="label--desc font-robo">last name</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="name">Company</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="company">
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Email *</div>
+                        </div> -->
+                        <div class="form-row ">
+                            <div class="name font-robo">Email *</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" name="email" data-validate="Valid email is required: ex@abc.xyz" required>
+                                    <input class="input--style-5 font-robo" type="email" name="email" data-validate="Valid email is required: ex@abc.xyz" placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Password *</div>
+                        <div class="form-row ">
+                            <div class="name font-robo">Password *</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password" data-validate = "Password is required" required>
+                                    <input class="input--style-5 font-robo" type="password" name="password" data-validate = "Password is required" placeholder="Password" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row m-b-55">
-                            <div class="name">Phone *</div>
+                        <div class="form-row m-b-40">
+                            <div class="name font-robo">Phone *</div>
                             <div class="value">
                                 <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="area_code">
-                                            <label class="label--desc">Area Code</label>
+                                            <input class="input--style-5 font-robo" type="text" name="area_code" placeholder="Area Code">
+                                            <label class="label--desc font-robo">Area Code</label>
                                         </div>
                                     </div>
-                                    <div class="col-9">
+                                    <span class="contenedor-2"></span>
+                                    <div class="col-10 ">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone">
-                                            <label class="label--desc">Phone Number</label>
+                                            <input class="input--style-5 font-robo" type="text" name="phone" placeholder="Phone Number">
+                                            <label class="label--desc font-robo">Phone Number</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Type Register</div>
+                        <div class="form-row ">
+                            <div class="name font-robo">Type Register</div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="subject" >
-                                            <option disabled="disabled" selected="selected">Choose option</option>
-                                            <option>Personal</option>
-                                            <option>Company</option>
+                                            <option disabled="disabled"     selected="selected font-robo">Choose option</option>
+                                            <option class="font-robo">Personal</option>
+                                            <option class="font-robo">Company</option>
                                             <!-- <option>Subject 3</option> -->
                                         </select>
                                         <div class="select-dropdown"></div>
@@ -86,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row p-t-20">
+                        <!-- <div class="form-row m-b-20">
                             <label class="label label--block">Are you an existing customer?</label>
                             <div class="p-t-15">
                                 <label class="radio-container m-r-55">Yes
@@ -98,9 +100,9 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                        </div>
-                        <div>
-                            <button class="btn btn--radius-2 btn--red" type="submit">Register</button>
+                        </div> -->
+                        <div class="form-row m-b-0">
+                            <button class="btn btn--radius-2 btn--red font-robo" type="submit">Register</button>
                         </div>
                     </form>
                 </div>

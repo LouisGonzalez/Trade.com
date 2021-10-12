@@ -9,7 +9,7 @@ const Comment = sequelize.define('Comment', {
         allowNull: false
     },
     cuenta_emisora: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     comentario: {

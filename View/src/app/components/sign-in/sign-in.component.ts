@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, NgForm, Validators,  } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators  } from '@angular/forms';
 
 import {LoginService} from '../../services/login.service';
 
@@ -17,6 +17,7 @@ export class SignInComponent implements OnInit {
   });
 
   public msjError = "";
+  msjErrorCuenta = "";
   
   constructor(private _router:Router, public loginService: LoginService) { }
 
@@ -42,16 +43,22 @@ export class SignInComponent implements OnInit {
 
   login(){
     if(!this.loginForm.valid){
-      this.msjError = "Debe de llenar todos los campos";
-      console.log('Invalid');
+      this.msjError = "You must fill in all the fields";
+      console.log('Invalid:');
       return;
     }else{
       this.msjError = "";
     }
 
     this.loginService.postLogin(this.loginForm.value).subscribe(
-      data=>{console.log(data);this._router.navigate(['/register']);} ,
-      error=>{console.error(error);this._router.navigate(['/login']); }
+      data=>{
+        // console.log(data);
+        this._router.navigate(['/home-user']);
+      } ,
+      error=>{
+        // console.error(error); 
+        this.msjErrorCuenta = "The username or password are not correct"
+      }
     );
   }
 

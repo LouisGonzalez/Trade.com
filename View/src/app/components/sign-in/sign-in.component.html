@@ -22,14 +22,15 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="password" name="password" placeholder="Password" 
-						formControlName="password">
+						formControlName="password" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="block-center msj-error">
+					<div class="block-center msj-error txt1">
 						{{msjError}}
+						{{msjErrorCuenta}}
 					</div>
 
 					<div class="form-group input-group-desc">

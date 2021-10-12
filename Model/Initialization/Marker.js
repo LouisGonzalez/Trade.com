@@ -9,7 +9,7 @@ const Marker = sequelize.define('Marker', {
         allowNull: false
     },
     cuenta: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 } , {

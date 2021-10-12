@@ -5,7 +5,7 @@ const sequelize = require('../Db');
 
 const Post = sequelize.define('Post', {
     cuenta: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     fecha_publicacion: {

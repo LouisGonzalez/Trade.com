@@ -10,7 +10,7 @@ const Invoice = sequelize.define('Invoice', {
         autoIncrement: true
     },
     cuenta_efectiva: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     fecha: {

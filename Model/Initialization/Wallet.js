@@ -3,7 +3,7 @@ const sequelize = require('../Db');
 
 const Wallet = sequelize.define('Wallet', {
     cuenta: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     divisa: {

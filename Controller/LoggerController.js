@@ -9,10 +9,25 @@ LoggerController.signupView = (req, res) =>{
     res.send("Redireccionar vista signup");
 }
 
-LoggerController.signup = passport.authenticate('local.signup',{
-        successRedirect: '/profile',
-        failureRedirect: '/signup',                
-});    
+// LoggerController.signup = passport.authenticate('local.signup',{
+//         successRedirect: '/profile',
+//         failureRedirect: '/signup',                
+// });    
+
+LoggerController.signup = (req,res,next) => {
+    // console.log(req.body);
+    passport.authenticate('local.signup', function(err, user, info) {
+      if (err) { return res.status(501).json(err); }
+      console.log(req.user);
+      if (!user) { return res.status(501).json(info); }
+      req.logIn(user, function(err) {
+        if (err) { return res.status(501).json(err); }
+        // console.log(get('/profile'));
+        return res.status(200).json({message:'SE REGISTRO'});
+      });
+    })(req, res, next);
+}
+
 
 LoggerController.loginView = (req, res) =>{
     res.send("Redirecciona vista login")

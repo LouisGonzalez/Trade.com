@@ -4,6 +4,7 @@ const localStrategy = require('passport-local').Strategy;
 const crypt = require('./Helpers');
 const Account = require('../Model/Querys/AccountModel');
 const AccountModel = require('../Model/Initialization/Account');
+const AccountController = require('../Controller/AccountController');
 
 passport.use('local.signup',new localStrategy({
     usernameField: 'user',
@@ -11,8 +12,8 @@ passport.use('local.signup',new localStrategy({
     passReqToCallback: true
 },async (req, user, password, done) => {
     pass = await crypt.encryptPassword(password);
-    await Account.createAccountLogger(req, pass);     
-    return done(null,user);
+    usr = await Account.createAccountLogger(req, pass);      
+    return done(null,usr.user);
 }))
 
 

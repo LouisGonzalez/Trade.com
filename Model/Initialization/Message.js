@@ -12,6 +12,14 @@ const Message = sequelize.define('Message', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    cuenta_emisora:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    cuenta_receptora: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     fecha: {
         type: DataTypes.DATE,
         allowNull: false

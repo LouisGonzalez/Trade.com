@@ -11,6 +11,8 @@ $(function (){
     const $nickError = $('#nickError');
     const $nickname = $('#nickname');
 
+    const $userReceive = "sergio";
+
     const $users = $('#usernames');
 
 
@@ -25,12 +27,31 @@ $(function (){
     //events
     $messageForm.submit( e => {
         e.preventDefault();
-        socket.emit('send message', $messageBox.val(), $nickname.val());
+        socket.emit('send message', $messageBox.val(), $nickname.val(), $userReceive);
         $messageBox.val('');
     });
 
-    socket.on('new message', function (data,data2) {
-        $chat.append(data + data2+ '<br/>');
+    socket.on('new message', function (data, userSend, userReceive) {
+        $chat.append(data + " enviado por: " + userSend + " recibido por: " + userReceive + '<br/>');
 
     });
+
+    socket.on('whisper', data => {
+        $chat.append(`<p class="whisper"><b>${data.nick}</b>: ${data.data}</p>`);
+    });
+
+    socket.on('old messages', (msgs) => {
+        for(let i = 0; i < msgs.length; i++){
+            displayMsg(msgs[i]);
+        }
+    });
+    
+    function displayMsg(data) {
+        $chat.append(
+          `<p class="p-2 bg-secondary w-75 animate__animated animate__backInUp"><b>${data.cuenta_emisora}</b>: ${data.mensaje}</p>`
+        );
+        const chat = document.querySelector("#chat");
+        chat.scrollTop = chat.scrollHeight;
+    }
+    
 });

@@ -1,5 +1,16 @@
 const Message = require('../Initialization/Message');
 
+
+async function createInSocket(conversacion, mensaje, cuenta_emisora, cuenta_receptora, fecha){
+    Message.create({
+        id_conversacion: conversacion,
+        mensaje: mensaje,
+        cuenta_emisora: cuenta_emisora,
+        cuenta_receptora: cuenta_receptora,
+        fecha: fecha
+    })
+}
+
 function createMessage(req, res){
     Message.create({
         id_conversacion: req.body.id_conversacion,
@@ -16,10 +27,18 @@ function searchMessageByPK(req, res){
     })
 }
 
+async function searchConversation(idConv){
+    return await Message.findAll({
+        where: {
+            id_conversacion: idConv
+        }
+    });
+}
+
 
 
 module.exports = {
-    createMessage, searchMessage
+    createMessage, searchMessageByPK, createInSocket, searchConversation
 }
 
 //Borrar y actualizar para despues.

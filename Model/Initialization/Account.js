@@ -38,6 +38,10 @@ const Account = sequelize.define('Account',{
     password: {
         type: DataTypes.STRING(75),
         allowNull: false
+    },
+    verificado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 } , {
     sequelize,

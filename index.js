@@ -9,6 +9,17 @@ const sequelize = require("./Model/Db");
 const Models = require('./Model/CreateModels');
 const {database} = require('./config')
 
+//inicializaciones
+const app = express();
+require('./Lib/Passport');
+
+
+
+//Verificaciones de seguridad
+require('dotenv').config();
+const middleware = require('./middleware');
+middleware(app);
+
 
 
 
@@ -21,9 +32,6 @@ const Logger = require('./Routes/LoggerRoutes');
 const Auth = require('./Routes/AuthRoutes');
 
 
-//inicializaciones
-const app = express();
-require('./Lib/Passport');
 
 
 

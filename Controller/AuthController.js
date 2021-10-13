@@ -1,35 +1,34 @@
-const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
+const Account = require('../Model/Initialization/Account');
+const Crypto = require('crypto');
+const Token = require('../Model/Querys/Token');
+const Sender = require('./SenderEmail');
 
 
-async function sender(req, res){
-let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-    user: "luisestuardo-bolanosgonzalez@cunoc.edu.gt", // generated ethereal user
-    pass: "dshq glnx pcju jtpk", // generated ethereal password
-  },
-});    
-
-transporter.verify().then(() => {
-  console.log('Ready for send emails');
-})
-
-console.log(req.body.email);
-
-let send = await transporter.sendMail( {
-    from: '"Verification email 👻"',
-    to: req.body.email, 
-    subject: "Verification email",
-    html: `<h1>Verification email</h1>
-            <ul>
-                <li>Correo de prueba</li>
-            </ul>`,
-  });
-
-
-  console.log('mensaje enviado');
+function randomString(size = 21){
+  return Crypto
+    .randomBytes(size)
+    .toString('base64')
+    .slice(0, size)
 }
 
-module.exports = { sender }
+async function sendToken(req, res){
+  console.log("register ,", req.body);
+  try {
+    let { id_cuenta, username, email } = req.body;
+    const verificationToken = await Token.create(id_cuenta, randomString(), new Date(), new Date());
+    let jwtTokenVerify = jwt.sign({ email: req.body.email}, 'secret', { expiresIn: "1h"});
+    await Sender.sendVerificationEmail(req.body.email, verificationToken.dataValues.token, jwtTokenVerify);
+
+
+    return res.status(200).send('Te has registrado de forma exitosa, el link de activacion ha sido enviado a: '+email);
+
+  } catch(err) {
+    console.log("err1", err);
+    return res.status(500);
+  }
+}
+
+module.exports = {
+  sendToken
+}

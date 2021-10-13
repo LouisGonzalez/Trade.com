@@ -22,14 +22,11 @@ async function deleteAccount(req, res){
         where: {
             id_cuenta: req.user
         }
-    })/*.then(result => {
-        res.json(result);
-    })*/
+    })
 }
 
 async function updateAccount(req,res){
-    return await Account.update({
-        fecha_creacion: req.body.fecha_creacion,
+    return await Account.update({        
         pais: req.body.pais,
         telefono: req.body.telefono,
         correo: req.body.correo,
@@ -39,9 +36,7 @@ async function updateAccount(req,res){
         where: {
             id_cuenta: req.user
         }
-    })/*.then(result => {
-        res.json(result);
-    });*/
+    })
 }
 
 module.exports = {

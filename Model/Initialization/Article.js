@@ -14,11 +14,7 @@ const Article = sequelize.define('Article', {
     },
     minimo_stock: {
         type: DataTypes.INTEGER
-    },
-    invisible: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-    }
+    }    
 }, {
     sequelize,
     modelName: 'Article',

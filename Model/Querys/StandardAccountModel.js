@@ -11,16 +11,6 @@ async function createAccount(req){
     })
 }
 
-async function deleteAccount(req, res){
-    return await StandardAccount.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).then(result => {
-        res.json(result);
-    })
-}
-
 async function updateAccount(req,res){
     return await StandardAccount.update({            
         telefono: req.body.telefono,
@@ -29,7 +19,7 @@ async function updateAccount(req,res){
         password: req.body.password
     }, {
         where: {
-            id: req.body.id
+            id: req.user
         }
     }).then(result => {
         res.json(result);
@@ -37,5 +27,5 @@ async function updateAccount(req,res){
 }
 
 module.exports ={
-    createAccount, deleteAccount, updateAccount
+    createAccount, updateAccount
 }

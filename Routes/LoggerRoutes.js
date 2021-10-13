@@ -17,4 +17,6 @@ Router.get('/profile', isLoggedIn ,logger.profile);
 
 Router.get('/logout',logger.logout);
 
+Router.get('/IsLogged',logger.isLogged);
+
 module.exports = Router;

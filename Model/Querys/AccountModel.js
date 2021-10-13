@@ -17,6 +17,10 @@ async function createAccountLogger(req, pass){
     })     
 }
 
+async function readUserLoggedInformation(req){
+    return await Account.findOne({where:{id_cuenta:req.user}});
+}
+
 function createPersonalAccount(req){
     StandardAccount.create({
         id_cuenta: req.body.id,
@@ -64,5 +68,5 @@ function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount
+    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount,readUserLoggedInformation
 }

@@ -82,4 +82,12 @@ LoggerController.logout = (req, res) =>{
     res.redirect('/login');
 }
 
+LoggerController.isLogged = (req, res) => {
+  if(req.isAuthenticated()){
+      res.send(true);
+  }else{
+      res.send(false);
+  }
+}
+
 module.exports = LoggerController;

@@ -30,9 +30,12 @@ LoggerController.signup = (req,res,next) => {
 
 
 LoggerController.loginView = (req, res) =>{
-    res.send("Redirecciona vista login")
+    // res.send({ redirect:"/home-user"})
+    // console.log(req.user);
+    // console.log(req.user);
+    res.status(301).redirect('/login');
 }
-
+    
 // LoggerController.login = (req, res) => passport.authenticate('local.login', (err, user, info) => {
 //     if (err) { return res.status(501).json(err); }
 //     if (!user) { return res.status(501).json(info); }

@@ -18,17 +18,29 @@ export class SignInComponent implements OnInit {
 
   public msjError = "";
   msjErrorCuenta = "";
+  isVerifique: boolean = false;
   
   constructor(private _router:Router, public loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.getLoginView();
   }
 
 
-  getLoginView(form: NgForm){
-    this.loginService.getLoginView().subscribe((res) => {
-      console.log('respuesta: ', res);
-    });
+  getLoginView(){
+    if(!this.isVerifique){
+      this.isVerifique = true;
+      this.loginService.getLoginView().subscribe(
+        data=>{
+          console.log(data);
+          // this._router.navigate(['/home-user']);
+        } ,
+        error=>{
+          console.error(error); 
+          // this.msjErrorCuenta = "The username or password are not correct"
+        }
+      );
+    }
   }
 
   // sendDataLogin(form: NgForm){
@@ -53,6 +65,7 @@ export class SignInComponent implements OnInit {
     this.loginService.postLogin(this.loginForm.value).subscribe(
       data=>{
         // console.log(data);
+        console.log('Se logue');
         this._router.navigate(['/home-user']);
       } ,
       error=>{

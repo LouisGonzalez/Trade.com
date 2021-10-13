@@ -12,4 +12,12 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    // this._user.logout()
+    // .subscribe(
+    //   data=>{console.log(data);this._router.navigate(['/login'])},
+    //   error=>console.error(error)
+    // )
+  }
+
 }

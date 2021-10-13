@@ -18,6 +18,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { StackProductComponent } from './components/stack-product/stack-product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
+import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ChatGlobalComponent } from './components/chat-global/chat-global.compon
     AddProductComponent,
     EditProductComponent,
     StackProductComponent,
-    ChatGlobalComponent
+    ChatGlobalComponent,
+    UserVerifyComponent
   ],
   imports: [
     BrowserModule,

@@ -36,6 +36,7 @@ function createBusinessAccount(req){
     })
 }
 
+
 function deleteAccount(req, res){
     Account.destroy({
         where: {

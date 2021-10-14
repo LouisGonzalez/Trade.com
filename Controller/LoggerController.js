@@ -79,7 +79,8 @@ LoggerController.profile = (req, res) =>{
 
 LoggerController.logout = (req, res) =>{
     req.logOut();
-    res.redirect('/login');
+    // res.redirect('/login');
+    res.send("Redirecciona a login");
 }
 
 LoggerController.isLogged = (req, res) => {

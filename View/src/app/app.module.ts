@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+//Routing
+import { AppRoutingModule } from './app-routing.module';
+
 //Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,7 +19,6 @@ import { ProfileUserComponent } from './components/profile-user/profile-user.com
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { StackProductComponent } from './components/stack-product/stack-product.component';
-import { AppRoutingModule } from './app-routing.module';
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 

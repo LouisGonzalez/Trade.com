@@ -33,6 +33,12 @@ export class SignInComponent implements OnInit {
       this.loginService.getLoginView().subscribe(
         data=>{
           console.log(data);
+          if(data==true){
+            console.log("Debe ser redireccionado");
+            this._router.navigate(['/home-user']);
+          }else{
+            console.log('No existe usuario logueado, no sera redireccionado');
+          }
           // this._router.navigate(['/home-user']);
         } ,
         error=>{

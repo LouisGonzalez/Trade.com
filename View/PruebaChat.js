@@ -27,7 +27,7 @@ $(function (){
     //events
     $messageForm.submit( e => {
         e.preventDefault();
-        socket.emit('send message', $messageBox.val(), $nickname.val(), $userReceive);
+        socket.emit('send message', $messageBox.val(), $nickname.val(), $userReceive, true);
         $messageBox.val('');
     });
 

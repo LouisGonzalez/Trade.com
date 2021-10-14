@@ -21,7 +21,7 @@ module.exports = async function(io){
         });
 
         //escuchando
-        socket.on('send message', async function(data, userSend, userReceive) {
+        socket.on('send message', async function(data, userSend, userReceive, anonimous) {
             initConv = userSend+userReceive;
             initConv2 = userReceive+userSend;          
             conversation = await Conversation.searchAndGive(userSend, userReceive);
@@ -29,26 +29,38 @@ module.exports = async function(io){
 
             } else {
               boolSms[initConv] = socket.id;
-              console.log('entro aqui :D');
-            let messages = await Message.searchConversation(conversation.id);
-              io.to(users[userReceive]).emit('old messages', messages);
-              io.to(users[userSend]).emit('old messages', messages);
+              if(conversation != null){
+                let messages = await Message.searchConversation(conversation.id);
+                if(messages != null){
+                  io.to(users[userReceive]).emit('old messages', messages);
+                  io.to(users[userSend]).emit('old messages', messages);
+                }
+              } 
             }
-
-
             idSend = await Conversation.searchUserId(userSend);
             idReceive = await Conversation.searchUserId(userReceive);
             existConv = await Conversation.search(userSend,userReceive);
             if(existConv == 0){  //No existe la conversacion, toca crearla
-              await Conversation.create(idSend.id_cuenta, idReceive.id_cuenta, false);
+              await Conversation.create(idSend.id_cuenta, idReceive.id_cuenta, anonimous);
             } 
+            conversation = await Conversation.searchAndGive(userSend, userReceive);   //si la conversacion no existia antes, ahora si, por lo tanto se busca
             //crear el mensaje
             await Message.createInSocket(conversation.id, data, idSend.id_cuenta, idReceive.id_cuenta, new Date().toISOString().slice(0, 19).replace('T', ' ')); //Falta la fecha como ultimo parametro
             //io.sockets.emit('new message', data, userSend, userReceive);
             if(userReceive in users){
+              myNick = userSend;
+              if(conversation.anonimo){
+                myNick = 'noOne'
+              } 
               io.to(users[userReceive]).emit('whisper', {
                 data,
-                nick: userSend
+                nick: myNick
+              });
+            }
+            if(userSend in users){
+              io.to(users[userSend]).emit('whisper', {
+                data,
+                nick: 'yo'
               });
             }
         })

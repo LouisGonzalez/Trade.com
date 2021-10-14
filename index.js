@@ -13,7 +13,7 @@ require('./Controller/Socket')(io);
 //Db
 const sequelize = require("./Model/Db");
 const Models = require('./Model/CreateModels');
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 
 //Passport
 const passport = require('passport')

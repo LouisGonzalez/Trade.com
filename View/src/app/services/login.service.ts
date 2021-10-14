@@ -17,7 +17,8 @@ export class LoginService {
   }
 
   getLoginView(){
-    return this.http.get(this.URL_API+'/login');
+    // return this.http.get(this.URL_API+'/login');
+    return this.http.get(this.URL_API+'/IsLogged');
   }
 
   postLogin(data: any){

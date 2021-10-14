@@ -5,12 +5,9 @@ const AccountModel = new require('../Model/Querys/AccountModel');
 
 const AccountController = {};
 
-AccountController.createUser = (req, res) => {    
-    AccountModel.createAccount(req,res);
-}
-
-AccountController.readUser = (req,res)=>{    
-    AccountModel.oneAccount(req,res);
+AccountController.readUser = async (req,res)=>{
+    const User = await AccountModel.readUserLoggedInformation(req);
+    res.json(User);
 }
 
 AccountController.deleteUser = (req,res)=>{

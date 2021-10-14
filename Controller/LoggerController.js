@@ -35,7 +35,7 @@ LoggerController.loginView = (req, res) =>{
     // console.log(req.user);
     res.status(301).redirect('/login');
 }
-
+    
 // LoggerController.login = (req, res) => passport.authenticate('local.login', (err, user, info) => {
 //     if (err) { return res.status(501).json(err); }
 //     if (!user) { return res.status(501).json(info); }
@@ -80,6 +80,14 @@ LoggerController.profile = (req, res) =>{
 LoggerController.logout = (req, res) =>{
     req.logOut();
     res.redirect('/login');
+}
+
+LoggerController.isLogged = (req, res) => {
+  if(req.isAuthenticated()){
+      res.send(true);
+  }else{
+      res.send(false);
+  }
 }
 
 module.exports = LoggerController;

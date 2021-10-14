@@ -7,14 +7,14 @@ const {isLoggedIn} = require('../Lib/auth');
 //Controlador
 const AccountController = require('../Controller/AccountController');
 
-//CREATE
-Router.post('/user', AccountController.createUser);
-
 //READ
 Router.get('/user', AccountController.readUser);
 
-//UPDATE
-Router.patch('/user', AccountController.updateUser);
+//UPDATE STANDARD
+Router.patch('/user/standard', AccountController.updateUserStandard);
+
+//UPDATE BUSINESS
+Router.patch('/user/business', AccountController.updateUserBusiness);
 
 //DELETE
 Router.delete('/user', AccountController.deleteUser);

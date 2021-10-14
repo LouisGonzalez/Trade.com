@@ -3,30 +3,36 @@ const express = require('express');
 
 const StandardAccountModel = require('../Model/Querys/StandardAccountModel');
 const BusinessAccountModel = require('../Model/Querys/BusinessAccountModel');
-const AccuntModel = require('../Model/Querys/AccountModel');
+const AccountModel = require('../Model/Querys/AccountModel');
 
 const AccountController = {};
 
 AccountController.createUser = async function(req){    
-    if(req.body.empresa!=undefined){
+    if(req.body.empresa != undefined){
         await BusinessAccountModel.createAccount(req);        
-     }else{
+    }else{
         await StandardAccountModel.createAccount(req);
-     }
+    }
 }
 
 AccountController.readUser = (req,res)=>{    
 //AccountModel.oneAccount(req,res);
 }
 
-AccountController.deleteUser = (req,res)=>{    
-    AccuntModel.deleteAccount(req,res);
+AccountController.deleteUser = async (req,res)=>{    
+    await AccountModel.deleteAccount(req,res);
     req.logOut();
     res.redirect('/login');
 }
 
-AccountController.updateUser = (req,res)=>{
-    AccountModel.updateAccount(req,res);
+AccountController.updateUserStandard = async (req,res)=>{
+    await AccountModel.updateAccount(req,res);
+    await StandardAccountModel.updateAccount(req);    
+}
+
+AccountController.updateUserBusiness = async (req,res)=>{
+    await AccountModel.updateAccount(req,res);    
+    await BusinessAccountModel.updateAccount(req);
 }
 
 module.exports = AccountController;

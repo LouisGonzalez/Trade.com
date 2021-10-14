@@ -12,7 +12,7 @@ $(function (){
     const $nickname = $('#nickname');
 
     const $userReceive = "sergio";
-
+    const $typeConversation = false;        //Si la conversacion es anonima o no
     const $users = $('#usernames');
 
 
@@ -27,7 +27,7 @@ $(function (){
     //events
     $messageForm.submit( e => {
         e.preventDefault();
-        socket.emit('send message', $messageBox.val(), $nickname.val(), $userReceive, true);
+        socket.emit('send message', $messageBox.val(), $nickname.val(), $userReceive, $typeConversation);
         $messageBox.val('');
     });
 

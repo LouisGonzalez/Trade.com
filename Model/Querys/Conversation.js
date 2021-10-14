@@ -69,6 +69,29 @@ async function searchAndGive(emisor, receptor){
     });    
 }
 
+//Query que devuelve los datos de una conversacion especifica
+async function comprobateAnonymous(emisor, receptor, anonymous){
+    exist1 = await searchUserId(emisor);
+    exist2 = await searchUserId(receptor);
+    return await Conversation.findOne({
+        where: {
+            [Op.or]: [ {
+                [Op.and]: [
+                    { cuenta_uno: exist1.id_cuenta },
+                    { cuenta_dos: exist2.id_cuenta },
+                    { anonimo: anonymous }
+                ]
+            }, {
+                [Op.and]: [
+                    { cuenta_uno: exist2.id_cuenta },
+                    { cuenta_dos: exist1.id_cuenta },
+                    { anonimo: anonymous }
+                ]
+           }
+        ]}
+    });    
+}
+
 
 
 function simpleUpdate(){
@@ -78,5 +101,5 @@ function simpleUpdate(){
 
 
 module.exports = {
-    searchUserId, create, searchByPK, search, simpleUpdate, searchAndGive
+    searchUserId, create, searchByPK, search, simpleUpdate, searchAndGive, comprobateAnonymous
 }

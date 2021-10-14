@@ -24,7 +24,7 @@ module.exports = async function(io){
         socket.on('send message', async function(data, userSend, userReceive, anonimous) {
             initConv = userSend+userReceive;
             initConv2 = userReceive+userSend;          
-            conversation = await Conversation.searchAndGive(userSend, userReceive);
+            conversation = await Conversation.comprobateAnonymous(userSend, userReceive, anonimous);
             if(initConv in boolSms || initConv2 in boolSms){
 
             } else {
@@ -39,14 +39,12 @@ module.exports = async function(io){
             }
             idSend = await Conversation.searchUserId(userSend);
             idReceive = await Conversation.searchUserId(userReceive);
-            existConv = await Conversation.search(userSend,userReceive);
+/*            existConv = await Conversation.search(userSend,userReceive);
             if(existConv == 0){  //No existe la conversacion, toca crearla
               await Conversation.create(idSend.id_cuenta, idReceive.id_cuenta, anonimous);
-            } 
-            conversation = await Conversation.searchAndGive(userSend, userReceive);   //si la conversacion no existia antes, ahora si, por lo tanto se busca
+            } */
             //crear el mensaje
             await Message.createInSocket(conversation.id, data, idSend.id_cuenta, idReceive.id_cuenta, new Date().toISOString().slice(0, 19).replace('T', ' ')); //Falta la fecha como ultimo parametro
-            //io.sockets.emit('new message', data, userSend, userReceive);
             if(userReceive in users){
               myNick = userSend;
               if(conversation.anonimo){

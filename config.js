@@ -5,7 +5,7 @@ module.exports = {
             password: "1234",
             database: "COMERCIO_ELECTRONICO",
             host: "localhost"
-
+            // port: 3306
     }
 
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
+import {HomeService} from '../../services/home.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router:Router, public homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.homes();
   }
 
   logout(){
@@ -18,6 +23,19 @@ export class HomePageComponent implements OnInit {
     //   data=>{console.log(data);this._router.navigate(['/login'])},
     //   error=>console.error(error)
     // )
+  }
+
+  homes(){
+    this.homeService.getUser().subscribe(
+      data => {
+        console.log(data);
+        // this._router.navigate(['/home-user']);
+      },
+      error => {
+        console.error(error); 
+        // this.msjErrorCuenta = "The username or password are not correct"
+      }
+    );
   }
 
 }

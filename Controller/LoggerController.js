@@ -51,7 +51,7 @@ LoggerController.login = (req,res,next) => {
     // console.log(req.body);
     passport.authenticate('local.login', function(err, user, info) {
       if (err) { return res.status(501).json(err); }
-      console.log(req.user);
+    //   console.log(req.user);
       if (!user) { return res.status(501).json(info); }
       req.logIn(user, function(err) {
         if (err) { return res.status(501).json(err); }
@@ -59,7 +59,7 @@ LoggerController.login = (req,res,next) => {
         return res.status(200).json({message:'SE LOGUEO'});
       });
     })(req, res, next);
-}
+}   
 
 // LoggerController.login = passport.authenticate('local.login',{
 //     successMessage: 'true'

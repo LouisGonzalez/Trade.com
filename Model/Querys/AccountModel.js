@@ -18,7 +18,7 @@ async function createAccountLogger(req, pass){
 }
 
 async function readUserLoggedInformation(req){
-    return await Account.findOne({where:{id_cuenta:req.user}});
+    return await Account.findOne({where:{user:req.user}});
 }
 
 function createPersonalAccount(req){

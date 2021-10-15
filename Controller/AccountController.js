@@ -7,6 +7,7 @@ const AccountController = {};
 
 AccountController.readUser = async (req,res)=>{
     const User = await AccountModel.readUserLoggedInformation(req);
+    // console.log(User);
     res.json(User);
 }
 

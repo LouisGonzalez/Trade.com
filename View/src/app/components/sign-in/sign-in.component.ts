@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
 
 
   getLoginView(){
-    if(!this.isVerifique){
+    //if(!this.isVerifique){
       this.isVerifique = true;
       this.loginService.getLoginView().subscribe(
         data=>{
@@ -46,7 +46,7 @@ export class SignInComponent implements OnInit {
           // this.msjErrorCuenta = "The username or password are not correct"
         }
       );
-    }
+    //}
   }
 
   // sendDataLogin(form: NgForm){
@@ -70,9 +70,10 @@ export class SignInComponent implements OnInit {
 
     this.loginService.postLogin(this.loginForm.value).subscribe(
       data=>{
-        // console.log(data);
-        console.log('Se logue');
-        this._router.navigate(['/home-user']);
+        console.log(data);
+        this.getLoginView();
+        // console.log('Se logue');
+        // this._router.navigate(['/home-user']);
       } ,
       error=>{
         // console.error(error); 

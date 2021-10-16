@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, NgForm, Validators  } from '@angular/forms';
 
 import {LoginService} from '../../services/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,7 +21,9 @@ export class SignInComponent implements OnInit {
   msjErrorCuenta = "";
   isVerifique: boolean = false;
   
-  constructor(private _router:Router, public loginService: LoginService) { }
+  constructor(private _router:Router, 
+    public loginService: LoginService,
+    /*private cookie: CookieService*/) { }
 
   ngOnInit(): void {
     this.getLoginView();
@@ -29,21 +32,21 @@ export class SignInComponent implements OnInit {
 
   getLoginView(){
     //if(!this.isVerifique){
-      this.isVerifique = true;
+      // this.isVerifique = true;
       this.loginService.getLoginView().subscribe(
         data=>{
-          console.log(data);
-          if(data==true){
-            console.log("Debe ser redireccionado");
-            this._router.navigate(['/home-user']);
-          }else{
-            console.log('No existe usuario logueado, no sera redireccionado');
+          // console.log(data);
+          let resJson = JSON.stringify(data);
+          let res = JSON.parse(resJson);
+          // console.log("Redireccionado:",res.redirect);
+          if(res.redirect!=undefined || res.redirect!=null){
+            if(res.redirect=='/home-user'){
+              this._router.navigate(['/home-user']);
+            }
           }
-          // this._router.navigate(['/home-user']);
         } ,
         error=>{
-          console.error(error); 
-          // this.msjErrorCuenta = "The username or password are not correct"
+          console.error(error);
         }
       );
     //}
@@ -70,13 +73,20 @@ export class SignInComponent implements OnInit {
 
     this.loginService.postLogin(this.loginForm.value).subscribe(
       data=>{
-        console.log(data);
+        let resJson = JSON.stringify(data);
+        let res = JSON.parse(resJson);
+        // console.log("Redireccionado a:",res.redirect);
+        // if(res.redirect!=undefined || res.redirect!=null){
+        //   this._router.navigate([res.redirect]);
+        // }
         this.getLoginView();
+        // console.log(this.cookie.getAll());
+        // this.getLoginView();
         // console.log('Se logue');
-        // this._router.navigate(['/home-user']);
+        // this._router.navigate([res.redirect]);
       } ,
       error=>{
-        // console.error(error); 
+        console.error(error); 
         this.msjErrorCuenta = "The username or password are not correct"
       }
     );

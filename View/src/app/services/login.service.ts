@@ -18,10 +18,20 @@ export class LoginService {
 
   getLoginView(){
     // return this.http.get(this.URL_API+'/login');
-    return this.http.get(this.URL_API+'/IsLogged');
+    return this.http.get(this.URL_API+'/login',{
+      withCredentials:true
+    });
   }
 
   postLogin(data: any){
-    return this.http.post(this.URL_API+'/login', data);
+    return this.http.post(this.URL_API+'/login', data,{
+        withCredentials:true
+      });
+    // return this.http.post(this.URL_API+'/login', data,{
+    //   observe:'body',
+    //   withCredentials:true,
+    //   headers:new HttpHeaders().append('Content-Type','application/json')
+    // });
+
   }
 }

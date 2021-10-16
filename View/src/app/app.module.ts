@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service'
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Routing
@@ -21,6 +22,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { StackProductComponent } from './components/stack-product/stack-product.component';
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { UserVerifyComponent } from './components/user-verify/user-verify.compon
     EditProductComponent,
     StackProductComponent,
     ChatGlobalComponent,
-    UserVerifyComponent
+    UserVerifyComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,9 @@ import { UserVerifyComponent } from './components/user-verify/user-verify.compon
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

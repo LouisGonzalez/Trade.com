@@ -30,10 +30,7 @@ LoggerController.signup = (req,res,next) => {
 
 
 LoggerController.loginView = (req, res) =>{
-    // res.send({ redirect:"/home-user"})
-    // console.log(req.user);
-    // console.log(req.user);
-    res.status(301).redirect('/login');
+    res.status(200).json({redirect:'/login', message: "No esta logueado"});
 }
     
 // LoggerController.login = (req, res) => passport.authenticate('local.login', (err, user, info) => {
@@ -55,7 +52,7 @@ LoggerController.login = (req,res,next) => {
       if (!user) { return res.status(501).json(info); }
       req.logIn(user, function(err) {
         if (err) { return res.status(501).json(err); }
-        // console.log(get('/profile'));
+        console.log(req);
         return res.status(200).json({message:'SE LOGUEO'});
       });
     })(req, res, next);
@@ -79,8 +76,7 @@ LoggerController.profile = (req, res) =>{
 
 LoggerController.logout = (req, res) =>{
     req.logOut();
-    // res.redirect('/login');
-    res.send("Redirecciona a login");
+    res.status(200).json({message:'Redirecciona a login'});
 }
 
 LoggerController.isLogged = (req, res) => {

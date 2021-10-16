@@ -31,26 +31,28 @@ require('./Lib/Passport');
 
 //middleware
 const corsOptions = {origin: "http://localhost:4200"}
-app.use(cors({origin: "http://localhost:4200"}));
+app.use(cors({
+    origin: "http://localhost:4200",
+    credentials: true
+}));
+app.use(cookieParser());
+app.use(bodyParser());
 app.use(session({
     secret: 'comercioElectronico',
-    resave:false,
-    saveUninitialized:false,
-    cookie:{
-        maxAge:36000000,
-        httpOnly:false,
-        secure:false
-    },
+    resave: false,
+    saveUninitialized: false,
+    // cookie:{
+    //     maxAge:36000000,
+    //     httpOnly:true,
+    //     secure:false
+    // },
     store: new MySQLStore(database)
   //  store: new mysqlstore(database)
 }))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(express.urlencoded({
-//     extended: true
-// }));
-app.use(cookieParser());
-app.use(bodyParser());
+
 
 app.use(passport.initialize());
 app.use(passport.session());

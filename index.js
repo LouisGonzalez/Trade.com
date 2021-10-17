@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 const Account = require('./Routes/AccountRoutes');
 const Logger = require('./Routes/LoggerRoutes');
 const Post = require('./Routes/PostRoutes');
+const Card = require('./Routes/CardsRoutes');
 
 
 //inicializaciones
@@ -38,6 +39,7 @@ app.use(passport.session());
 app.use(Account);
 app.use(Logger);
 app.use(Post);
+app.use(Card);
 
 //Inicialización del server
 app.listen(PORT, function(){

@@ -12,7 +12,7 @@ passport.use('local.signup',new localStrategy({
     passReqToCallback: true
 },async (req, user, password, done) => {
     pass = await crypt.encryptPassword(password);
-    const usuario = await AccountModel.findOne({where:{id_cuenta:user}});
+    const usuario = await AccountModel.findOne({where:{user:user}});
     if(usuario == undefined){
         const usr = await Account.createAccountLogger(req, pass); 
         await AccountController.createUser(req);

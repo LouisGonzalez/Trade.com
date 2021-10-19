@@ -6,12 +6,15 @@ const CardModel = new require('../Model/Querys/CardModel');
 const ExternalAccount = {};
 
 ExternalAccount.CardView = async (req,res)=>{    
-    //regresar vista 
-    const tarjeta = await CardModel.tarjetas(req);
+    //regresar vista     
 }
 
 ExternalAccount.addCardView = async (req,res)=>{
     //regresar vista agregar tarjeta
+}
+
+ExternalAccount.getCards = async(re,res)=>{
+    const tarjeta = await CardModel.tarjetas(req);
 }
 
 ExternalAccount.addCard = async (req,res) =>{

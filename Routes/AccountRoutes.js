@@ -10,8 +10,11 @@ const AccountController = require('../Controller/AccountController');
 //READ
 Router.get('/logged', isLoggedIn,AccountController.readUser);
 
-//UPDATE
-Router.patch('/user', AccountController.updateUser);
+//UPDATE STANDARD
+Router.patch('/user/standard', AccountController.updateUserStandard);
+
+//UPDATE BUSINESS
+Router.patch('/user/business', AccountController.updateUserBusiness);
 
 //DELETE
 Router.delete('/user', AccountController.deleteUser);

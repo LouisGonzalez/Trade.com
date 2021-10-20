@@ -12,8 +12,14 @@ passport.use('local.signup',new localStrategy({
     passReqToCallback: true
 },async (req, user, password, done) => {
     pass = await crypt.encryptPassword(password);
-    usr = await Account.createAccountLogger(req, pass);      
-    return done(null,usr.user);
+    const usuario = await AccountModel.findOne({where:{user:user}});
+    if(usuario == undefined){
+        const usr = await Account.createAccountLogger(req, pass); 
+        await AccountController.createUser(req);
+        return done(null,usr.id_cuenta);
+    }else{
+        return done(null, false);
+    }   
 }))
 
 
@@ -26,13 +32,16 @@ passport.use('local.login', new localStrategy({
     const usuario = await AccountModel.findOne({where:{user:user}});    
     console.log(usuario);
     if(usuario != undefined){        
-        const match = await crypt.matchPassword(password, usuario.password);
-        console.log(match);
-        if(match){
-            return done(null, usuario.user);
+        if(usuario.activa){
+            const match = await crypt.matchPassword(password, usuario.password);        
+            if(match){
+                return done(null, usuario.id_cuenta);
+            }else{
+                return done(null, false);
+            }
         }else{
-            return done(null, false);
-        }
+            return done(null, false); 
+        }    
     }else{
         return done(null, false); 
     }
@@ -44,6 +53,6 @@ passport.serializeUser((usr, done)=>{
 
 
 passport.deserializeUser(async (usr,done)=>{
-      const usuario = await AccountModel.findOne({where:{user:usr}});
-      return done(null,usuario.user);
+      const usuario = await AccountModel.findOne({where:{id_cuenta:usr}});
+      return done(null,usuario.id_cuenta);
 })

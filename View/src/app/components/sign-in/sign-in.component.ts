@@ -49,18 +49,7 @@ export class SignInComponent implements OnInit {
           console.error(error);
         }
       );
-    //}
   }
-
-  // sendDataLogin(form: NgForm){
-    
-  //   this.loginService.postLogin(form.value).subscribe((res) => {
-  //     console.log('respuesta: ', res);
-  //     // this.modalService.dismissAll('Cross click')
-  //     // this.resetForm(form);
-  //   });
-  // }
-
 
   login(){
     if(!this.loginForm.valid){
@@ -75,15 +64,8 @@ export class SignInComponent implements OnInit {
       data=>{
         let resJson = JSON.stringify(data);
         let res = JSON.parse(resJson);
-        // console.log("Redireccionado a:",res.redirect);
-        // if(res.redirect!=undefined || res.redirect!=null){
-        //   this._router.navigate([res.redirect]);
-        // }
         this.getLoginView();
-        // console.log(this.cookie.getAll());
-        // this.getLoginView();
-        // console.log('Se logue');
-        // this._router.navigate([res.redirect]);
+
       } ,
       error=>{
         console.error(error); 

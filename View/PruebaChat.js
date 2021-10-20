@@ -37,15 +37,15 @@ $(function (){
         $chat.append(`<p class="whisper"><b>${data.nick}</b>: ${data.data}</p>`);
     });
 
-    socket.on('old messages', (msgs) => {
+    socket.on('old messages', (msgs, array) => {
         for(let i = 0; i < msgs.length; i++){
-            displayMsg(msgs[i]);
+            displayMsg(msgs[i], array[i]);
         }
     });
     
-    function displayMsg(data) {
+    function displayMsg(data, data2) {
         $chat.append(
-          `<p class="p-2 bg-secondary w-75 animate__animated animate__backInUp"><b>${data.cuenta_emisora}</b>: ${data.mensaje}</p>`
+          `<p class="p-2 bg-secondary w-75 animate__animated animate__backInUp"><b>${data2.user}</b>${data.mensaje}</p>`
         );
         const chat = document.querySelector("#chat");
         chat.scrollTop = chat.scrollHeight;

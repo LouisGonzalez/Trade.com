@@ -144,20 +144,20 @@ Conversation.hasMany(Message, {
 Account.hasMany(Message, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'cuenta_emisora',
+        name: 'cuenta_receptora',
         allowNull: false
-    }
+    }   
 });
 
 Account.hasMany(Message, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'cuenta_receptora',
+        name: 'cuenta_emisora',
         allowNull: false
     }
 });
 
-//Comentario
+    //Comentario
 Post.hasMany(Comment, {
     onDelete: 'CASCADE',
     foreignKey: {

@@ -44,6 +44,7 @@ export class ChatComponent implements OnInit {
     const componentRef = this.container.createComponent(dynamicComponentFactory);
     componentRef.instance.username = this.username;
     componentRef.instance.username2 = this.username2;
+    this.createChat();
   }
 
 
@@ -83,7 +84,7 @@ export class ChatComponent implements OnInit {
   }
 
   createChat(){
-
+    this.socket.emit('send history data', this.username2, this.username, '0');
   }
   
 }

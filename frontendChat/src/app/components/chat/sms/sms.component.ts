@@ -14,9 +14,13 @@ export class SmsComponent implements OnInit {
 
   socket:any;
   message:string;
+  oldSms:any[];
+  oldUser:any[];
+  prueba:string;
 
   constructor() { 
     this.message = "";
+    this.prueba = "";
   }
 
   @Input() username: string;
@@ -25,10 +29,44 @@ export class SmsComponent implements OnInit {
   ngOnInit(): void {
     this.setupSocketConnection();
     this.newUser();
+    this.loadOldMessages();
   }
 
   newUser(){
     this.socket.emit('new user', this.username2);
+  }
+
+  loadOldMessages(){
+    this.socket.on('old messages', (oldSms:any[], oldUser:any[], prueba:string) => {
+      console.log('soy la prueba ' + prueba);
+      for(let i = 0; i < oldSms.length; i++){
+        const element = document.createElement('div');
+        if(oldUser[i].user == this.username2){
+          element.innerHTML = "<b>Yo</b>" + ": " + oldSms[i].mensaje+"<br>";
+        } else {
+          element.innerHTML = "<b>"+oldUser[i].user+"</b>" + ": " + oldSms[i].mensaje+"<br>";
+        }
+        element.style.padding = '6px 10px';
+        element.style.borderRadius = '6px 0 6px 0';
+        element.style.position = 'relative';
+        element.style.fontSize = '12px';
+        element.style.margin = '0 0 15px';
+        if(oldUser[i].user == this.username2){
+          element.style.color = '#30649c';
+          element.style.background = 'rgba(0, 114, 135, .1)';
+          element.style.alignSelf = 'flex-start';
+          element.style.border = 'rgba(0, 114, 135, .1)';
+          element.style.textAlign = 'left';
+        } else {
+          element.style.textAlign = 'right';
+          element.style.color = "#6c6c6c";
+          element.style.background = 'rgba(100, 170, 0, .1)';
+          element.style.border = 'rgba(100, 170, 0, .1)';
+        }
+        document.getElementById('messages-container2')?.appendChild(element);
+      }
+  
+    });
   }
 
 

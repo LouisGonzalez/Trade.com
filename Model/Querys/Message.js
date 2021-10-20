@@ -1,6 +1,7 @@
 const Message = require('../Initialization/Message');
+const Account = require('../Initialization/Account');
 
-
+//Account.belongsTo(Message);
 async function createInSocket(conversacion, mensaje, cuenta_emisora, cuenta_receptora, fecha){
     Message.create({
         id_conversacion: conversacion,

@@ -47,6 +47,14 @@ function deleteAccount(req, res){
     })
 }
 
+async function searchUserByPK(idUser){
+    return await Account.findOne({
+        where: {
+            id_cuenta: idUser
+        }
+    })
+}
+
 function updateAccount(req,res){
     Account.update({
         fecha_creacion: req.body.fecha_creacion,
@@ -65,5 +73,5 @@ function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount
+    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount, searchUserByPK
 }

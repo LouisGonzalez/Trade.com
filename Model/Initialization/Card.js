@@ -7,12 +7,13 @@ const Account = sequelize.define('Card',{
     id_cuenta: {
         type: DataTypes.INTEGER,
         allowNull: false,        
-        autoIncrement: false        
+        autoIncrement: false,
+        primaryKey:true,
     },
     no_tarjeta: {
         type: DataTypes.BIGINT,
         allowNull: false,
-        primaryKey:true,
+        
         autoIncrement: false    
     },
     fecha_corte:{

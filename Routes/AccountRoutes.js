@@ -8,7 +8,7 @@ const {isLoggedIn} = require('../Lib/auth');
 const AccountController = require('../Controller/AccountController');
 
 //READ
-Router.get('/user', AccountController.readUser);
+Router.get('/logged', isLoggedIn,AccountController.readUser);
 
 //UPDATE STANDARD
 Router.patch('/user/standard', AccountController.updateUserStandard);

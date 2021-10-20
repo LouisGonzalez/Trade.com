@@ -28,6 +28,7 @@ passport.use('local.login', new localStrategy({
     passwordField: 'password',
     passReqToCallback: true
 },async (req, user, password, done) => {
+    
     const usuario = await AccountModel.findOne({where:{user:user}});    
     console.log(usuario);
     if(usuario != undefined){        

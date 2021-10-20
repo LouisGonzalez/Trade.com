@@ -19,11 +19,14 @@ async function deleteAccount(req, res){
     return await Account.update({
         activa:false
     },{
-        where: {
-            id_cuenta: req.user
-        }
-    })
+        id_cuenta: req.user
+    })     
 }
+
+async function readUserLoggedInformation(req){
+    return await Account.findOne({where:{user:req.user}});
+}
+
 
 async function updateAccount(req,res){
     return await Account.update({        
@@ -40,5 +43,5 @@ async function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger
+    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation
 }

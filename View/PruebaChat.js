@@ -18,10 +18,7 @@ $(function (){
 
     $nickForm.submit(e => {
         e.preventDefault();
-        socket.emit('new user', $nickname.val(), data => {
-
-            console.log('wnas tarde');
-        });
+        socket.emit('new user', $nickname.val());
     });
 
     //events

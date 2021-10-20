@@ -9,11 +9,13 @@ module.exports = async function(io){
 
     io.on('connection', async socket => {
         console.log('Nuevo usuario conectado');
-        socket.on('new user', (data, cb) => {
+        socket.on('new user', (data) => {
             if(data in users){
-              cb(false);
+              //cb(false);
+              users[data] = socket.id;
+              updateNicknames();
             } else {
-              cb(true);
+              //cb(true);
               socket.nickname = data;
               users[data] = socket.id;
               updateNicknames();
@@ -39,10 +41,19 @@ module.exports = async function(io){
             }
             idSend = await Conversation.searchUserId(userSend);
             idReceive = await Conversation.searchUserId(userReceive);
-/*            existConv = await Conversation.search(userSend,userReceive);
+
+
+
+
+  /*          existConv = await Conversation.search(userSend,userReceive);
             if(existConv == 0){  //No existe la conversacion, toca crearla
               await Conversation.create(idSend.id_cuenta, idReceive.id_cuenta, anonimous);
-            } */
+            }*/
+
+
+
+
+
             //crear el mensaje
             await Message.createInSocket(conversation.id, data, idSend.id_cuenta, idReceive.id_cuenta, new Date().toISOString().slice(0, 19).replace('T', ' ')); //Falta la fecha como ultimo parametro
             if(userReceive in users){
@@ -50,6 +61,7 @@ module.exports = async function(io){
               if(conversation.anonimo){
                 myNick = 'noOne'
               } 
+              console.log("estoy enviando el mensaje ");
               io.to(users[userReceive]).emit('whisper', {
                 data,
                 nick: myNick

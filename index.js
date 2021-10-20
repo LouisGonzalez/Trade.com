@@ -1,6 +1,9 @@
 //Importaciones necesarias para express
 const express = require('express');
 
+//Cors
+const cors = require('cors');
+
 //Socket.io
 const { createServer } = require("http");
 const { Server } = require("socket.io");
@@ -29,6 +32,12 @@ const Logger = require('./Routes/LoggerRoutes');
 require('./Lib/Passport');
 
 //middleware
+
+const corsOptions = {origin: "http://localhost:4200/ "}
+app.use(cors({
+    origin: "http://localhost:4200/",
+//    credentials: true
+}));
 app.use(session({
     secret: 'comercioElectronico',
     resave:false,

@@ -24,7 +24,7 @@ async function deleteAccount(req, res){
 }
 
 async function readUserLoggedInformation(req){
-    return await Account.findOne({where:{user:req.user}});
+    return await Account.findOne({where:{id_cuenta:req.user}});
 }
 
 

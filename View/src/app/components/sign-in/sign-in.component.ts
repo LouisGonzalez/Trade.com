@@ -31,14 +31,11 @@ export class SignInComponent implements OnInit {
 
 
   getLoginView(){
-    //if(!this.isVerifique){
-      // this.isVerifique = true;
       this.loginService.getLoginView().subscribe(
         data=>{
-          // console.log(data);
           let resJson = JSON.stringify(data);
           let res = JSON.parse(resJson);
-          // console.log("Redireccionado:",res.redirect);
+          console.log(res);
           if(res.redirect!=undefined || res.redirect!=null){
             if(res.redirect=='/home-user'){
               this._router.navigate(['/home-user']);
@@ -51,6 +48,11 @@ export class SignInComponent implements OnInit {
       );
   }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> mvc_login
   login(){
     if(!this.loginForm.valid){
       this.msjError = "You must fill in all the fields";
@@ -64,8 +66,13 @@ export class SignInComponent implements OnInit {
       data=>{
         let resJson = JSON.stringify(data);
         let res = JSON.parse(resJson);
+<<<<<<< HEAD
         this.getLoginView();
 
+=======
+        console.log(res);
+        this.getLoginView();
+>>>>>>> mvc_login
       } ,
       error=>{
         console.error(error); 
@@ -73,13 +80,5 @@ export class SignInComponent implements OnInit {
       }
     );
   }
-
-  // sendDataLogin(form: NgForm){
-    
-  //   this.loginService.postLogin(form.value).subscribe(
-  //     data=>{console.log(data);this._router.navigate(['/register']);} ,
-  //     error=>console.error(error)
-  //   )
-  // }
 
 }

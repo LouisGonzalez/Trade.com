@@ -4,13 +4,13 @@ const sequelize = require('../Db');
 //Creacion de modelo
 const StandardAccount = sequelize.define('StandardAccount', {
     id_cuenta: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(13),
         allowNull: false,
         primaryKey:true,
         autoIncrement: false        
     },
     cuenta_general: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(13),
         allowNull: false,
     },
     nombres: {
@@ -22,10 +22,6 @@ const StandardAccount = sequelize.define('StandardAccount', {
         allowNull: false
     },
     fecha_nacimiento: {
-        type: DataTypes.DATEONLY,
-        allowNull: false
-    },
-    fecha_creacion_cuenta: {
         type: DataTypes.DATEONLY,
         allowNull: false
     }

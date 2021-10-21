@@ -1,6 +1,7 @@
 const Account = require('./Initialization/Account');
 const Business = require('./Initialization/BusinessAccount');
 const Standard = require('./Initialization/StandardAccount');
+const Card = require('./Initialization/Card');
 const Member = require('./Initialization/Membership');
 const Article = require('./Initialization/Article');
 const Post = require('./Initialization/Post');
@@ -296,6 +297,16 @@ Post.hasMany(Promotions, {
         allowNull: false
     }
 });
+
+//Tarjeta
+Account.hasMany(Card,{
+    onDelete:'CASCADE',
+    foreignKey:{
+        name:'id_cuenta',
+        allowNull: false
+    }
+});
+
 
 
 // Service.belongsTo(Post);

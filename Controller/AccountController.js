@@ -16,7 +16,9 @@ AccountController.createUser = async function(req){
 }
 
 AccountController.readUser = async (req,res)=>{
-    const User = await AccountModel.readUserLoggedInformation(req);    
+    // console.log("Hola\n",req);
+    const User = await AccountModel.readUserLoggedInformation(req);
+    console.log(User);
     res.json(User);
 }
 

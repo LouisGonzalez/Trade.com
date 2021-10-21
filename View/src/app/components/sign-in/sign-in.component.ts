@@ -31,14 +31,11 @@ export class SignInComponent implements OnInit {
 
 
   getLoginView(){
-    //if(!this.isVerifique){
-      // this.isVerifique = true;
       this.loginService.getLoginView().subscribe(
         data=>{
-          // console.log(data);
           let resJson = JSON.stringify(data);
           let res = JSON.parse(resJson);
-          // console.log("Redireccionado:",res.redirect);
+          console.log(res);
           if(res.redirect!=undefined || res.redirect!=null){
             if(res.redirect=='/home-user'){
               this._router.navigate(['/home-user']);
@@ -49,17 +46,8 @@ export class SignInComponent implements OnInit {
           console.error(error);
         }
       );
-    //}
   }
 
-  // sendDataLogin(form: NgForm){
-    
-  //   this.loginService.postLogin(form.value).subscribe((res) => {
-  //     console.log('respuesta: ', res);
-  //     // this.modalService.dismissAll('Cross click')
-  //     // this.resetForm(form);
-  //   });
-  // }
 
 
   login(){
@@ -75,15 +63,8 @@ export class SignInComponent implements OnInit {
       data=>{
         let resJson = JSON.stringify(data);
         let res = JSON.parse(resJson);
-        // console.log("Redireccionado a:",res.redirect);
-        // if(res.redirect!=undefined || res.redirect!=null){
-        //   this._router.navigate([res.redirect]);
-        // }
+        console.log(res);
         this.getLoginView();
-        // console.log(this.cookie.getAll());
-        // this.getLoginView();
-        // console.log('Se logue');
-        // this._router.navigate([res.redirect]);
       } ,
       error=>{
         console.error(error); 
@@ -91,13 +72,5 @@ export class SignInComponent implements OnInit {
       }
     );
   }
-
-  // sendDataLogin(form: NgForm){
-    
-  //   this.loginService.postLogin(form.value).subscribe(
-  //     data=>{console.log(data);this._router.navigate(['/register']);} ,
-  //     error=>console.error(error)
-  //   )
-  // }
 
 }

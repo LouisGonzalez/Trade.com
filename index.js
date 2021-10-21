@@ -25,6 +25,7 @@ const Account = require('./Routes/AccountRoutes');
 const Logger = require('./Routes/LoggerRoutes');
 const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
+const Shop = require('./Routes/ShopRoutes');
 
 
 //inicializaciones
@@ -64,6 +65,7 @@ app.use(Account);
 app.use(Logger);
 app.use(Post);
 app.use(Card);
+app.use(Shop);
 
 //Inicialización del server
 app.listen(PORT, function(){

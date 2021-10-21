@@ -70,12 +70,13 @@ LoggerController.login = (req,res,next) => {
 //     // failureRedirect: '/signup',
 // })
 
-LoggerController.profile = (req, res) =>{
+LoggerController.profile = (req, res) =>{    
     res.send("Este es el perfil");
 }
 
 LoggerController.logout = (req, res) =>{
     req.logOut();
+    req.session.cart = [];
     res.status(200).json({message:'Redirecciona a login'});
 }
 

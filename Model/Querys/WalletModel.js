@@ -36,7 +36,16 @@ async function withdrawalsCredit(req,res){
     })
 }
 
+async function existWallet(req, res){
+    return await Wallet.findOne({
+        where:{
+            cuenta: req.body.user,
+            divisa: req.body.divisa
+        }
+    })
+}
+
 
 module.exports = {
-    createWallet, addCredit, withdrawalsCredit
+    createWallet, addCredit, withdrawalsCredit, existWallet
 }

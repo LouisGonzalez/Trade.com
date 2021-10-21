@@ -13,7 +13,7 @@ passport.use('local.signup',new localStrategy({
 },async (req, user, password, done) => {
     pass = await crypt.encryptPassword(password);
     usr = await Account.createAccountLogger(req, pass);      
-    return done(null,usr.user);
+    return done(null,usr.id_cuenta);
 }))
 
 
@@ -29,7 +29,7 @@ passport.use('local.login', new localStrategy({
         const match = await crypt.matchPassword(password, usuario.password);
         console.log(match);
         if(match){
-            return done(null, usuario.user);
+            return done(null, usuario.id_cuenta);
         }else{
             return done(null, false);
         }
@@ -44,6 +44,6 @@ passport.serializeUser((usr, done)=>{
 
 
 passport.deserializeUser(async (usr,done)=>{
-      const usuario = await AccountModel.findOne({where:{user:usr}});
-      return done(null,usuario.user);
+      const usuario = await AccountModel.findOne({where:{id_cuenta:usr}});
+      return done(null,usuario.id_cuenta);
 })

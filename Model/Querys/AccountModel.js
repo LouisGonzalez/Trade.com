@@ -17,8 +17,28 @@ async function createAccountLogger(req, pass){
     })     
 }
 
-async function readUserLoggedInformation(req){
-    return await Account.findOne({where:{user:req.user}});
+async function readUserStandardLoggedInformation(req){
+    return await Account.findAll({
+        where:{
+            id_cuenta:req.user
+        },
+        include:[{
+            model: StandardAccount,
+            required: true           
+        }]
+    });
+}
+
+async function readUserBussinesLoggedInformation(req){
+    return await Account.findAll({
+        where:{
+            id_cuenta:req.user
+        },
+        include:[{
+            model: BusinessAccount,
+            required: true           
+        }]
+    });
 }
 
 function createPersonalAccount(req){
@@ -68,5 +88,5 @@ function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount,readUserLoggedInformation
+    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount,readUserStandardLoggedInformation, readUserBussinesLoggedInformation
 }

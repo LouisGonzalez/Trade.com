@@ -15,7 +15,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const sequelize = require("./Model/Db");
 const Models = require('./Model/CreateModels');
 // const {database} = require('./config')
-const {database} = require('./key');
+const {database} = require('./config');
 
 //Definicion de puerto
 const PORT = process.env.PORT || 3000;
@@ -46,7 +46,7 @@ app.use(session({
     //     httpOnly:true,
     //     secure:false
     // },
-    store: new MySQLStore(database)
+  //  store: new MySQLStore(database)
   //  store: new mysqlstore(database)
 }))
 

@@ -40,6 +40,17 @@ async function updatePost(req,res){
     })
 }
 
+
+const searchPost = async (req, res) => {
+    try {
+        const post= await Post.findAll();
+        return res.status(200).json({ post });
+    } catch (error) {
+        //si nuestra consulta falla tira un mensaje de error
+        return res.status(500).send(error.message);
+    }
+};
+
 module.exports = {
-    createPost, deletePost, updatePost
+    createPost, deletePost, updatePost, searchPost
 }

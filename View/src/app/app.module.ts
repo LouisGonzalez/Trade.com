@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 //Routing
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,6 +23,9 @@ import { StackProductComponent } from './components/stack-product/stack-product.
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     StackProductComponent,
     ChatGlobalComponent,
     UserVerifyComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ProductSearchComponent,
+    ArticleFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     HttpClientModule,
     CommonModule, 
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMatSelectSearchModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     CookieService

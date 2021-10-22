@@ -14,7 +14,7 @@ async function createAccountLogger(req, pass){
         extension: req.body.extension,
         password: pass,   
         activa: true
-    })     
+    });   
 }
 
 async function readUserStandardLoggedInformation(req){
@@ -46,14 +46,16 @@ async function deleteAccount(req, res){
         activa:false
     },{
         id_cuenta: req.user
-    })     
+    });
+}
+    
 function createPersonalAccount(req){
     StandardAccount.create({
         id_cuenta: req.body.id,
         nombres: req.body.nombre,
         apellidos: req.body.apellido,
         fecha_nacimiento: req.body.nacimiento
-    })
+    });
 }
 
 function createBusinessAccount(req){
@@ -63,7 +65,7 @@ function createBusinessAccount(req){
         mision: req.body.mision,
         vision: req.body.vision,
         descripcion: req.body.descripcion        
-    })
+    });
 }
 
 
@@ -79,7 +81,7 @@ function deleteAccount(req, res){
         }
     }).then(result => {
         res.json(result);
-    })
+    });
 }
 
 async function searchUserByPK(idUser){
@@ -87,7 +89,7 @@ async function searchUserByPK(idUser){
         where: {
             id_cuenta: idUser
         }
-    })
+    });
 }
 
 function updateAccount(req,res){
@@ -102,7 +104,7 @@ function updateAccount(req,res){
         where: {
             id_cuenta: req.user
         }
-    })
+    });
 }
 
 module.exports = {

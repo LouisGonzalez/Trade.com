@@ -63,6 +63,7 @@ export class NavUserComponent implements OnInit {
       this.homeUserService.selectedUser = res;
       this.userName = this.homeUserService.selectedUser.user;
       this.USER = this.homeUserService.selectedUser;
+
       if(this.USER.StandardAccount==undefined){
         this.isCompany = true;
       }
@@ -71,7 +72,7 @@ export class NavUserComponent implements OnInit {
 
   getIsLogged(){
     this.sessionUserService.getIsLogged().subscribe((res) => {
-      console.log('esta logueado',res);
+      console.log('esta logueadoss',res);
       if(!res){
         this._router.navigate(['/login']);
       }else{

@@ -14,7 +14,7 @@ async function verifyNormalConversation(emisor, receptor){
         }
     } else {
         //Se crea la conversacion
-        await Conversation.create(idSent.id_cuenta, idReceptor.id_cuenta, false);    
+        await Conversation.create(DataSend.id_cuenta, DataReceptor.id_cuenta, false);    
     }
     //Luego de este proceso dentro del backend debe ser redirigido al chat con la persona elegida
 }

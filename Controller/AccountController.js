@@ -17,9 +17,18 @@ AccountController.createUser = async function(req){
 
 AccountController.readUser = async (req,res)=>{
     // console.log("Hola\n",req);
-    const User = await AccountModel.readUserLoggedInformation(req);
-    console.log(User);
-    res.json(User);
+    // const User = await AccountModel.readUserLoggedInformation(req);
+    // console.log(User);
+    // res.json(User);
+    const User = await AccountModel.readUserStandardLoggedInformation(req);
+    if(User != null){
+        res.json(User);
+    }else{
+        const UserB = await AccountModel.readUserBussinesLoggedInformation(req); 
+        res.json(UserB);
+    }  /*  
+    const User = await AccountModel.readUserLoggedInformation(req);    
+    res.json(User);*/
 }
 
 AccountController.deleteUser = async (req,res)=>{    

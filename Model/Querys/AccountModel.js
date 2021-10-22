@@ -1,5 +1,7 @@
 //Modelo de la DB
 const Account = require('../Initialization/Account');
+const StandardAccount = require('../Initialization/StandardAccount');
+const BusinessAccount = require('../Initialization/BusinessAccount');
 
 async function createAccountLogger(req, pass){
     return await Account.create({
@@ -13,6 +15,30 @@ async function createAccountLogger(req, pass){
         password: pass,   
         activa: true
     })     
+}
+
+async function readUserStandardLoggedInformation(req){
+    return await Account.findAll({
+        where:{
+            id_cuenta:req.user
+        },
+        include:[{
+            model: StandardAccount,
+            required: true           
+        }]
+    });
+}
+
+async function readUserBussinesLoggedInformation(req){
+    return await Account.findAll({
+        where:{
+            id_cuenta:req.user
+        },
+        include:[{
+            model: BusinessAccount,
+            required: true           
+        }]
+    });
 }
 
 async function deleteAccount(req, res){
@@ -43,5 +69,5 @@ async function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation
+    deleteAccount, updateAccount, createAccountLogger, readUserStandardLoggedInformation, readUserBussinesLoggedInformation
 }

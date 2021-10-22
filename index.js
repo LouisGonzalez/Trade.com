@@ -78,5 +78,3 @@ app.listen(PORT, function(){
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
     }))
 })
-
-

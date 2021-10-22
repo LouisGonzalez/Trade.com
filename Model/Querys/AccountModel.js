@@ -3,7 +3,6 @@ const Account = require('../Initialization/Account');
 const StandardAccount = require('../Initialization/StandardAccount');
 const BusinessAccount = require('../Initialization/BusinessAccount');
 
-
 async function createAccountLogger(req, pass){
     return await Account.create({
         id_cuenta: req.body.id,
@@ -13,7 +12,8 @@ async function createAccountLogger(req, pass){
         telefono: req.body.telefono,
         correo: req.body.correo,
         extension: req.body.extension,
-        password: pass        
+        password: pass,   
+        activa: true
     })     
 }
 
@@ -41,38 +41,17 @@ async function readUserBussinesLoggedInformation(req){
     });
 }
 
-function createPersonalAccount(req){
-    StandardAccount.create({
-        id_cuenta: req.body.id,
-        nombres: req.body.nombre,
-        apellidos: req.body.apellido,
-        fecha_nacimiento: req.body.nacimiento
-    })
+async function deleteAccount(req, res){
+    return await Account.update({
+        activa:false
+    },{
+        id_cuenta: req.user
+    })     
 }
 
-function createBusinessAccount(req){
-    BusinessAccount.create({
-        id_cuenta: req.body.id,
-        empresa: req.id.nombre,
-        mision: req.body.mision,
-        vision: req.body.vision,
-        descripcion: req.body.descripcion        
-    })
-}
 
-function deleteAccount(req, res){
-    Account.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).then(result => {
-        res.json(result);
-    })
-}
-
-function updateAccount(req,res){
-    Account.update({
-        fecha_creacion: req.body.fecha_creacion,
+async function updateAccount(req,res){
+    return await Account.update({        
         pais: req.body.pais,
         telefono: req.body.telefono,
         correo: req.body.correo,
@@ -80,13 +59,11 @@ function updateAccount(req,res){
         password: req.body.password
     }, {
         where: {
-            id: req.body.id
+            id_cuenta: req.user
         }
-    }).then(result => {
-        res.json(result);
-    });
+    })
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, createPersonalAccount, createBusinessAccount,readUserStandardLoggedInformation, readUserBussinesLoggedInformation
+    deleteAccount, updateAccount, createAccountLogger, readUserStandardLoggedInformation, readUserBussinesLoggedInformation
 }

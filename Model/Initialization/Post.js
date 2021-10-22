@@ -26,6 +26,14 @@ const Post = sequelize.define('Post', {
     },
     descripcion: {
         type: DataTypes.TEXT
+    },
+    activo:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
+    },
+    invisible: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     sequelize,

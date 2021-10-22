@@ -10,12 +10,12 @@ var cookieParser = require('cookie-parser')
 const MySQLStore = require('express-mysql-session')(session);
 
 
-
 //Importaciones necesarias para DB
 const sequelize = require("./Model/Db");
 const Models = require('./Model/CreateModels');
-// const {database} = require('./config')
-const {database} = require('./config');
+
+const {database} = require('./key');
+
 
 //Definicion de puerto
 const PORT = process.env.PORT || 3000;
@@ -23,6 +23,8 @@ const PORT = process.env.PORT || 3000;
 //Rutas
 const Account = require('./Routes/AccountRoutes');
 const Logger = require('./Routes/LoggerRoutes');
+const Post = require('./Routes/PostRoutes');
+const Card = require('./Routes/CardsRoutes');
 
 
 //inicializaciones
@@ -46,8 +48,8 @@ app.use(session({
     //     httpOnly:true,
     //     secure:false
     // },
-  //  store: new MySQLStore(database)
-  //  store: new mysqlstore(database)
+    store: new MySQLStore(database)
+
 }))
 
 app.use(express.json());
@@ -61,6 +63,8 @@ app.use(passport.session());
 //Agregar a app
 app.use(Account);
 app.use(Logger);
+app.use(Post);
+app.use(Card);
 
 //Inicialización del server
 app.listen(PORT, function(){
@@ -74,5 +78,3 @@ app.listen(PORT, function(){
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
     }))
 })
-
-

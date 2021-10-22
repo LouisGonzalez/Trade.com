@@ -23,6 +23,7 @@ import { StackProductComponent } from './components/stack-product/stack-product.
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     StackProductComponent,
     ChatGlobalComponent,
     UserVerifyComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

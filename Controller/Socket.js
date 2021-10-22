@@ -38,7 +38,7 @@ module.exports = async function(io){
               userSenders[i] = await Account.searchUserByPK(messages[i].cuenta_emisora);
             }
             if(messages != null){
-              io.to(users[userReceive]).emit('old messages', messages, userSenders, 'luis');
+             // io.to(users[userReceive]).emit('old messages', messages, userSenders, 'luis');
               io.to(users[userSend]).emit('old messages', messages, userSenders, 'luis');
             }
           } 

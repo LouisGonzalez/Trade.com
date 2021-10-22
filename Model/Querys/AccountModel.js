@@ -47,15 +47,52 @@ async function deleteAccount(req, res){
     },{
         id_cuenta: req.user
     })     
+function createPersonalAccount(req){
+    StandardAccount.create({
+        id_cuenta: req.body.id,
+        nombres: req.body.nombre,
+        apellidos: req.body.apellido,
+        fecha_nacimiento: req.body.nacimiento
+    })
 }
+
+function createBusinessAccount(req){
+    BusinessAccount.create({
+        id_cuenta: req.body.id,
+        empresa: req.id.nombre,
+        mision: req.body.mision,
+        vision: req.body.vision,
+        descripcion: req.body.descripcion        
+    })
+}
+
 
 async function readUserLoggedInformation(req){
     return await Account.findOne({where:{id_cuenta:req.user}});
 }
 
 
-async function updateAccount(req,res){
-    return await Account.update({        
+function deleteAccount(req, res){
+    Account.destroy({
+        where: {
+            id: req.body.id
+        }
+    }).then(result => {
+        res.json(result);
+    })
+}
+
+async function searchUserByPK(idUser){
+    return await Account.findOne({
+        where: {
+            id_cuenta: idUser
+        }
+    })
+}
+
+function updateAccount(req,res){
+    Account.update({
+        fecha_creacion: req.body.fecha_creacion,
         pais: req.body.pais,
         telefono: req.body.telefono,
         correo: req.body.correo,
@@ -69,5 +106,5 @@ async function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, readUserStandardLoggedInformation, readUserBussinesLoggedInformation
+    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation, createPersonalAccount, createBusinessAccount, searchUserByPK
 }

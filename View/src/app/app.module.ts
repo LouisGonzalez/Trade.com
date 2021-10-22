@@ -26,6 +26,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalVerifyComponent } from './components/modal-verify/modal-verify.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModalVerifyComponent } from './components/modal-verify/modal-verify.com
     UserVerifyComponent,
     EditProfileComponent,
     NavUserComponent,
-    ModalVerifyComponent
+    ModalVerifyComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

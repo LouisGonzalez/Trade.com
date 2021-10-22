@@ -120,7 +120,7 @@ Post.hasOne(Article, {
 Account.hasMany(Conversation, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'cuenta_emisora',
+        name: 'cuenta_uno',
         allowNull: false
     }
 });
@@ -128,7 +128,7 @@ Account.hasMany(Conversation, {
 Account.hasMany(Conversation, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'cuenta_receptora',
+        name: 'cuenta_dos',
         allowNull: false
     }
 });
@@ -142,7 +142,23 @@ Conversation.hasMany(Message, {
     }
 });
 
-//Comentario
+Account.hasMany(Message, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'cuenta_receptora',
+        allowNull: false
+    }   
+});
+
+Account.hasMany(Message, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'cuenta_emisora',
+        allowNull: false
+    }
+});
+
+    //Comentario
 Post.hasMany(Comment, {
     onDelete: 'CASCADE',
     foreignKey: {

@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../Db');
+const Message = require('./Message');
 
 //Creacion de modelo
 

@@ -48,11 +48,6 @@ export class SignInComponent implements OnInit {
       );
   }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> mvc_login
   login(){
     if(!this.loginForm.valid){
       this.msjError = "You must fill in all the fields";
@@ -66,13 +61,8 @@ export class SignInComponent implements OnInit {
       data=>{
         let resJson = JSON.stringify(data);
         let res = JSON.parse(resJson);
-<<<<<<< HEAD
-        this.getLoginView();
-
-=======
         console.log(res);
         this.getLoginView();
->>>>>>> mvc_login
       } ,
       error=>{
         console.error(error); 

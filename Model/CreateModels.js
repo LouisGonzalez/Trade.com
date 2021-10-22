@@ -24,6 +24,7 @@ const Transaction = require('./Initialization/Transaction');
 const UserScore = require('./Initialization/UserScore');
 const Verification = require('./Initialization/Verification');
 const Wallet = require('./Initialization/Wallet');
+const Token = require('./Initialization/VerificationToken');
 
 //Creacion de las llaves foraneas
 
@@ -313,7 +314,6 @@ Post.hasMany(Promotions, {
         allowNull: false
     }
 });
-
 //Tarjeta
 Account.hasMany(Card,{
     onDelete:'CASCADE',
@@ -323,6 +323,14 @@ Account.hasMany(Card,{
     }
 });
 
+//Token
+Account.hasMany(Token, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'id_cuenta',
+        allowNull: false 
+    }
+})
 
 
 // Service.belongsTo(Post);

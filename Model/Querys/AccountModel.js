@@ -18,7 +18,7 @@ async function createAccountLogger(req, pass){
 }
 
 async function readUserStandardLoggedInformation(req){
-    return await Account.findAll({
+    return await Account.findOne({
         where:{
             id_cuenta:req.user
         },
@@ -30,7 +30,7 @@ async function readUserStandardLoggedInformation(req){
 }
 
 async function readUserBussinesLoggedInformation(req){
-    return await Account.findAll({
+    return await Account.findOne({
         where:{
             id_cuenta:req.user
         },

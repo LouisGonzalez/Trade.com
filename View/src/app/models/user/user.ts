@@ -1,3 +1,6 @@
+import { UserCompany } from "./user-company";
+import { UserStandar } from "./user-standar";
+
 export class User {
 
     constructor(user="", password="", id_cuenta="" ,fecha_creacion="" ,pais="" ,telefono="" ,correo="", extension="", activa=true, nombre = "", apellido = "", fecha_nacimiento = ""){
@@ -29,5 +32,7 @@ export class User {
     apellido: string;
     fecha_nacimiento: any;
 
-    
+    StandardAccount?: UserStandar;
+    BusinessAccount?: UserCompany;
+
 }

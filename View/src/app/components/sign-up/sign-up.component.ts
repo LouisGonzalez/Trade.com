@@ -14,7 +14,6 @@ export class SignUpComponent implements OnInit {
 
   registerForm : FormGroup=new FormGroup({
     id: new FormControl(null,Validators.required),
-    id_company: new FormControl(null),
     user: new FormControl(null,Validators.required),
     password: new FormControl(null, Validators.required),
     pais: new FormControl(null,Validators.required),
@@ -24,6 +23,20 @@ export class SignUpComponent implements OnInit {
     nombre: new FormControl(null,Validators.required),
     apellido: new FormControl(null,Validators.required),
     fecha_nacimiento: new FormControl(null,Validators.required)
+  });
+
+  registerFormC : FormGroup=new FormGroup({
+    id: new FormControl(null,Validators.required),
+    user: new FormControl(null,Validators.required),
+    password: new FormControl(null, Validators.required),
+    pais: new FormControl(null,Validators.required),
+    telefono: new FormControl(null,Validators.required),
+    correo: new FormControl(null,[Validators.email,Validators.required]),
+    extension: new FormControl(null,Validators.required),
+    empresa: new FormControl(null,Validators.required),
+    descripcion: new FormControl(null,Validators.required),
+    mision: new FormControl('',null),
+    vision: new FormControl('',null)
   });
 
   isCompany: boolean = false;
@@ -69,6 +82,29 @@ export class SignUpComponent implements OnInit {
     }
 
     this.signUpService.postSignUp(this.registerForm.value).subscribe(
+      data => {
+        console.log(data);
+        this._router.navigate(['/home-user']);
+      },
+      error => {
+        console.error(error); 
+        // this.msjErrorCuenta = "The username or password are not correct"
+      }
+    );
+  }
+
+  registerC(){
+    // console.log(this.registerFormC.value);
+    if(!this.registerFormC.valid){
+      // this.msjError = "You must fill in all the fields";
+      console.log('Invalid:');
+      return;
+    }else{
+      console.log(this.registerFormC.value);
+      // this.msjError = "";
+    }
+
+    this.signUpService.postSignUp(this.registerFormC.value).subscribe(
       data => {
         console.log(data);
         this._router.navigate(['/home-user']);

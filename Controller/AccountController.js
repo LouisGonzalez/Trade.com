@@ -8,6 +8,7 @@ const AccountModel = require('../Model/Querys/AccountModel');
 const AccountController = {};
 
 AccountController.createUser = async function(req){    
+    console.log('Empresa',req.body.empresa);
     if(req.body.empresa != undefined){
         await BusinessAccountModel.createAccount(req);        
     }else{
@@ -22,9 +23,11 @@ AccountController.readUser = async (req,res)=>{
     // res.json(User);
     const User = await AccountModel.readUserStandardLoggedInformation(req);
     if(User != null){
+        console.log(User);
         res.json(User);
     }else{
         const UserB = await AccountModel.readUserBussinesLoggedInformation(req); 
+        console.log(UserB);
         res.json(UserB);
     }  /*  
     const User = await AccountModel.readUserLoggedInformation(req);    

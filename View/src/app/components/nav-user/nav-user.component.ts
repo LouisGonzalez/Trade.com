@@ -5,27 +5,22 @@ import { SessionUserService } from 'src/app/services/home-service/session-user.s
 import {HomeUserService} from '../../services/home-service/home-user.service';
 
 @Component({
-  selector: 'app-profile-user',
-  templateUrl: './profile-user.component.html',
-  styleUrls: ['./profile-user.component.css']
+  selector: 'app-nav-user',
+  templateUrl: './nav-user.component.html',
+  styleUrls: ['./nav-user.component.css']
 })
-export class ProfileUserComponent implements OnInit {
+export class NavUserComponent implements OnInit {
 
   public USER: User = new User();
-
-  isCompany: boolean = false;
-  nombres: string;
-  apellidos: string;
-  fecha_nacimiento: any;
-
-  empresa: string;
-  mision: string;
-  vision: string;
-  descripcion: any; 
   
+  userName: string = "";
+  isCompany: boolean = false;
+
   constructor(private _router:Router, public homeUserService: HomeUserService, public sessionUserService: SessionUserService) { }
 
   ngOnInit(): void {
+    // this.homes();
+    // this.getLogin();
     this.getIsLogged();
   }
 
@@ -41,17 +36,36 @@ export class ProfileUserComponent implements OnInit {
     );
   }
 
+  getLogin(){
+    this.homeUserService.getLogin().subscribe(
+      data=>{
+        let resJson = JSON.stringify(data);
+        let res = JSON.parse(resJson);
+        // console.log(res);
+        this.getIsLogged();
+        if(res.redirect!=undefined || res.redirect!=null){
+          if(res.redirect=='/login'){
+            this._router.navigate(['/login']);
+          }else{
+            this.getUser();
+          }
+        }
+      } ,
+      error=>{
+        console.error(error);
+      }
+    );
+  }
+
   getUser(){
     this.homeUserService.getUser().subscribe((res) => {
-      // console.log(res);
+      console.log('ls:',res);
       this.homeUserService.selectedUser = res;
+      this.userName = this.homeUserService.selectedUser.user;
       this.USER = this.homeUserService.selectedUser;
-      // console.log('Usu',this.USER);
       if(this.USER.StandardAccount==undefined){
         this.isCompany = true;
       }
-      // this.userName = this.homeUserService.selectedUser.user;
-      // console.log('Usuario:',this.homeUserService.selectedUser);
     });
   }
 

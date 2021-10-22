@@ -23,6 +23,9 @@ import { StackProductComponent } from './components/stack-product/stack-product.
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalVerifyComponent } from './components/modal-verify/modal-verify.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     StackProductComponent,
     ChatGlobalComponent,
     UserVerifyComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    NavUserComponent,
+    ModalVerifyComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     HttpClientModule,
     CommonModule, 
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     CookieService

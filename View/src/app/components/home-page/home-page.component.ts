@@ -58,7 +58,7 @@ export class HomePageComponent implements OnInit {
 
   getUser(){
     this.homeUserService.getUser().subscribe((res) => {
-      // console.log(res);
+      console.log('ls:',res);
       this.homeUserService.selectedUser = res;
       this.userName = this.homeUserService.selectedUser.user;
       // console.log('Usuario:',this.homeUserService.selectedUser);

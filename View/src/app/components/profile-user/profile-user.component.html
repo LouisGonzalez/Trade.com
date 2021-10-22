@@ -1,75 +1,4 @@
-
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-      </div> <!-- .site-mobile-menu -->
-      
-  
-      <!-- NAVBAR -->
-      <header class="site-navbar mt-3">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="site-logo col-6"><a [routerLink]="['/home-user']">Trade</a></div>
-  
-            <nav class="mx-auto site-navigation">
-              <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-                <li><a [routerLink]="['/home-user']" class="nav-link active">Home</a></li>
-                <!-- <li><a href="">About</a></li> -->
-                <li class="has-children">
-                  <a href="">My posts</a>
-                  <ul class="dropdown">
-                    <!-- <li><a href="">Job Single</a></li> -->
-                    <li><a href="">Post a Article</a></li>
-                  </ul>
-                </li>
-                <!-- <li class="has-children">
-                  <a href="">Pages</a>
-                  <ul class="dropdown">
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Service Single</a></li>
-                    <li><a href="">Blog Single</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="">Portfolio Single</a></li>
-                    <li><a href="">Testimonials</a></li>
-                    <li><a href="">Frequently Ask Questions</a></li>
-                    <li><a href="">Gallery</a></li>
-                  </ul>
-                </li> -->
-                <!-- <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li> -->
-                <li class="has-children">
-                  <a href="">{{USER.user}}</a>
-                  <ul class="dropdown">
-                    <!-- <li><a [routerLink]="['user/profile']">Profile</a></li> -->
-                    <li><a (click)="logout()" >Logout</a></li>
-                    <!-- <li><a href="">Blog Single</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="">Portfolio Single</a></li>
-                    <li><a href="">Testimonials</a></li>
-                    <li><a href="">Frequently Ask Questions</a></li>
-                    <li><a href="">Gallery</a></li> -->
-                  </ul>
-                </li>
-                <li class="d-lg-none"><a href=""><span class="mr-2">+</span> Post a Article</a></li>
-                <!-- <li class="d-lg-none"><a href="">Log In</a></li> -->
-              </ul>
-            </nav>
-            
-            <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
-              <div class="ml-auto">
-                <a href="" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Article</a>
-                <!-- <a href="" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a> -->
-              </div>
-              <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
-            </div>
-  
-          </div>
-        </div>
-      </header>
+<app-nav-user></app-nav-user>
       
   
       <div class="hero" >
@@ -83,8 +12,15 @@
                             <div class="card-body">
                               <div class="d-flex flex-column align-items-center text-center">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                <div class="mt-3">
+                                <div *ngIf="!isCompany" class="mt-3">
                                   <h4>{{USER.user}}</h4>
+                                  <!-- <p class="text-secondary mb-1">Full Stack Developer</p> -->
+                                  <p class="text-muted font-size-sm">{{USER.pais}}</p>
+                                  <!-- <button class="btn btn-primary">Follow</button> -->
+                                  <!-- <button class="btn btn-outline-primary">Message</button> -->
+                                </div>
+                                <div *ngIf="isCompany" class="mt-3">
+                                  <h4>{{USER.BusinessAccount?.empresa}}</h4>
                                   <!-- <p class="text-secondary mb-1">Full Stack Developer</p> -->
                                   <p class="text-muted font-size-sm">{{USER.pais}}</p>
                                   <!-- <button class="btn btn-primary">Follow</button> -->
@@ -119,14 +55,14 @@
                           </div>
                         </div>
                         <div class="col-md-8">
-                          <div class="card mb-3">
+                          <div *ngIf="!isCompany" class="card mb-3">
                             <div class="card-body">
                               <div class="row">
                                 <div class="col-sm-3">
                                   <h6 class="mb-0">Full Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                  {{USER.nombre}} {{USER.apellido}}
+                                  {{USER.StandardAccount?.nombres}} {{USER.StandardAccount?.apellidos}}
                                 </div>
                               </div>
                               <hr>
@@ -147,15 +83,6 @@
                                   ({{USER.extension}}) {{USER.telefono}}
                                 </div>
                               </div>
-                              <!-- <hr>
-                              <div class="row">
-                                <div class="col-sm-3">
-                                  <h6 class="mb-0">Mobile</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                  (320) 380-4539
-                                </div>
-                              </div> -->
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
@@ -168,9 +95,85 @@
                               <hr>
                               <div class="row">
                                 <div class="col-sm-12">
-                                  <a class="btn btn-info " target="__blank" [routerLink]="['edit-profile']" >Edit</a>
+                                  <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/edit-profile']" >Edit</a>
+                                  <a class="btn btn-info " style="margin: 5px" target="__blank" [routerLink]="['/home-user/user/profile/verify-account']" >Verify Account</a>
                                 </div>
                               </div>
+                            </div>
+                          </div>
+
+                          <div *ngIf="isCompany" class="card mb-3">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Company Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  {{USER.BusinessAccount?.empresa}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Descripcion</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  {{USER.BusinessAccount?.descripcion}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Mision</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  {{USER.BusinessAccount?.mision}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Vision</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  {{USER.BusinessAccount?.vision}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  {{USER.correo}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  ({{USER.extension}}) {{USER.telefono}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  {{USER.pais}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <a class="btn btn-info " target="__blank" [routerLink]="['/home-user/user/profile/edit-profile']" >Edit</a>
+                                  <a class="btn btn-info " target="__blank" [routerLink]="['/home-user/user/profile/verify-account']" >Verify Account</a>
+                                </div>
+                              </div>
+
                             </div>
                           </div>
             

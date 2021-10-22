@@ -15,7 +15,8 @@ const routes: Routes = [
   {path:'register', component:SignUpComponent},
   {path:'home-user',component:HomePageComponent},
   {path:'home-user/user/profile',component:ProfileUserComponent},
-  {path:'home-user/user/profile/edit-profile',component:EditProfileComponent}
+  {path:'home-user/user/profile/edit-profile',component:EditProfileComponent},
+  {path:'home-user/user/profile/verify-account',component:UserVerifyComponent}
   // {path:'verify-account/:id',component:UserVerifyComponent}
 ];
 

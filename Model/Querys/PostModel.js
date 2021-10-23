@@ -66,6 +66,32 @@ async function allService(req,res){
     })
 }
 
+async function onePostService(id_post){
+    return await Post.findOne({
+        where:{
+            activo:true,
+            id: id_post
+        },
+        include:[{
+            model: Service,
+            required: true           
+        }]
+    })
+}
+
+async function onePostArticle(){
+    return await Post.findOne({
+        where:{
+            activo:true,
+            id: id_post
+        },
+        include:[{
+            model: Article,
+            required: true           
+        }]
+    })
+}
+
 module.exports = {
-    createPost, deletePost, updatePost, allArticles, allService
+    createPost, deletePost, updatePost, allArticles, allService, onePostArticle, onePostService
 }

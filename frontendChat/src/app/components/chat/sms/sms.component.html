@@ -1,0 +1,43 @@
+<div class="chatbox-holder" id="inbox-chat">
+  <div class="chatbox">
+    <div class="chatbox-top">
+      <div class="chatbox-avatar">
+        <a target="_blank" href="https://www.facebook.com/mfreak"><img src="https://gravatar.com/avatar/2449e413ade8b0c72d0a15d153febdeb?s=512&d=https://codepen.io/assets/avatars/user-avatar-512x512-6e240cf350d2f1cc07c2bed234c3a3bb5f1b237023c204c782622e80d6b212ba.png" /></a> 
+      </div>
+      <div class="chat-partner-name">
+        <span class="status online"></span>
+        <a target="_blank" href="https://www.facebook.com/mfreak">{{username}}</a>
+      </div>
+      <div class="chatbox-icons">
+        <a href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+        <a (click)="closeChat()"><i class="fa fa-close"></i></a>       
+      </div>      
+    </div>
+    
+    <div class="chat-messages" >
+      
+      
+      <ul id='messages-container2'>
+
+      </ul>
+
+
+
+    </div>
+    
+    <div class="chat-input-holder">
+      <textarea  [(ngModel)]="message" class="chat-input"></textarea>
+      <input type="submit" value="Send" (click)="addMessage()" class="message-send"/>
+    </div>
+    <div class="attachment-panel">
+      <a href="#" class="fa fa-thumbs-up"></a>
+      <a href="#" class="fa fa-camera"></a>
+      <a href="#" class="fa fa-video-camera"></a>
+      <a href="#" class="fa fa-image"></a>
+      <a href="#" class="fa fa-paperclip"></a>
+      <a href="#" class="fa fa-link"></a>
+      <a href="#" class="fa fa-trash-o"></a>
+      <a href="#" class="fa fa-search"></a>
+    </div>
+  </div>
+  </div>

@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +23,10 @@ import { ChatGlobalComponent } from './components/chat-global/chat-global.compon
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { NotificationsComponent } from './components/notifications/notifications
     ChatGlobalComponent,
     UserVerifyComponent,
     EditProfileComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ChatComponent,
+    ProductSearchComponent,
+    ArticleFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     HttpClientModule,
     CommonModule, 
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     CookieService

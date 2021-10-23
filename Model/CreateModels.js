@@ -24,6 +24,8 @@ const Transaction = require('./Initialization/Transaction');
 const UserScore = require('./Initialization/UserScore');
 const Verification = require('./Initialization/Verification');
 const Wallet = require('./Initialization/Wallet');
+const Token = require('./Initialization/VerificationToken');
+const Notifications = require('./Initialization/Notifications');
 
 //Creacion de las llaves foraneas
 
@@ -120,7 +122,7 @@ Post.hasOne(Article, {
 Account.hasMany(Conversation, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'cuenta_emisora',
+        name: 'cuenta_uno',
         allowNull: false
     }
 });
@@ -128,7 +130,7 @@ Account.hasMany(Conversation, {
 Account.hasMany(Conversation, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'cuenta_receptora',
+        name: 'cuenta_dos',
         allowNull: false
     }
 });
@@ -142,7 +144,23 @@ Conversation.hasMany(Message, {
     }
 });
 
-//Comentario
+Account.hasMany(Message, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'cuenta_receptora',
+        allowNull: false
+    }   
+});
+
+Account.hasMany(Message, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'cuenta_emisora',
+        allowNull: false
+    }
+});
+
+    //Comentario
 Post.hasMany(Comment, {
     onDelete: 'CASCADE',
     foreignKey: {
@@ -297,7 +315,6 @@ Post.hasMany(Promotions, {
         allowNull: false
     }
 });
-
 //Tarjeta
 Account.hasMany(Card,{
     onDelete:'CASCADE',
@@ -307,6 +324,31 @@ Account.hasMany(Card,{
     }
 });
 
+//Token
+Account.hasMany(Token, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'id_cuenta',
+        allowNull: false 
+    }
+})
 
+//Notificacion
+Account.hasMany(Notifications, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'usuario_recibe',
+        allowNull: false
+    }
+});
+
+
+Account.hasMany(Notifications, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'usuario_envia',
+        allowNull: false
+    }
+})
 
 // Service.belongsTo(Post);

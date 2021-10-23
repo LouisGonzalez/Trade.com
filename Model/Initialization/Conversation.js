@@ -4,11 +4,11 @@ const sequelize = require('../Db');
 //Creacion del modelo
 
 const Conversation = sequelize.define('Conversation', {
-    cuenta_emisora: {
+    cuenta_uno: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    cuenta_receptora: {
+    cuenta_dos: {
         type: DataTypes.INTEGER,
         allowNull: false
     },

@@ -1,16 +1,23 @@
 //Importaciones necesarias para express
 const express = require('express');
-const passport = require('passport')
-const session = require('express-session')
-const mysqlstore = require('express-mysql-session')
-const cors = require("cors");
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 
-const MySQLStore = require('express-mysql-session')(session);
 
 
-//Importaciones necesarias para DB
+//Cors
+const cors = require('cors');
+
+//Socket.io
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const app = express();
+const server = createServer(app);
+const io = new Server(server, { /* options */ })
+require('./Controller/Socket')(io);
+
+
+//Db
 const sequelize = require("./Model/Db");
 const Models = require('./Model/CreateModels');
 
@@ -20,15 +27,21 @@ const {database} = require('./key');
 //Definicion de puerto
 const PORT = process.env.PORT || 3000;
 
+//Passport
+const passport = require('passport')
+const session = require('express-session')
+const mysqlstore = require('express-mysql-session')
+const MySQLStore = require('express-mysql-session')(session);
+
 //Rutas
 const Account = require('./Routes/AccountRoutes');
 const Logger = require('./Routes/LoggerRoutes');
 const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
+const Search = require('./Routes/SearchRoutes');
 
 
 //inicializaciones
-const app = express();
 require('./Lib/Passport');
 
 //middleware
@@ -39,6 +52,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(bodyParser());
+
 app.use(session({
     secret: 'comercioElectronico',
     resave: false,
@@ -59,20 +73,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static('View'));
 
 //Agregar a app
 app.use(Account);
 app.use(Logger);
 app.use(Post);
 app.use(Card);
+app.use(Search);
 
-//Inicialización del server
-app.listen(PORT, function(){
+
+server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);
 
     //Conexion a la base de datos
     sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
-        sequelize.sync({force: true}).then(() => {
+        sequelize.sync({force: false}).then(() => {
         console.log("Conexion establecida");
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);

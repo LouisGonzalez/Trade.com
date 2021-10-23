@@ -40,6 +40,10 @@ const Account = sequelize.define('Account',{
         type: DataTypes.STRING(75),
         allowNull: false
     },
+    verificado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
     activa:{
         type: DataTypes.BOOLEAN,
         allowNull:false

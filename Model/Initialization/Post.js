@@ -8,6 +8,10 @@ const Post = sequelize.define('Post', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    titulo: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     fecha_publicacion: {
         type: DataTypes.DATE,
         allowNull: false

@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service'
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +26,9 @@ import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalVerifyComponent } from './components/modal-verify/modal-verify.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ChatComponent } from './components/chat/chat.component';
     EditProfileComponent,
     NavUserComponent,
     ModalVerifyComponent,
-    ChatComponent
+    ChatComponent,
+    ProductSearchComponent,
+    ArticleFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,8 @@ import { ChatComponent } from './components/chat/chat.component';
     CommonModule, 
     AppRoutingModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    // Ng2SearchPipeModule
   ],
   providers: [
     CookieService

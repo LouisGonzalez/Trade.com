@@ -63,6 +63,7 @@ export class ProductSearchComponent implements OnInit {
     this.searchService.getPost().subscribe(
       response => {
         this.arraySearch = response.post;
+        console.log(response.post);
       }
     );
   }

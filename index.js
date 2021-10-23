@@ -40,6 +40,7 @@ const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
 const Search = require('./Routes/SearchRoutes');
 const AuthRoutes = require('./Routes/AuthRoutes');
+const Member = require('./Routes/MemberRoutes');
 
 
 //inicializaciones
@@ -83,6 +84,7 @@ app.use(Post);
 app.use(Card);
 app.use(Search);
 app.use(AuthRoutes);
+app.use(Member);
 
 
 server.listen(PORT, function(){

@@ -39,6 +39,7 @@ import { CardAffiliatesComponent } from './components/card-affiliates/card-affil
 import { CardUserFollowedComponent } from './components/card-user-followed/card-user-followed.component';
 import { FollowedUsersComponent } from './components/followed-users/followed-users.component';
 import { ProductShopComponent } from './components/product-shop/product-shop.component';
+import { AffiliatesComponent } from './components/affiliates/affiliates.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ProductShopComponent } from './components/product-shop/product-shop.com
     CardAffiliatesComponent,
     CardUserFollowedComponent,
     FollowedUsersComponent,
-    ProductShopComponent
+    ProductShopComponent,
+    AffiliatesComponent
   ],
   imports: [
     BrowserModule,

@@ -13,3 +13,4 @@ export class Post {
     activo:            boolean;
     invisible:         boolean;
 }
+    

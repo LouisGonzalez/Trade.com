@@ -13,7 +13,7 @@ export class ProductSearchService {
   constructor(private http: HttpClient) { }
 
   getPost():Observable<any>{
-    console.log('holaasdfasfa');
+    console.log('holaasdfasfa '+this.http.get(this.URL_API+'/search'));
     return this.http.get(this.URL_API+'/search');
   }
 

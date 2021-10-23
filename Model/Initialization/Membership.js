@@ -17,8 +17,7 @@ const Membership = sequelize.define('Membership' ,{
         allowNull: false
     },
     fecha_cierre: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.DATE
     }
 } , {
         sequelize,

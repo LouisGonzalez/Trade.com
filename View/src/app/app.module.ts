@@ -26,6 +26,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
+import { AffiliatesComponent } from './components/affiliates/affiliates.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ArticleFoundComponent } from './components/product-search/article-found
     EditProfileComponent,
     ChatComponent,
     ProductSearchComponent,
-    ArticleFoundComponent
+    ArticleFoundComponent,
+    AffiliatesComponent
   ],
   imports: [
     BrowserModule,

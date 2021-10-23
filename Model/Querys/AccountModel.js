@@ -13,6 +13,7 @@ async function createAccountLogger(req, pass){
         correo: req.body.correo,
         extension: req.body.extension,
         password: pass,   
+        verificado: false,
         activa: true
     });   
 }
@@ -108,5 +109,5 @@ function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation, createPersonalAccount, createBusinessAccount, searchUserByPK
+    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, createPersonalAccount, createBusinessAccount, searchUserByPK
 }

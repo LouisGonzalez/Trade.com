@@ -7,6 +7,12 @@
 @import url(../home-page/css/style.css);
 @import url(../home-page/css/mystyle.css);
 
+
+.disabled {
+  pointer-events:none; 
+  opacity:0.6;         
+}
+
 body{
     margin-top:20px;
     color: #1a202c;

@@ -39,6 +39,7 @@ const Logger = require('./Routes/LoggerRoutes');
 const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
 const Search = require('./Routes/SearchRoutes');
+const AuthRoutes = require('./Routes/AuthRoutes');
 
 
 //inicializaciones
@@ -81,6 +82,7 @@ app.use(Logger);
 app.use(Post);
 app.use(Card);
 app.use(Search);
+app.use(AuthRoutes);
 
 
 server.listen(PORT, function(){
@@ -88,7 +90,7 @@ server.listen(PORT, function(){
 
     //Conexion a la base de datos
     sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
-        sequelize.sync({force: true}).then(() => {
+        sequelize.sync({force: false}).then(() => {
         console.log("Conexion establecida");
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);

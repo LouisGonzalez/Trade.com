@@ -40,4 +40,10 @@ export class SessionUserService {
       withCredentials:true
     });
   }
+
+  postVerify(data: any){
+    return this.http.post<any>(this.URL_API+'/verification',data,{
+      withCredentials:true
+    });
+  }
 }

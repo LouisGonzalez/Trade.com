@@ -3,7 +3,7 @@ import { UserStandar } from "./user-standar";
 
 export class User {
 
-    constructor(user="", password="", id_cuenta="" ,fecha_creacion="" ,pais="" ,telefono="" ,correo="", extension="", activa=true, nombre = "", apellido = "", fecha_nacimiento = ""){
+    constructor(user="", password="", id_cuenta="" ,fecha_creacion="" ,pais="" ,telefono="" ,correo="", extension="",verificado = false, activa=true, nombre = "", apellido = "", fecha_nacimiento = ""){
         this.user = user;
         this.password = password;
         this.id_cuenta = id_cuenta; 
@@ -12,6 +12,7 @@ export class User {
         this.telefono = telefono; 
         this.correo = correo; 
         this.extension = extension;
+        this.verificado = verificado;
         this.activa = activa;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -26,6 +27,7 @@ export class User {
     telefono: string;
     correo: string;
     extension: string;
+    verificado: any;
     activa: any;
 
     nombre: string;

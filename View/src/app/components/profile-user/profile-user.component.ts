@@ -23,7 +23,7 @@ export class ProfileUserComponent implements OnInit {
   vision: string;
   descripcion: any; 
   
-  constructor(private _router:Router, public homeUserService: HomeUserService, public sessionUserService: SessionUserService) { }
+  constructor( private _router:Router, public homeUserService: HomeUserService, public sessionUserService: SessionUserService) { }
 
   ngOnInit(): void {
     this.getIsLogged();

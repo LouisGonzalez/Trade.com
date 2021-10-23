@@ -29,6 +29,16 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
+import { PageAffiliatesComponent } from './components/page-affiliates/page-affiliates.component';
+import { PageAffiliateUserComponent } from './components/page-affiliate-user/page-affiliate-user.component';
+import { GlobalUserComponent } from './components/global-user/global-user.component';
+import { ProfUsersComponent } from './components/prof-users/prof-users.component';
+import { CardUserComponent } from './components/card-user/card-user.component';
+import { CardUserAffiliateComponent } from './components/card-user-affiliate/card-user-affiliate.component';
+import { CardAffiliatesComponent } from './components/card-affiliates/card-affiliates.component';
+import { CardUserFollowedComponent } from './components/card-user-followed/card-user-followed.component';
+import { FollowedUsersComponent } from './components/followed-users/followed-users.component';
+import { ProductShopComponent } from './components/product-shop/product-shop.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +59,17 @@ import { ArticleFoundComponent } from './components/product-search/article-found
     ModalVerifyComponent,
     ChatComponent,
     ProductSearchComponent,
-    ArticleFoundComponent
+    ArticleFoundComponent,
+    PageAffiliatesComponent,
+    PageAffiliateUserComponent,
+    GlobalUserComponent,
+    ProfUsersComponent,
+    CardUserComponent,
+    CardUserAffiliateComponent,
+    CardAffiliatesComponent,
+    CardUserFollowedComponent,
+    FollowedUsersComponent,
+    ProductShopComponent
   ],
   imports: [
     BrowserModule,

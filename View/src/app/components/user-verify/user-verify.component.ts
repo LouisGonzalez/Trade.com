@@ -2,8 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user/user';
-import { SessionUserService } from 'src/app/services/home-service/session-user.service';
+import { User } from '../../models/user/user';
+import { SessionUserService } from '../../services/home-service/session-user.service';
 
 @Component({
   selector: 'app-user-verify',
@@ -49,14 +49,32 @@ export class UserVerifyComponent implements OnInit {
 
   accepted(){
     this.modalService.dismissAll('Cross click');
-    this._router.navigate(['/home-user']);
+    this._router.navigate(['/home-user/user/profile']);
     // this.modalService.close();
-    // modal.close('Close click')
+    // modal.close('Close click');
   }
 
   verificationSend(){
-    alert(`A verification email has been sent to: ${this.USER.correo}`);
-    this._router.navigate(['/home-user']);
+    let data = {
+      id_cuenta: this.USER.id_cuenta,
+      email: this.USER.correo
+    };
+    console.log(data);
+    this.sessionUserService.postVerify(data).subscribe(
+      res=>{
+        console.log('es',res);
+        alert(`A verification email has been sent to: ${this.USER.correo}`);
+        this._router.navigate(['/home-user/user/profile']);
+      },
+      error=>{
+        console.error(error); 
+        alert(`A verification email has been sent to: ${this.USER.correo}`);
+        this._router.navigate(['/home-user/user/profile']);
+        // this.msjErrorCuenta = "The username or password are not correct"
+      }
+    );
+    
+    // this._router.navigate(['/home-user']);
   }
 
 }

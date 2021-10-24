@@ -41,11 +41,15 @@ import { CardUserFollowedComponent } from './components/card-user-followed/card-
 import { FollowedUsersComponent } from './components/followed-users/followed-users.component';
 import { ProductShopComponent } from './components/product-shop/product-shop.component';
 import { AffiliatesComponent } from './components/affiliates/affiliates.component';
+<<<<<<< HEAD
 import { SmsComponent } from './components/chat/sms/sms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Materials
 import {MatIconModule} from '@angular/material/icon';
+=======
+import { AddContactComponent } from './components/add-contact/add-contact.component';
+>>>>>>> add_contacts
 
 @NgModule({
   declarations: [
@@ -68,6 +72,7 @@ import {MatIconModule} from '@angular/material/icon';
     ChatComponent,
     ProductSearchComponent,
     ArticleFoundComponent,
+<<<<<<< HEAD
     PageAffiliatesComponent,
     PageAffiliateUserComponent,
     GlobalUserComponent,
@@ -80,6 +85,10 @@ import {MatIconModule} from '@angular/material/icon';
     ProductShopComponent,
     AffiliatesComponent,
     SmsComponent
+=======
+    AffiliatesComponent,
+    AddContactComponent
+>>>>>>> add_contacts
   ],
   imports: [
     BrowserModule,

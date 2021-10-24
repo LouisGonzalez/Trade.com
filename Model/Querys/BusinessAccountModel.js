@@ -5,7 +5,7 @@ async function createAccount(req){
     return await BusinessAccount.create({
         id_cuenta: req.body.id,
         cuenta_general: req.body.id,
-        empresa: req.id.nombre,
+        empresa: req.body.empresa,
         mision: req.body.mision,
         vision: req.body.vision,
         descripcion: req.body.descripcion        

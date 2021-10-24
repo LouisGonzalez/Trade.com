@@ -40,6 +40,7 @@ const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
 const Shop = require('./Routes/ShopRoutes');
 const Search = require('./Routes/SearchRoutes');
+const AuthRoutes = require('./Routes/AuthRoutes');
 const Member = require('./Routes/MemberRoutes');
 const Notify = require('./Routes/NotifyRoutes');
 
@@ -84,8 +85,9 @@ app.use(Post);
 app.use(Card);
 app.use(Shop);
 app.use(Search);
+app.use(AuthRoutes);
 app.use(Member);
-app.search(Notify);
+app.use(Notify);
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);
@@ -98,5 +100,3 @@ server.listen(PORT, function(){
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
     }))
 })
-
-

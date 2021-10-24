@@ -49,3 +49,34 @@
     color: #666666;
   }
   
+  .input--style-6 {
+    background: #e5e5e5;
+    line-height: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 0 22px;
+    font-size: 16px;
+    color: #555;
+  }
+
+  .card-My .card-heading-My {
+    padding: 20px 0;
+    background: #57b846;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .card-5-My {
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 8px 20px 0px #57b846;
+    -moz-box-shadow: 0px 8px 20px 0px #57b846;
+    box-shadow: 0px 8px 20px 0px #57b846;
+  }

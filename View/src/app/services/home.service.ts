@@ -12,6 +12,8 @@ export class HomeService {
 
   getUser(){
     
-    return this.http.get(this.URL_API+'/logged');
+    return this.http.get(this.URL_API+'/logged',{
+      withCredentials:true
+    });
   }
 }

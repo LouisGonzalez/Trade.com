@@ -21,7 +21,7 @@ async function deleteCard(req){
     })
 }
 
-async function tarjetas(req){
+async function cards(req){
     return await Card.findAll({
         where:{
             no_cuenta: req.user
@@ -29,6 +29,13 @@ async function tarjetas(req){
     })
 }
 
+async function existCard(req){
+    return await Card.findOne({where:{
+        no_tarjeta: req.body.tarjeta,
+        id_cuenta: req.user
+    }})
+}
+
 module.exports = {
-    createCard, deleteCard, tarjetas
+    createCard, deleteCard, cards, existCard
 }

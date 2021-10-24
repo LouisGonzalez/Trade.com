@@ -11,27 +11,9 @@ async function createAccountLogger(req, pass){
         correo: req.body.correo,
         extension: req.body.extension,
         password: pass,   
-        activa: true
+        activa: true,
+        verificado: false
     })     
-}
-
-function createPersonalAccount(req){
-    StandardAccount.create({
-        id_cuenta: req.body.id,
-        nombres: req.body.nombre,
-        apellidos: req.body.apellido,
-        fecha_nacimiento: req.body.nacimiento
-    })
-}
-
-function createBusinessAccount(req){
-    BusinessAccount.create({
-        id_cuenta: req.body.id,
-        empresa: req.id.nombre,
-        mision: req.body.mision,
-        vision: req.body.vision,
-        descripcion: req.body.descripcion        
-    })
 }
 
 
@@ -39,15 +21,12 @@ async function readUserLoggedInformation(req){
     return await Account.findOne({where:{id_cuenta:req.user}});
 }
 
-
-function deleteAccount(req, res){
-    Account.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).then(result => {
-        res.json(result);
-    })
+async function deleteAccount(req, res){
+    return await Account.update({
+        activa:false
+    },{
+        id_cuenta: req.user
+    })     
 }
 
 async function searchUserByPK(idUser){
@@ -74,5 +53,5 @@ function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation, createPersonalAccount, createBusinessAccount, searchUserByPK
+    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation, searchUserByPK
 }

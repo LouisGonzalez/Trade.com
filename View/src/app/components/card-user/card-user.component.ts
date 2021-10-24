@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { User } from 'src/app/models/user/user';
+import { ChatComponent } from 'src/app/components/chat/chat.component';
+import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
 
 @Component({
   selector: 'app-card-user',
@@ -8,11 +10,14 @@ import { User } from 'src/app/models/user/user';
 })
 export class CardUserComponent implements OnInit {
 
-  @Output() userO = new EventEmitter<User>();
+  // @Output() userO = new EventEmitter<any>();
+  @Input() userO: any;
   @Input() userOf: User;
   isCompany: boolean = false;
 
-  constructor() { }
+  // @ViewChild(ChatComponent) chatH: ChatComponent;
+
+  constructor(private emmitChatService:EmmitChatService) { }
 
   ngOnInit(): void {
     this.setIsCompany();
@@ -22,6 +27,17 @@ export class CardUserComponent implements OnInit {
     if(this.userOf.BusinessAccount!=undefined){
       this.isCompany = true;
     }
+  }
+
+  activateChat(){
+    console.log('adfa');
+    let data = {
+      cuenta_dos: this.userO,
+      cuenta_uno: this.userOf.user
+      // cuenta_uno: 'Con'
+    }
+    this.emmitChatService.onChatListen(data);
+    // this.chatH.hola();
   }
 
 }

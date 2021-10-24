@@ -10,8 +10,10 @@
             </div>
             <div class="target-white-8">
                 <div class="wrapper-users">
-                    <app-card-user *ngFor="let user of users; let i=index" [userOf]="user"></app-card-user>
+                    <app-card-user *ngFor="let user of users; let i=index" [userOf]="user" [userO]="USER.user"></app-card-user>
                 </div>
             </div>
         </div>
     </div>
+
+    

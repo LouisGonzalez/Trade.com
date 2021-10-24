@@ -85,8 +85,4 @@ export class NotificationsComponent implements OnInit {
   }
 
 
-  newUser(){
-    this.socket.emit('new user', 'Yeferal');
-  }
-
 }

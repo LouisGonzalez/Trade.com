@@ -3,6 +3,8 @@ const Message = require('../Model/Querys/Message');
 const Conversation = require('../Model/Querys/Conversation');
 const verifyConv = require('./Verifications/Conversation');
 
+const NotifyQuery = require('../Model/Querys/NotifyModel');
+
 var users = {};
 var boolSms = {};
 
@@ -94,6 +96,10 @@ module.exports = async function(io){
                 data,
                 nick: myNick
               });
+              //Crea la notificacion
+              NotifyQuery.createNotification(idSend.id_cuenta, idReceive.id_cuenta,'Mensaje','Nuevo mensaje!');
+              io.to(users[userReceive]).emit('send notifications');
+              
             }
             if(userSend in users){
               io.to(users[userSend]).emit('whisper', {

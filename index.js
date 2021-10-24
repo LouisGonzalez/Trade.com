@@ -39,6 +39,7 @@ const Logger = require('./Routes/LoggerRoutes');
 const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
 const Search = require('./Routes/SearchRoutes');
+const Notify = require('./Routes/NotifyRoutes');
 
 
 //inicializaciones
@@ -81,6 +82,7 @@ app.use(Logger);
 app.use(Post);
 app.use(Card);
 app.use(Search);
+app.search(Notify);
 
 
 server.listen(PORT, function(){

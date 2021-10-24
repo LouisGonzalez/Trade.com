@@ -20,18 +20,28 @@ const returnNotifications = async(req,res) => {
 }
 
 
-async function createNotification(req, res){
+async function createNotification(userSend, userReceive, type, description){
     await Notifications.create({
-        usuario_recibe: req.body.usuario_recibe,
-        usuario_envia: req.body.usuario_envia,
-        tipo: req.body.tipo,
-        descripcion: req.body.descripcion,
+        usuario_recibe: userReceive,
+        usuario_envia: userSend,
+        tipo: type,
+        descripcion: description,
         leido: false
+    })
+}
+
+async function updateViewNotifications(req, res){
+    await Notifications.update({
+        leido: true
+    } , {
+        where: {
+            id: req.body.id
+        }
     }).then(post => {
         res.json(post);
     })
 }
 
 module.exports = {
-    createNotification, returnNotifications
+    createNotification, returnNotifications, updateViewNotifications
 }

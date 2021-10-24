@@ -2,11 +2,8 @@
     <span>Inbox</span>
     <span class="badge" id="total">{{totalNotify}}</span>
 </a>
-<div id="myDropdown" class="dropdown-content">
+<div id="myDropdown-notify" class="dropdown-content">
   <div>
-    <a>Pruebas</a>
-    <a>Pruebas1</a>
-    <a>Pruebas2</a>
-    <a>Pruebas3</a>
+    <a *ngFor="let carrito of arraySearch" (click)="functionClick()"><p>{{carrito.usuario_envia: }}</p> {{carrito.descripcion}}</a>
   </div>
 </div>

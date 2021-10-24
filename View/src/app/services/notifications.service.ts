@@ -15,7 +15,11 @@ export class NotificationsService {
     return this.http.get(this.URL_API+'/notify',data);
   }
 
-  createNotify(data:any):Observable<any>{
+/*  createNotify(data:any):Observable<any>{
     return this.http.post(this.URL_API+'/notify',data);
+  }*/
+
+  updateViewNotify(data:any):Observable<any>{
+    return this.http.patch(this.URL_API+'/notify',data);
   }
 }

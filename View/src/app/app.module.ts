@@ -28,6 +28,7 @@ import { ProductSearchComponent } from './components/product-search/product-sear
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
 import { AffiliatesComponent } from './components/affiliates/affiliates.component';
+import { AddContactComponent } from './components/add-contact/add-contact.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AffiliatesComponent } from './components/affiliates/affiliates.componen
     ChatComponent,
     ProductSearchComponent,
     ArticleFoundComponent,
-    AffiliatesComponent
+    AffiliatesComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,

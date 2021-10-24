@@ -41,7 +41,7 @@ const Card = require('./Routes/CardsRoutes');
 const Search = require('./Routes/SearchRoutes');
 const Member = require('./Routes/MemberRoutes');
 const Notify = require('./Routes/NotifyRoutes');
-
+const Contact = require('./Routes/ContactRoutes');
 
 //inicializaciones
 require('./Lib/Passport');
@@ -84,8 +84,8 @@ app.use(Post);
 app.use(Card);
 app.use(Search);
 app.use(Member);
-app.search(Notify);
-
+app.use(Notify);
+app.use(Contact);
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);

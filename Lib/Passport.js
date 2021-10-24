@@ -28,9 +28,10 @@ passport.use('local.login', new localStrategy({
     passwordField: 'password',
     passReqToCallback: true
 },async (req, user, password, done) => {
-    
+    console.log('user:',user);
+    console.log('pass:',password);
     const usuario = await AccountModel.findOne({where:{user:user}});    
-    console.log(usuario);
+    console.log('Usuario:\n',usuario);
     if(usuario != undefined){        
         if(usuario.activa){
             const match = await crypt.matchPassword(password, usuario.password);        

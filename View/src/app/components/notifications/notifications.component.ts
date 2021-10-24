@@ -27,35 +27,43 @@ export class NotificationsComponent implements OnInit {
 
   setupSocketConnection(){
     this.socket = io(SOCKET_ENDPOINT);
+    this.newUser();
     this.recibeNotifications();
+
   }
 
   recibeNotifications(){
+    console.log('daf');
     this.socket.on('send notifications');
     this.getNotifyFromDB();
   }
 
   getNotifyFromDB(){
     this.userForm = this.formBuilder.group({
-      usuario_recibe: 1       //MODIFICAR PARA QUE SEA DINAMICO
+      usuario_recibe: 1234       //MODIFICAR PARA QUE SEA DINAMICO
     })
     this.notifyService.getMyNotifications(this.userForm.value).subscribe(
       response => {
         this.arraySearch = response.Notify;
         this.totalNotify = this.arraySearch.length;
+        // console.log('arr',this.arraySearch.length);
+      },
+      error => {
+        console.log('error:',error);
       }
     )
   }
 
   desplegate(){
-    document.getElementById("myDropdown")?.classList.toggle("show");
+    document.getElementById("myDropdown-notify")?.classList.toggle("show");
     //cambia las notificaciones de este usuario dentro de la base de datos a FALSE
     this.updateForm = this.formBuilder.group({
-      id: 1               //MODIFICAR PARA QUE SEA DINAMICO
+      id: 1234               //MODIFICAR PARA QUE SEA DINAMICO
     })
     this.notifyService.updateViewNotify(this.updateForm.value).subscribe(
       response => {
-        console.log(response);
+        this.totalNotify = 0;
+        console.log('regresa',response);
       },
       error => {
         console.log(error);
@@ -73,5 +81,9 @@ export class NotificationsComponent implements OnInit {
     this.setupSocketConnection();
   }
 
+
+  newUser(){
+    this.socket.emit('new user', 'Yeferal');
+  }
 
 }

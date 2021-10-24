@@ -15,7 +15,7 @@ const returnNotifications = async(req,res) => {
         const Notify = await searchMyNotifications(req, res);
         return res.status(200).json({Notify});
     } catch(error){
-        res.status(500).send(error.message);
+        res.status(500).json(error.message);
     }
 }
 
@@ -31,13 +31,15 @@ async function createNotification(userSend, userReceive, type, description){
 }
 
 async function updateViewNotifications(req, res){
+    console.log(req.body.id)
     await Notifications.update({
         leido: true
     } , {
         where: {
-            id: req.body.id
+            usuario_recibe: req.body.id
         }
     }).then(post => {
+        console.log(post);
         res.json(post);
     })
 }

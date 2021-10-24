@@ -1,14 +1,22 @@
+import { UserCompany } from "./user-company";
+import { UserStandar } from "./user-standar";
+
 export class User {
 
-    constructor(user="", password="", id_cuenta="" ,fecha_creacion="" ,pais="" ,telefono="" ,correo="", extension=""){
+    constructor(user="", password="", id_cuenta="" ,fecha_creacion="" ,pais="" ,telefono="" ,correo="", extension="",verificado = false, activa=true, nombre = "", apellido = "", fecha_nacimiento = ""){
         this.user = user;
         this.password = password;
-        id_cuenta=id_cuenta; 
-        this.fecha_creacion=fecha_creacion; 
-        this.pais=pais; 
-        this.telefono=telefono; 
-        this.correo=correo; 
-        this.extension=extension;
+        this.id_cuenta = id_cuenta; 
+        this.fecha_creacion = fecha_creacion; 
+        this.pais = pais; 
+        this.telefono = telefono; 
+        this.correo = correo; 
+        this.extension = extension;
+        this.verificado = verificado;
+        this.activa = activa;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     id_cuenta: any;
@@ -19,5 +27,14 @@ export class User {
     telefono: string;
     correo: string;
     extension: string;
+    verificado: any;
+    activa: any;
+
+    nombre: string;
+    apellido: string;
+    fecha_nacimiento: any;
+
+    StandardAccount?: UserStandar;
+    BusinessAccount?: UserCompany;
 
 }

@@ -12,7 +12,9 @@ export class NotificationsService {
   constructor(private http: HttpClient) { }
 
   getMyNotifications(data:any):Observable<any>{
-    return this.http.get(this.URL_API+'/notify',data);
+    return this.http.post(this.URL_API+'/notify',data,{
+      withCredentials:true
+    });
   }
 
 /*  createNotify(data:any):Observable<any>{
@@ -20,6 +22,8 @@ export class NotificationsService {
   }*/
 
   updateViewNotify(data:any):Observable<any>{
-    return this.http.patch(this.URL_API+'/notify',data);
+    return this.http.put(this.URL_API+'/notify',data,{
+      withCredentials:true
+    });
   }
 }

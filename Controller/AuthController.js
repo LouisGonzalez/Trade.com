@@ -21,7 +21,7 @@ async function sendToken(req, res){
     await Sender.sendVerificationEmail(req.body.email, verificationToken.dataValues.token, jwtTokenVerify);
 
 
-    return res.status(200).send('Te has registrado de forma exitosa, el link de activacion ha sido enviado a: '+email);
+    return res.status(200).json('Te has registrado de forma exitosa, el link de activacion ha sido enviado a: '+email);
 
   } catch(err) {
     console.log("err1", err);

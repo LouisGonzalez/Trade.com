@@ -52,7 +52,7 @@ LoggerController.login = (req,res,next) => {
       if (!user) { return res.status(501).json(info); }
       req.logIn(user, function(err) {
         if (err) { return res.status(501).json(err); }
-        console.log(req);
+        // console.log(req);
         return res.status(200).json({message:'SE LOGUEO'});
       });
     })(req, res, next);
@@ -70,12 +70,13 @@ LoggerController.login = (req,res,next) => {
 //     // failureRedirect: '/signup',
 // })
 
-LoggerController.profile = (req, res) =>{
+LoggerController.profile = (req, res) =>{    
     res.send("Este es el perfil");
 }
 
 LoggerController.logout = (req, res) =>{
     req.logOut();
+    req.session.cart = [];
     res.status(200).json({message:'Redirecciona a login'});
 }
 

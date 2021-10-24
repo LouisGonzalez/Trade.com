@@ -1,5 +1,7 @@
 //Modelo db
 const Post = require('../Initialization/Post');
+const Article = require('../Initialization/Article');
+const Service = require('../Initialization/Service');
 
 async function createPost(req,res){
     return await Post.create({
@@ -40,6 +42,64 @@ async function updatePost(req,res){
     })
 }
 
+async function allArticles(req,res){
+    return await Post.findAll({
+        where:{
+            activo:true
+        },
+        include:[{
+            model: Article,   
+            required: true         
+        }]
+    })
+}
+
+async function allService(req,res){
+    return await Post.findAll({
+        where:{
+            activo:true
+        },
+        include:[{
+            model: Service,
+            required: true           
+        }]
+    })
+}
+
+async function onePostService(id_post){
+    return await Post.findOne({
+        where:{
+            activo:true,
+            id: id_post
+        },
+        include:[{
+            model: Service,
+            required: true           
+        }]
+    })
+}
+
+async function onePostArticle(id_post){
+    return await Post.findOne({
+        where:{
+            activo:true,
+            id: id_post
+        },
+        include:[{
+            model: Article,
+            required: true           
+        }]
+    })
+}
+
+async function onePost(id_post){
+    return await Post.findOne({
+        where:{
+            activo:true,
+            id: id_post
+        }        
+    }) 
+}
 
 const searchPost = async (req, res) => {
     try {
@@ -52,5 +112,5 @@ const searchPost = async (req, res) => {
 };
 
 module.exports = {
-    createPost, deletePost, updatePost, searchPost
+    createPost, deletePost, updatePost, allArticles, allService, onePostArticle, onePostService, searchPost, onePost
 }

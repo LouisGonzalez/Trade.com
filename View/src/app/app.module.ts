@@ -22,12 +22,30 @@ import { StackProductComponent } from './components/stack-product/stack-product.
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalVerifyComponent } from './components/modal-verify/modal-verify.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ArticleFoundComponent } from './components/product-search/article-found/article-found.component';
+import { PageAffiliatesComponent } from './components/page-affiliates/page-affiliates.component';
+import { PageAffiliateUserComponent } from './components/page-affiliate-user/page-affiliate-user.component';
+import { GlobalUserComponent } from './components/global-user/global-user.component';
+import { ProfUsersComponent } from './components/prof-users/prof-users.component';
+import { CardUserComponent } from './components/card-user/card-user.component';
+import { CardUserAffiliateComponent } from './components/card-user-affiliate/card-user-affiliate.component';
+import { CardAffiliatesComponent } from './components/card-affiliates/card-affiliates.component';
+import { CardUserFollowedComponent } from './components/card-user-followed/card-user-followed.component';
+import { FollowedUsersComponent } from './components/followed-users/followed-users.component';
+import { ProductShopComponent } from './components/product-shop/product-shop.component';
 import { AffiliatesComponent } from './components/affiliates/affiliates.component';
+import { SmsComponent } from './components/chat/sms/sms.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Materials
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,11 +62,24 @@ import { AffiliatesComponent } from './components/affiliates/affiliates.componen
     ChatGlobalComponent,
     UserVerifyComponent,
     EditProfileComponent,
+    NavUserComponent,
+    ModalVerifyComponent,
     NotificationsComponent,
     ChatComponent,
     ProductSearchComponent,
     ArticleFoundComponent,
-    AffiliatesComponent
+    PageAffiliatesComponent,
+    PageAffiliateUserComponent,
+    GlobalUserComponent,
+    ProfUsersComponent,
+    CardUserComponent,
+    CardUserAffiliateComponent,
+    CardAffiliatesComponent,
+    CardUserFollowedComponent,
+    FollowedUsersComponent,
+    ProductShopComponent,
+    AffiliatesComponent,
+    SmsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +88,10 @@ import { AffiliatesComponent } from './components/affiliates/affiliates.componen
     CommonModule, 
     AppRoutingModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatIconModule
+    // Ng2SearchPipeModule
   ],
   providers: [
     CookieService

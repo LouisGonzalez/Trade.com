@@ -1,7 +1,6 @@
 const express = require('express');
 
 const passport = require('passport');
-
 const PostModel = new require('../Model/Querys/PostModel');
 const ArticleModel = new require('../Model/Querys/ArticleModel');
 const ServiceModel = new require('../Model/Querys/ServiceModel');
@@ -14,6 +13,16 @@ PostController.postView = (req,res)=>{
     //AccountModel.oneAccount(req,res);
 }
 
+PostController.seeAllArticles = async (req,res)=>{
+    const post = await PostModel.allArticles();
+    res.json(post);   
+}
+
+
+PostController.seeAllService = async (req,res)=>{  
+    const post = await PostModel.allService();
+    res.json(post);
+}
 
 PostController.createArticle = async (req,res)=>{
     const post = await PostModel.createPost(req,res);
@@ -39,8 +48,16 @@ PostController.updateService = async(req, res)=>{
     await ServiceModel.updateService(req,res,post.id);
 }
 
-PostController.onePost = (req, res) =>{
-
+PostController.onePost = async (req, res) =>{
+    const post = await PostModel.onePostArticle(req.params.id);
+    const postB = await PostModel.onePostService(req.params.id);
+    if(post != null){
+        res.json(post);
+    }else if(postB != null){        
+        res.json(post);
+    }else{
+        res.send("No existe")
+    }
 }
 
 module.exports = PostController;

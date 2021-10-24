@@ -38,7 +38,9 @@ const Account = require('./Routes/AccountRoutes');
 const Logger = require('./Routes/LoggerRoutes');
 const Post = require('./Routes/PostRoutes');
 const Card = require('./Routes/CardsRoutes');
+const Shop = require('./Routes/ShopRoutes');
 const Search = require('./Routes/SearchRoutes');
+const AuthRoutes = require('./Routes/AuthRoutes');
 const Member = require('./Routes/MemberRoutes');
 const Notify = require('./Routes/NotifyRoutes');
 
@@ -64,8 +66,7 @@ app.use(session({
     //     httpOnly:true,
     //     secure:false
     // },
-    store: new MySQLStore(database)
-
+    //store: new MySQLStore(database)
 }))
 
 app.use(express.json());
@@ -82,10 +83,11 @@ app.use(Account);
 app.use(Logger);
 app.use(Post);
 app.use(Card);
+app.use(Shop);
 app.use(Search);
+app.use(AuthRoutes);
 app.use(Member);
-app.search(Notify);
-
+app.use(Notify);
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);
@@ -98,5 +100,3 @@ server.listen(PORT, function(){
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
     }))
 })
-
-

@@ -4,6 +4,8 @@ const Router = express.Router();
 
 const {isLoggedIn} = require('../Lib/auth');
 
+const SimulationBank = require('../Controller/SimulatorBank');
+
 //Controlador
 const AccountController = require('../Controller/AccountController');
 

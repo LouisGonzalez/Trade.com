@@ -8,10 +8,12 @@ NotifyController.createNotify = async(req, res) => {
 }*/
 
 NotifyController.findNotifications = async(req,res) => {
+    // console.log('entro 1');
     return await NotifyModel.returnNotifications(req, res);
 }
 
 NotifyController.updateViewNotify = async(req, res) => {
+    console.log('entro');
     return await NotifyModel.updateViewNotifications(req, res);
 }
 

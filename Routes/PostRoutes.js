@@ -7,6 +7,10 @@ const {isLoggedIn, isNotLoggedIn} = require('../Lib/auth');
 
 Router.get('/post',isNotLoggedIn,PostController.postView);
 
+Router.get('/post/Service', PostController.seeAllService);
+
+Router.get('/post/Article',PostController.seeAllArticles);
+
 Router.post('/post/Service', isLoggedIn, PostController.createService);
 
 Router.post('/post/Article',isLoggedIn,PostController.createArticle);

@@ -8,13 +8,16 @@ const ShopController = require('../Controller/ShopController');
 
 Router.use(isLoggedIn,ShopController.createCart);
 
-Router.get('/Cart',isLoggedIn,ShopController.getAll)
+Router.get('/CartAll',isLoggedIn,ShopController.getAll);
+
+Router.delete('/Cart', isLoggedIn, ShopController.deletePost);
 
 Router.post('/Cart', isLoggedIn, ShopController.addPost);
 
-Router.delete('/Cart', isLoggedIn, ShopController.deleteAll);
+Router.delete('/CartAll', isLoggedIn, ShopController.deleteAll);
 
 Router.patch('/Cart',isLoggedIn, ShopController.updateCart);
 
+Router.get('/Shop', ShopController.getAll);
 
 module.exports = Router;

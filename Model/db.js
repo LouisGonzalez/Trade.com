@@ -8,6 +8,7 @@ const sequelize =  new Sequelize(
         host: database.host,
         dialect: "mysql"
     }
+    
 );
 
 module.exports = sequelize;

@@ -11,8 +11,14 @@ async function createAccountLogger(req, pass){
         correo: req.body.correo,
         extension: req.body.extension,
         password: pass,   
-        activa: true
+        activa: true,
+        verificado: false
     })     
+}
+
+
+async function readUserLoggedInformation(req){
+    return await Account.findOne({where:{id_cuenta:req.user}});
 }
 
 async function deleteAccount(req, res){
@@ -23,13 +29,17 @@ async function deleteAccount(req, res){
     })     
 }
 
-async function readUserLoggedInformation(req){
-    return await Account.findOne({where:{id_cuenta:req.user}});
+async function searchUserByPK(idUser){
+    return await Account.findOne({
+        where: {
+            id_cuenta: idUser
+        }
+    })
 }
 
-
-async function updateAccount(req,res){
-    return await Account.update({        
+function updateAccount(req,res){
+    Account.update({
+        fecha_creacion: req.body.fecha_creacion,
         pais: req.body.pais,
         telefono: req.body.telefono,
         correo: req.body.correo,
@@ -43,5 +53,5 @@ async function updateAccount(req,res){
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation
+    deleteAccount, updateAccount, createAccountLogger, readUserLoggedInformation, searchUserByPK
 }

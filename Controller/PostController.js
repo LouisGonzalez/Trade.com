@@ -48,8 +48,16 @@ PostController.updateService = async(req, res)=>{
     await ServiceModel.updateService(req,res,post.id);
 }
 
-PostController.onePost = (req, res) =>{
-
+PostController.onePost = async (req, res) =>{
+    const post = await PostModel.onePostArticle(req.params.id);
+    const postB = await PostModel.onePostService(req.params.id);
+    if(post != null){
+        res.json(post);
+    }else if(postB != null){        
+        res.json(post);
+    }else{
+        res.send("No existe")
+    }
 }
 
 module.exports = PostController;

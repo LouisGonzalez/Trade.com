@@ -79,7 +79,7 @@ async function onePostService(id_post){
     })
 }
 
-async function onePostArticle(){
+async function onePostArticle(id_post){
     return await Post.findOne({
         where:{
             activo:true,
@@ -92,6 +92,25 @@ async function onePostArticle(){
     })
 }
 
+async function onePost(id_post){
+    return await Post.findOne({
+        where:{
+            activo:true,
+            id: id_post
+        }        
+    }) 
+}
+
+const searchPost = async (req, res) => {
+    try {
+        const post= await Post.findAll();
+        return res.status(200).json({ post });
+    } catch (error) {
+        //si nuestra consulta falla tira un mensaje de error
+        return res.status(500).send(error.message);
+    }
+};
+
 module.exports = {
-    createPost, deletePost, updatePost, allArticles, allService, onePostArticle, onePostService
+    createPost, deletePost, updatePost, allArticles, allService, onePostArticle, onePostService, searchPost, onePost
 }

@@ -33,6 +33,7 @@ const routes: Routes = [
   {path:'home-user/users/prof-users',component:ProfUsersComponent},
   {path:'home-user/users/followed-users',component:FollowedUsersComponent},
   {path:'home-user/users/profile/:id_cuenta',component:ProfUsersComponent},
+  {path:'home-user/users/profile2/:user',component:ProfUsersComponent},
   // {path:'home-user/my-posts/post-article',component:UserVerifyComponent},
   // {path:'home-user/my-posts/post-article',component:UserVerifyComponent},
   

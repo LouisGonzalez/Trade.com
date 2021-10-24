@@ -317,3 +317,16 @@ ul {
 .settings-popup ul li a:hover {
   background: rgba(0, 0, 0, .05);
 }
+
+/* .my-chat-box {
+  padding: 6px 10px;
+  border-radius: 6px 0 6px 0;
+  position: relative;
+  font-size: 12px;
+  margin: 0 0 15px;
+} */
+
+.my-box-c {
+  min-width: 70px;
+  max-width: 300px;
+}

@@ -19,7 +19,7 @@
             <li><a [routerLink]="['/home-user']" class="nav-link active">Home</a></li>
             <!-- <li><a href="">About</a></li> -->
             <li *ngIf="isCompany" class="has-children">
-              <a href="">My posts</a>
+              <a>My posts</a>
               <ul class="dropdown">
                 <!-- <li><a href="">Job Single</a></li> -->
                 <li><a [routerLink]="['/home-user/my-posts/my-articles-posted']">My articles posted</a></li>
@@ -27,7 +27,7 @@
               </ul>
             </li>
             <li class="has-children">
-                <a href="">Users</a>
+                <a >Users</a>
                 <ul class="dropdown">
                   <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li>
                   <li><a [routerLink]="['/home-user/users/followed-users']">Followed Users</a></li>
@@ -54,7 +54,7 @@
             <!-- <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li> -->
             <li class="has-children">
-              <a href="">{{userName}}</a>
+              <a >{{userName}}</a>
               <ul class="dropdown">
                 <li><a [routerLink]="['/home-user/user/profile']">Profile</a></li>
                 <li><a [routerLink]="['/home-user/user/profile']">My Card's</a></li>

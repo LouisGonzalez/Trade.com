@@ -33,8 +33,8 @@ export class CardUserComponent implements OnInit {
     console.log('adfa');
     let data = {
       cuenta_dos: this.userO,
-      cuenta_uno: this.userOf.user
-      // cuenta_uno: 'Con'
+      // cuenta_uno: this.userOf.user
+      cuenta_uno: 'Yeferal'
     }
     this.emmitChatService.onChatListen(data);
     // this.chatH.hola();

@@ -41,6 +41,10 @@ import { FollowedUsersComponent } from './components/followed-users/followed-use
 import { ProductShopComponent } from './components/product-shop/product-shop.component';
 import { AffiliatesComponent } from './components/affiliates/affiliates.component';
 import { SmsComponent } from './components/chat/sms/sms.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Materials
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -83,6 +87,8 @@ import { SmsComponent } from './components/chat/sms/sms.component';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatIconModule
     // Ng2SearchPipeModule
   ],
   providers: [

@@ -86,7 +86,7 @@ app.use(Card);
 app.use(Search);
 app.use(AuthRoutes);
 app.use(Member);
-app.search(Notify);
+app.use(Notify);
 
 
 server.listen(PORT, function(){

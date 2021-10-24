@@ -12,10 +12,10 @@ async function createAccountLogger(req, pass){
         telefono: req.body.telefono,
         correo: req.body.correo,
         extension: req.body.extension,
-        password: pass,   
+        password: pass,
         verificado: false,
         activa: true
-    });   
+    });
 }
 
 async function readUserStandardLoggedInformation(req){

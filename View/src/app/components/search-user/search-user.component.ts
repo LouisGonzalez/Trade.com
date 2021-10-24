@@ -3,23 +3,28 @@ import { User } from '../../models/find-members.mode';
 import { AffiliatesService } from '../../services/affiliates.service';
 import { FormControl, FormGroup, Validators, NgForm, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
 
 @Component({
-  selector: 'app-affiliates',
-  templateUrl: './affiliates.component.html',
-  styleUrls: ['./affiliates.component.css']
+  selector: 'app-search-user',
+  templateUrl: './search-user.component.html',
+  styleUrls: ['./search-user.component.css']
 })
-export class AffiliatesComponent implements OnInit {
+export class SearchUserComponent implements OnInit {
 
   searchInput:string;
-  arraySearch: Array<User> = [];
+  arraySearch:User[];
   memberForm: FormGroup;
-  @Input() localUser: string;
+  @Input() localUser: any;
+
+  @Input() userO: any;
+  @Input() userOf: User;
+  isCompany: boolean = false;
+  cuenta_d: any;
   
 
 
-  constructor(private _router:Router,private affiliateService: AffiliatesService, public formBuilder: FormBuilder) { 
+  constructor(private emmitChatService:EmmitChatService, private _router:Router,private affiliateService: AffiliatesService, public formBuilder: FormBuilder) { 
     this.searchInput = "";
   }
 
@@ -30,6 +35,8 @@ export class AffiliatesComponent implements OnInit {
   funcionClick(idUsuario:any){
     // console.log("Buss:",this.localUser,", usuario:",idUsuario);
     // this.createMember(idUsuario);
+    this.cuenta_d = idUsuario;
+    this.activateChat();
   }
 
   filterFunction(){
@@ -65,12 +72,11 @@ export class AffiliatesComponent implements OnInit {
     )
   }
 
+  
+
   ngOnInit(): void {
-    // console.log(this.arraySearch.length);
-    // let v = this.arraySearch.length;
     this.affiliateService.getUsers().subscribe(
       response => {
-        console.log("d",response);
         this.arraySearch = response.Users;
         for(let i = 0; i < this.arraySearch.length; i++){
           if(this.arraySearch[i].StandardAccount == null){
@@ -78,11 +84,20 @@ export class AffiliatesComponent implements OnInit {
             i--;
           }
         }
-      },
-      error => {
-        console.error(error);
       }
-    );
+    )
+  }
+
+  activateChat(){
+    console.log('adfa');
+    let data = {
+      cuenta_dos: this.userO,
+      // cuenta_uno: this.userOf.user
+      cuenta_uno: this.cuenta_d
+    }
+    console.log("Cu",data);
+    this.emmitChatService.onChatListen(data);
+    // this.chatH.hola();
   }
 
 }

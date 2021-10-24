@@ -46,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Materials
 import {MatIconModule} from '@angular/material/icon';
+import { SearchUserComponent } from './components/search-user/search-user.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {MatIconModule} from '@angular/material/icon';
     FollowedUsersComponent,
     ProductShopComponent,
     AffiliatesComponent,
-    SmsComponent
+    SmsComponent,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ import { StackProductComponent } from './components/stack-product/stack-product.
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -43,6 +44,7 @@ import { AffiliatesComponent } from './components/affiliates/affiliates.componen
     ChatGlobalComponent,
     UserVerifyComponent,
     EditProfileComponent,
+    NotificationsComponent,
     ChatComponent,
     ProductSearchComponent,
     ArticleFoundComponent,

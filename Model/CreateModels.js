@@ -25,6 +25,7 @@ const UserScore = require('./Initialization/UserScore');
 const Verification = require('./Initialization/Verification');
 const Wallet = require('./Initialization/Wallet');
 const Token = require('./Initialization/VerificationToken');
+const Notifications = require('./Initialization/Notifications');
 
 //Creacion de las llaves foraneas
 
@@ -332,5 +333,22 @@ Account.hasMany(Token, {
     }
 })
 
+//Notificacion
+Account.hasMany(Notifications, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'usuario_recibe',
+        allowNull: false
+    }
+});
+
+
+Account.hasMany(Notifications, {
+    onDelete: 'CASCADE',
+    foreignKey: {
+        name: 'usuario_envia',
+        allowNull: false
+    }
+})
 
 // Service.belongsTo(Post);

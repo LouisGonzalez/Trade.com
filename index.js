@@ -41,6 +41,7 @@ const Card = require('./Routes/CardsRoutes');
 const Search = require('./Routes/SearchRoutes');
 const AuthRoutes = require('./Routes/AuthRoutes');
 const Member = require('./Routes/MemberRoutes');
+const Notify = require('./Routes/NotifyRoutes');
 
 
 //inicializaciones
@@ -85,6 +86,7 @@ app.use(Card);
 app.use(Search);
 app.use(AuthRoutes);
 app.use(Member);
+app.search(Notify);
 
 
 server.listen(PORT, function(){

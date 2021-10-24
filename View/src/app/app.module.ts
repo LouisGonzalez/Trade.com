@@ -25,6 +25,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalVerifyComponent } from './components/modal-verify/modal-verify.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -63,6 +64,7 @@ import {MatIconModule} from '@angular/material/icon';
     EditProfileComponent,
     NavUserComponent,
     ModalVerifyComponent,
+    NotificationsComponent,
     ChatComponent,
     ProductSearchComponent,
     ArticleFoundComponent,

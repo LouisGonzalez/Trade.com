@@ -47,6 +47,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Materials
 import {MatIconModule} from '@angular/material/icon';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
+import { SearchAllUsersComponent } from './components/search-all-users/search-all-users.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
     AffiliatesComponent,
     SmsComponent,
     AffiliatesComponent,
-    AddContactComponent
+    AddContactComponent,
+    SearchAllUsersComponent
   ],
   imports: [
     BrowserModule,

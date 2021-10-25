@@ -21,4 +21,6 @@ Router.patch('/user/business', AccountController.updateUserBusiness);
 //DELETE
 Router.delete('/user', AccountController.deleteUser);
 
+Router.get('/allUsers', AccountController.getUsers);
+
 module.exports = Router;

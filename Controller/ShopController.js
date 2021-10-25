@@ -14,16 +14,16 @@ ShopController.createCart = (req,res,next) => {
     next();
 }
 
-ShopController.addPost = (req,res)=>{   
+ShopController.addPost = async (req,res)=>{   
     const existe = existPost(req,res);
     console.log(existe);
     if(!existe){  
-        const post = Post.onePost(req.body.id);
+        const post = await Post.onePost(req.body.id);
         req.session.cart.push({
             "id": req.body.id,
             "cantidad":req.body.cantidad,
             "divisa": post.divisa,
-            "precio": post.precio
+            "precio": post.costo
         });
     }
     res.send("B")
@@ -67,17 +67,17 @@ function existPost(req,res){
 }
 
 ShopController.buy = async (req,res) =>{
-    total = total(req);
-    const a = TransactionModel.buy(req,res,total);
+    totalV = total(req);
+    const a = TransactionModel.buy(req,res,totalV);
     console.log(a);
 }
 
 function total(req){
-    total = 0
+    totalV = 0
     req.session.cart.forEach(cart => {
-        total+=cart.precio * cart.cantidad;     
+        totalV+=cart.precio * cart.cantidad;     
     });
-    return total;
+    return totalV;
 }
 
 

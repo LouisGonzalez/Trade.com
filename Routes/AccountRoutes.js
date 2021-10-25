@@ -18,7 +18,9 @@ Router.patch('/user/standard', AccountController.updateUserStandard);
 //UPDATE BUSINESS
 Router.patch('/user/business', AccountController.updateUserBusiness);
 
+Router.get('/allUser', isLoggedIn, AccountController.allUser);
+
 //DELETE
-Router.delete('/user', AccountController.deleteUser);
+Router.delete('/user', isLoggedIn,AccountController.deleteUser);
 
 module.exports = Router;

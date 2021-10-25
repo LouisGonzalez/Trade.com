@@ -22,7 +22,7 @@ export class UserProfileService {
     });
   }
   
-  editUser(data: any){
+  updateUser(data: any){
     return this.http.post<User>(this.URL_API+'/logged', data, {
       withCredentials:true
     });

@@ -12,11 +12,15 @@ export class SignUpService {
 
     
   getSignUpView(){
-    return this.http.get(this.URL_API+'/signup');
+    return this.http.get(this.URL_API+'/signup',{
+      withCredentials:true
+    });
   }
 
   postSignUp(data: any){
-    return this.http.post(this.URL_API+'/signup', data);
+    return this.http.post(this.URL_API+'/signup', data,{
+      withCredentials:true
+    });
   }
 
 

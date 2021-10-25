@@ -20,4 +20,6 @@ Router.patch('/Cart',isLoggedIn, ShopController.updateCart);
 
 Router.get('/Shop', ShopController.getAll);
 
+Router.post('/Buy',isLoggedIn, ShopController.buy);
+
 module.exports = Router;

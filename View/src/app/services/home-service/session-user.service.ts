@@ -24,13 +24,25 @@ export class SessionUserService {
   }
 
   getLogin(){
-    return this.http.get(this.URL_API+'/login',{
+    return this.http.get<any>(this.URL_API+'/login',{
       withCredentials:true
     });
   }
 
   getLogout(){
-    return this.http.get(this.URL_API+'/logout',{
+    return this.http.get<any>(this.URL_API+'/logout',{
+      withCredentials:true
+    });
+  }
+
+  getIsLogged(){
+    return this.http.get<any>(this.URL_API+'/isLogged',{
+      withCredentials:true
+    });
+  }
+
+  postVerify(data: any){
+    return this.http.post<any>(this.URL_API+'/verification',data,{
       withCredentials:true
     });
   }

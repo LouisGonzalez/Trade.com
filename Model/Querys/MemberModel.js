@@ -24,7 +24,7 @@ const returnUsers = async (req, res) => {
 async function createMember(req, res)  {
     const exist = await Membership.findOne({
         where: {
-            id_cuenta_empresarial: 1,
+            id_cuenta_empresarial: req.body.id_cuenta_empresarial,
             id_usuario: req.body.id_usuario,
             fecha_cierre: {
                 [Op.eq]: null
@@ -33,7 +33,7 @@ async function createMember(req, res)  {
     })
     if(exist != null){
         console.log('Este usuario actualmente esta afiliado a esta cuenta');
-        res.send('Este usuario actualmente esta afiliado a esta  cuenta');
+        res.json({menssage: 'Este usuario actualmente esta afiliado a esta  cuenta'});
     } else {
         await Membership.create({
             id_cuenta_empresarial: req.body.id_cuenta_empresarial,

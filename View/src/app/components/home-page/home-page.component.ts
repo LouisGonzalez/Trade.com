@@ -58,16 +58,13 @@ export class HomePageComponent implements OnInit {
 
   getUser(){
     this.homeUserService.getUser().subscribe((res) => {
-      console.log('ls:',res);
       this.homeUserService.selectedUser = res;
       this.userName = this.homeUserService.selectedUser.user;
-      // console.log('Usuario:',this.homeUserService.selectedUser);
     });
   }
 
   getIsLogged(){
     this.sessionUserService.getIsLogged().subscribe((res) => {
-      console.log('esta logueado',res);
       if(!res){
         this._router.navigate(['/login']);
       }else{

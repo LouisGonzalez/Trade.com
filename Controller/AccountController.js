@@ -51,8 +51,14 @@ AccountController.updateUserBusiness = async (req,res)=>{
     await BusinessAccountModel.updateAccount(req);
 }
 
-AccountController.getUsers = async (req, res) => {
-    return await AccountModel.returnAccounts(req, res);
+AccountController.allUser = async (req,res) =>{
+    const user = await AccountModel.allUser(req,res);
+    res.json(user);
+}
+
+AccountController.oneUser = async (req, res) =>{
+    const user = await AccountModel.oneUser(req,res);
+    res.json(user);
 }
 
 module.exports = AccountController;

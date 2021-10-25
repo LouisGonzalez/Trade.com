@@ -89,6 +89,39 @@ async function searchAccounts(){
     return await Account.findAll();
 }
 
+async function allUser(req,res){
+    return await Account.findAll({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            [Op.not]:[
+                {id_cuenta: req.user}
+            ]
+        },
+        include:[{
+            model: StandardAccount,
+            model: BusinessAccount  
+        }]
+    })
+}
+
+async function oneUser(req,res){
+    return await Account.findAll({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            id_cuenta: req.body.id,
+            [Op.not]:[
+                {id_cuenta: req.user}
+            ]
+        },
+        include:[{
+            model: StandardAccount,
+            model: BusinessAccount  
+        }]
+    })
+}
+
 const returnAccounts = async(req, res) => {
     try {
         const Account = await searchAccounts();
@@ -99,5 +132,5 @@ const returnAccounts = async(req, res) => {
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, returnAccounts
+    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, returnAccounts, allUser, oneUser
 }

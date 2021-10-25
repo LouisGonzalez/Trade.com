@@ -27,6 +27,8 @@ async function searchMyAffilities(req, res){
 }
 
 
+
+
 const returnAffilites = async(req, res) => {
     try {
         const Affiliate = await searchMyAffilities(req, res);

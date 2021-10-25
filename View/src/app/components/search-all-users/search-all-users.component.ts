@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchAllUsersService } from '../../services/search-all-users.service';
-import { User} from '../../models/user/user';
+import { User } from '../../models/find-members.mode';
+import { AffiliatesService } from '../../services/affiliates.service';
+import { FormControl, FormGroup, Validators, NgForm, FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
 
 @Component({
   selector: 'app-search-all-users',
@@ -13,7 +17,14 @@ export class SearchAllUsersComponent implements OnInit {
   searchInput:string;
   arraySearch:User[];
 
-  constructor(private searchService: SearchAllUsersService) { 
+  @Input() localUser: any;
+
+  @Input() userO: any;
+  @Input() userOf: User;
+  isCompany: boolean = false;
+  cuenta_d: any;
+
+  constructor(private searchService: SearchAllUsersService, private emmitChatService:EmmitChatService, private _router:Router,private affiliateService: AffiliatesService, public formBuilder: FormBuilder) { 
     this.searchInput="";
   }
 
@@ -22,7 +33,8 @@ export class SearchAllUsersComponent implements OnInit {
   }
 
   functionClick(){
-    console.log('existiendo...');
+    console.log('existiendo...',this.userO);
+    this._router.navigate(['/home-user/users/profile2/:user']);
   }
 
   filterFunction(){

@@ -1,10 +1,11 @@
 <div class="dropdown">
-    <button (click)="myFunction()" class="dropbtn">Agregar afiliados</button>
-     <div id="myDropdown" class="dropdown-content">
-       <input type="text" placeholder="Search.." id="myInput"  [(ngModel)]="searchInput"  (keyup)="filterFunction()">
+  <!-- <button (click)="myFunction()" class="btn btn-secondary btn--green">Search User</button> -->
+  <!-- <input type="text" placeholder="Search.." id="myInput"  [(ngModel)]="searchInput"  (keyup)="filterFunction()"> -->
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search Profile" id="myInput"  [(ngModel)]="searchInput"  (keyup)="filterFunction()">
  <!--      <ng-container #container ></ ng-container > -->
-     <div *ngIf="searchInput != ''">
-       <a *ngFor="let carrito of arraySearch" (click)="functionClick()" >{{carrito.user}}</a>
-     </div>
- </div>
-   </div>
+    <div *ngIf="searchInput != ''">
+      <a *ngFor="let carrito of arraySearch" (click)="functionClick()" >{{carrito.user}}</a>
+    </div>
+  </div>
+</div>

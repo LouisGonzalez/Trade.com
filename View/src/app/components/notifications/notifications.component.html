@@ -1,7 +1,12 @@
-<a (click)="desplegate()" class="notification">
+<a *ngIf="totalNotify>0"(click)="desplegate()" class="notification">
     <!-- <span>Inbox</span> -->
     <mat-icon >notifications</mat-icon>
-    <span class="badge" id="total">{{totalNotify}}</span>
+    <span *ngIf="totalNotify>0" class="badge" id="total">{{totalNotify}}</span>
+    <!-- <span *ngIf="totalNotify==0" class="badge" id="total">{{"   "}}</span> -->
+</a>
+<a *ngIf="totalNotify==0" (click)="desplegate()" class="notification">
+      <mat-icon >notifications</mat-icon>
+      <span *ngIf="totalNotify>0" class="badge" id="total">{{totalNotify}}</span>
 </a>
 <div id="myDropdown-notify" class="dropdown-content">
   <div>

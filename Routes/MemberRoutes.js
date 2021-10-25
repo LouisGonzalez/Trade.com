@@ -8,4 +8,5 @@ Router.post('/createMember', Member.createMember);
 //Router.post('/findAffiliates', Member.findAffiliates);
 //Router.get('/findAffiliates2', Member.findAffiliates);
 
+
 module.exports = Router;

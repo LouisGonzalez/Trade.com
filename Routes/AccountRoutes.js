@@ -17,6 +17,10 @@ const AccountController = require('../Controller/AccountController');
 //READ
 Router.get('/logged', isLoggedIn,AccountController.readUser);
 
+Router.get('/allUsers', AccountController.allUser);
+
+Router.get('/user',isLoggedIn,AccountController.oneUser);
+
 //UPDATE STANDARD
 Router.patch('/user/standard', AccountController.updateUserStandard);
 
@@ -26,7 +30,6 @@ Router.patch('/user/business', AccountController.updateUserBusiness);
 //DELETE
 Router.delete('/user', AccountController.deleteUser);
 
-Router.get('/allUsers', AccountController.getUsers);
 
 Router.post('/findAffiliates', Member.findAffiliates);
 

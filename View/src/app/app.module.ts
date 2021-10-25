@@ -47,6 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Materials
 import {MatIconModule} from '@angular/material/icon';
 import { SearchUserComponent } from './components/search-user/search-user.component';
+import { AddContactComponent } from './components/add-contact/add-contact.component';
+import { SearchAllUsersComponent } from './components/search-all-users/search-all-users.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,10 @@ import { SearchUserComponent } from './components/search-user/search-user.compon
     ProductShopComponent,
     AffiliatesComponent,
     SmsComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    AffiliatesComponent,
+    AddContactComponent,
+    SearchAllUsersComponent
   ],
   imports: [
     BrowserModule,

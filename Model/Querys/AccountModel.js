@@ -85,6 +85,19 @@ function updateAccount(req,res){
     });
 }
 
+async function searchAccounts(){
+    return await Account.findAll();
+}
+
+const returnAccounts = async(req, res) => {
+    try {
+        const Account = await searchAccounts();
+        return res.status(200).json({Account});
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK
+    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, returnAccounts
 }

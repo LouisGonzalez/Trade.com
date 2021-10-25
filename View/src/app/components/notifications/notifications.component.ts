@@ -71,7 +71,9 @@ export class NotificationsComponent implements OnInit {
     )
   }
 
-
+  newUser(){
+    this.socket.emit('new user', 'Yeferal');
+  }
 
   functionClick(){
     console.log('existiendo...');
@@ -79,11 +81,8 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.setupSocketConnection();
+
   }
 
-
-  newUser(){
-    this.socket.emit('new user', 'Yeferal');
-  }
 
 }

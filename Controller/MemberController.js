@@ -9,4 +9,4 @@ MemberController.createMember = async(req, res) => {
 }
 
 
-module.exports = MemberModel;
+module.exports = MemberController;

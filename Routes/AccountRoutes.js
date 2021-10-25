@@ -13,8 +13,9 @@ const AccountController = require('../Controller/AccountController');
 Router.get('/logged', isLoggedIn,AccountController.readUser);
 
 Router.get('/allUsers', AccountController.allUser);
+Router.get('/allUsersProf', AccountController.allUsersProf);
 
-Router.get('/user',isLoggedIn,AccountController.oneUser);
+Router.get('/user/:id',isLoggedIn,AccountController.oneUser);
 
 //UPDATE STANDARD
 Router.patch('/user/standard', AccountController.updateUserStandard);

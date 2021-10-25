@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewIni
 import { User } from 'src/app/models/user/user';
 import { ChatComponent } from 'src/app/components/chat/chat.component';
 import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
+import { ProfileService } from 'src/app/services/profile-user/profile.service';
 
 @Component({
   selector: 'app-card-user',
@@ -17,7 +18,8 @@ export class CardUserComponent implements OnInit {
 
   // @ViewChild(ChatComponent) chatH: ChatComponent;
 
-  constructor(private emmitChatService:EmmitChatService) { }
+  constructor(private emmitChatService:EmmitChatService,
+    public profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.setIsCompany();
@@ -33,8 +35,8 @@ export class CardUserComponent implements OnInit {
     console.log('adfa');
     let data = {
       cuenta_dos: this.userO,
-      // cuenta_uno: this.userOf.user
-      cuenta_uno: 'Yeferal'
+      cuenta_uno: this.userOf.user
+      // cuenta_uno: 'Yeferal'
     }
     this.emmitChatService.onChatListen(data);
     // this.chatH.hola();

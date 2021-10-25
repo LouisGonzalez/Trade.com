@@ -49,6 +49,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { SearchAllUsersComponent } from './components/search-all-users/search-all-users.component';
+import { AddServiceComponent } from './components/add-service/add-service.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { SearchAllUsersComponent } from './components/search-all-users/search-al
     SearchUserComponent,
     AffiliatesComponent,
     AddContactComponent,
-    SearchAllUsersComponent
+    SearchAllUsersComponent,
+    AddServiceComponent
   ],
   imports: [
     BrowserModule,

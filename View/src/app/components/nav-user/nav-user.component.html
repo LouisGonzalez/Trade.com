@@ -24,13 +24,14 @@
                 <!-- <li><a href="">Job Single</a></li> -->
                 <li><a [routerLink]="['/home-user/my-posts/my-articles-posted']">My articles posted</a></li>
                 <li><a [routerLink]="['/home-user/my-posts/post-article']">Post a Article</a></li>
+                <li><a [routerLink]="['/home-user/my-posts/post-article']">Post a Service</a></li>
               </ul>
             </li>
             <li class="has-children">
                 <a >Users</a>
                 <ul class="dropdown">
                   <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li>
-                  <li><a [routerLink]="['/home-user/users/followed-users']">Followed Users</a></li>
+                  <li><a [routerLink]="['/home-user/users/followed-users']">Contact Users</a></li>
                   <!-- <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li> -->
                   <li *ngIf="isCompany && USER.verificado"><a [routerLink]="['/home-user/users/affiliate-user']" >Affiliate User</a></li>
                   <li class="disabled" *ngIf="isCompany && !USER.verificado"><a [routerLink]="['/home-user/users/affiliates']" >Affiliates</a></li>
@@ -70,6 +71,7 @@
             
             <li *ngIf="isCompany" class="d-lg-none">
                 <a [routerLink]="['/home-user/my-posts/post-article']"><span class="mr-2">+</span> Post a Article</a>
+                <a [routerLink]="['/home-user/my-posts/post-article']"><span class="mr-2">+</span> Post a Service</a>
             </li>
             
             <!-- <li class="d-lg-none"><a href="">Log In</a></li> -->
@@ -84,7 +86,9 @@
           </div>
           <div *ngIf="isCompany" class="ml-auto" style="padding-right: 10px;">
             
-            <a [routerLink]="['/home-user/my-posts/post-article']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Article</a>
+            <a  [routerLink]="['/home-user/my-posts/post-article']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Article</a>
+            <span style="padding-right: 5px;"></span>
+            <a [routerLink]="['/home-user/my-posts/post-article']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Service</a>
             <!-- <a href="" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a> -->
             
           </div>

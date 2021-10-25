@@ -2,6 +2,7 @@
 const Account = require('../Initialization/Account');
 const StandardAccount = require('../Initialization/StandardAccount');
 const BusinessAccount = require('../Initialization/BusinessAccount');
+const { Op } = require("sequelize");
 
 async function createAccountLogger(req, pass){
     return await Account.create({
@@ -106,18 +107,51 @@ async function allUser(req,res){
 }
 
 async function oneUser(req,res){
-    return await Account.findAll({
+    return await Account.findOne({
         attributes: { exclude: ['password'] },
         where:{
             activa: true,
-            id_cuenta: req.body.id,
+            // id_cuenta: req.body.id,
+            id_cuenta: req.params.id,
             [Op.not]:[
                 {id_cuenta: req.user}
             ]
         },
         include:[{
             model: StandardAccount,
-            model: BusinessAccount  
+            model: BusinessAccount,
+            required: true   
+        }]
+    })
+}
+
+async function oneUserStardad(req,res){
+    return await Account.findOne({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            id_cuenta: req.params.id,
+            [Op.not]:[
+                {id_cuenta: req.user}
+            ]
+        },
+        include:[{
+            model: StandardAccount,
+            required: true 
+        }]
+    })
+}
+
+async function oneUserBussines(req,res){
+    return await Account.findOne({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            id_cuenta: req.params.id
+        },
+        include:[{
+            model: BusinessAccount,
+            required: true 
         }]
     })
 }
@@ -132,5 +166,15 @@ const returnAccounts = async(req, res) => {
 }
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, returnAccounts, allUser, oneUser
+    deleteAccount, 
+    updateAccount, 
+    createAccountLogger,
+    readUserStandardLoggedInformation, 
+    readUserBussinesLoggedInformation, 
+    readUserLoggedInformation, 
+    searchUserByPK, 
+    returnAccounts, 
+    allUser, oneUser,
+    oneUserStardad,
+    oneUserBussines
 }

@@ -8,5 +8,12 @@ MemberController.createMember = async(req, res) => {
     return await MemberModel.createMember(req, res);
 }
 
+MemberController.findAffiliates = async(req, res) => {
+//    return await MemberModel.returnAffilites(req, res);
+    return await MemberModel.returnAffilites(req, res);
+}
+
+
+
 
 module.exports = MemberController;

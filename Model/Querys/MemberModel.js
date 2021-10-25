@@ -12,6 +12,30 @@ async function searchUsers(){
     })
 }
 
+async function searchMyAffilities(req, res){
+    return await Membership.findAll({
+        where: {
+            id_cuenta_empresarial: req.body.id_cuenta_empresarial
+        },
+        include: {
+            model: Standard,
+            include: {
+                model:Account
+            }
+        }
+    })    
+}
+
+
+const returnAffilites = async(req, res) => {
+    try {
+        const Affiliate = await searchMyAffilities(req, res);
+        return res.status(200).json({Affiliate});
+    } catch(error){
+        return res.status(500).send(error.message);
+    } 
+}
+
 const returnUsers = async (req, res) => {
     try {
         const Users = await searchUsers();
@@ -50,5 +74,5 @@ async function createMember(req, res)  {
 
 
 module.exports = {
-    searchUsers, returnUsers, createMember
+    searchUsers, returnUsers, createMember, returnAffilites
 }

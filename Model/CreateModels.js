@@ -38,6 +38,7 @@ Account.hasOne(Standard, {
         allowNull: false
     }
 });
+Standard.belongsTo(Account, {foreignKey: 'cuenta_general'});
 
 //Cuenta_empresarial
 Account.hasOne(Business, {
@@ -64,6 +65,9 @@ Standard.hasMany(Member, {
         allowNull: false
     }
 });
+Member.belongsTo(Standard, {foreignKey: "id_usuario"});
+
+
 
 //Verificado
 Account.hasOne(Verification, {

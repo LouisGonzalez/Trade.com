@@ -20,4 +20,7 @@ export class AffiliatesService {
     return this.http.post<User>(this.URL_API+'/createMember',data);
   }
 
+  findAffiliates(data:any){
+    return this.http.post(this.URL_API+'/findAffiliates',data);
+  }
 }

@@ -45,6 +45,9 @@ export class PageAffiliatesComponent implements OnInit {
     this.affiliate.findAffiliates(this.affiliateForm.value).subscribe(
       response => {
         //AQUI DEVUELVE LA QUERY Y YA MIGUELIN SE ENCARGA DE OBTENERLOS CON ALGUN MODELO
+
+
+        
       },
       error => {
         console.log(error);

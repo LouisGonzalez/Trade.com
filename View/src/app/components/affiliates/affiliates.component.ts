@@ -3,6 +3,7 @@ import { User } from '../../models/find-members.mode';
 import { AffiliatesService } from '../../services/affiliates.service';
 import { FormControl, FormGroup, Validators, NgForm, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+import { BusinessClass } from '../../models/business.model';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class AffiliatesComponent implements OnInit {
   searchInput:string;
   arraySearch: Array<User> = [];
   memberForm: FormGroup;
+  businessForm: FormGroup;
+  businessAccount: BusinessClass;
   @Input() localUser: string;
   
 
@@ -29,7 +32,7 @@ export class AffiliatesComponent implements OnInit {
 
   funcionClick(idUsuario:any){
     // console.log("Buss:",this.localUser,", usuario:",idUsuario);
-    // this.createMember(idUsuario);
+     this.createMember(idUsuario);
   }
 
   filterFunction(){
@@ -49,8 +52,17 @@ export class AffiliatesComponent implements OnInit {
 
 
   createMember(idUsuario:any){
+    this.businessForm = this.formBuilder.group({
+      cuenta_general: this.localUser
+    })
+    this.affiliateService.getIdBusiness(this.businessForm.value).subscribe(
+      response => {
+        this.businessAccount = response.Business;
+      }
+    )
+
     this.memberForm = this.formBuilder.group({
-      id_cuenta_empresarial: this.localUser,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
+      id_cuenta_empresarial: 1,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_usuario: idUsuario       
     })
     this.affiliateService.createMember(this.memberForm.value).subscribe(

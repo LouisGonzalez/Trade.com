@@ -25,6 +25,23 @@ async function updateAccount(req,res){
     })
 }
 
+async function getIdBusiness(req, res){
+    return await BusinessAccount.findOne({
+        where: {
+            cuenta_general: req.body.cuenta_general
+        }
+    })
+}
+
+const returnIdBusiness = async(req, res) => {
+    try {
+        const Business = await getIdBusiness(req, res);
+        return res.status(200).json({Business});
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports ={
-    createAccount, updateAccount
+    createAccount, updateAccount, returnIdBusiness
 }

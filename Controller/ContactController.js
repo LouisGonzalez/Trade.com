@@ -12,4 +12,8 @@ ContactController.getContacts = async(req, res) => {
     return await ContactModel.returnContacts(req, res)
 }
 
+ContactController.deleteContact = async(req, res) => {
+    return await ContactModel.deleteContact(req, res);
+}
+
 module.exports = ContactController;

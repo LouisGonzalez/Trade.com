@@ -2,6 +2,7 @@
 const Post = require('../Initialization/Post');
 const Article = require('../Initialization/Article');
 const Service = require('../Initialization/Service');
+const Account = require('../Initialization/Account');
 
 async function createPost(req,res){
     return await Post.create({
@@ -111,6 +112,58 @@ const searchPost = async (req, res) => {
     }
 };
 
+//Devuelve todos los productos que pertenecen a un vendedor(empresa/usuario) especifico
+async function getMyArticles(req, res){
+    return await Article.findAll({
+        include: {
+            model: Post,
+            where: {
+                cuenta: req.body.cuenta
+            },
+            include: {
+                model: Account
+            }
+        }
+    })
+}
+
+//Devuelve todos los servicios que pertenecen a un vendedor(empresa/usuario) especifico
+const returnMyArticles = async (req, res) => {
+    try {
+        const MyArticles = await getMyArticles(req, res);
+        return res.status(200).json({ MyArticles });
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
+async function getMyServices(req, res){
+    return await Service.findAll({
+        include: {
+            model: Post,
+            where: {
+                cuenta: req.body.cuenta
+            },
+            include: {
+                model: Account
+            }
+        }
+    })
+}
+
+const returnMyServices = async (req, res) => {
+    try {
+        const MyServices = await getMyServices(req, res);
+        return res.status(200).json({ MyServices });
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
+
+
+
+
 module.exports = {
-    createPost, deletePost, updatePost, allArticles, allService, onePostArticle, onePostService, searchPost, onePost
+    createPost, deletePost, updatePost, allArticles, allService, onePostArticle, onePostService, searchPost, onePost, returnMyArticles, returnMyServices
 }

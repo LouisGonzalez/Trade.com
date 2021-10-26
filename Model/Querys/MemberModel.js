@@ -72,9 +72,23 @@ async function createMember(req, res)  {
     }   
 } 
 
-
+//Elimina un afiliado de mi lista de afiliados
+async function deleteAffiliate(req, res){
+    try {
+        Membership.destroy({
+            where: {
+                id_cuenta_empresarial: req.body.id_cuenta_empresarial,
+                id_usuario: req.body.id_usuario
+            }
+        }).then(post => {
+            return res.status(200).json({ mensaje: "Afiliado eliminado con exito" });
+        })
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
 
 
 module.exports = {
-    searchUsers, returnUsers, createMember, returnAffilites
+    searchUsers, returnUsers, createMember, returnAffilites, deleteAffiliate
 }

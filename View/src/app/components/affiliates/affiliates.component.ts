@@ -62,6 +62,7 @@ export class AffiliatesComponent implements OnInit {
     )
 
     this.memberForm = this.formBuilder.group({
+//      id_cuenta_empresarial: this.businessAccount.id_cuenta,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_cuenta_empresarial: 1,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_usuario: idUsuario       
     })

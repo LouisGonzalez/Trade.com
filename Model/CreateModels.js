@@ -103,6 +103,7 @@ Account.hasMany(Post, {
         allowNull: false
     }
 });
+Post.belongsTo(Account, { foreignKey: "cuenta"});
 
 //Servicio
 Post.hasOne(Service, {
@@ -112,6 +113,7 @@ Post.hasOne(Service, {
         allowNull: false
     }
 });
+Service.belongsTo(Post, { foreignKey: "id_post" });
 
 //Articulo
 Post.hasOne(Article, {
@@ -121,6 +123,7 @@ Post.hasOne(Article, {
         allowNull: false
     }
 });
+Article.belongsTo(Post, { foreignKey: "id_post" });
 
 //Conversacion
 Account.hasMany(Conversation, {

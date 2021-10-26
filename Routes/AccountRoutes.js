@@ -5,6 +5,8 @@ const Router = express.Router();
 
 const SearchController = require('../Controller/SearchController');
 const Member = require('../Controller/MemberController');
+const Post = require('../Controller/PostController');
+const Contact = require('../Controller/ContactController');
 
 
 const {isLoggedIn} = require('../Lib/auth');
@@ -43,5 +45,15 @@ Router.get('/search',SearchController.findPost);
 
 //Rutas BusinessRoutes
 Router.post('/getIdBusiness', AccountController.getIdBusiness);
+
+//Rutas postRoutes
+Router.post('/getMyArticles', Post.getMyArticles);
+Router.post('/getMyServices', Post.getMyServices);
+
+//Rutas contact
+Router.delete('/deleteContact', Contact.deleteContact);
+
+//Rutas afiliacion
+Router.delete('/deleteAffiliate', Member.deleteAffiliate);
 
 module.exports = Router;

@@ -27,11 +27,13 @@ PostController.seeAllService = async (req,res)=>{
 PostController.createArticle = async (req,res)=>{
     const post = await PostModel.createPost(req,res);
     await ArticleModel.createArticle(req,res,post.id);
+    return res.status(200).json();
 }
 
 PostController.createService = async (req,res)=>{
     const post = await PostModel.createPost(req,res);
     await ServiceModel.createService(req,res,post.id);
+    return res.status(200).json();
 }
 
 PostController.deletePost = async(req,res)=>{

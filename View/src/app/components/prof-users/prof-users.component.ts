@@ -29,7 +29,7 @@ export class ProfUsersComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log('param id_cuenta',this.rutaActiva.snapshot.params.id_cuenta);
+    console.log('param id_cuenta',this.rutaActiva.snapshot.paramMap);
     this.getUserActuality();
     
   }

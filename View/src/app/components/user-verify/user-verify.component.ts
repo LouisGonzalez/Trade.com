@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ChargedComponent } from '../dialogs/charged/charged.component';
 import { Router } from '@angular/router';
 import { User } from '../../models/user/user';
 import { SessionUserService } from '../../services/home-service/session-user.service';
+import { MsjAcceptComponent } from '../dialogs/msj-accept/msj-accept.component';
+// import { title } from 'process';
 
 @Component({
   selector: 'app-user-verify',
@@ -16,7 +19,8 @@ export class UserVerifyComponent implements OnInit {
   closeResult: string;
   USER: User = new User();
   
-  constructor(private modalService: NgbModal, private _router:Router, public sessionUserService: SessionUserService) { }
+  constructor(public dialog: MatDialog,
+    private modalService: NgbModal, private _router:Router, public sessionUserService: SessionUserService) { }
 
   ngOnInit(): void {
     this.getIsLogged();
@@ -60,15 +64,18 @@ export class UserVerifyComponent implements OnInit {
       email: this.USER.correo
     };
     console.log(data);
+    this.openDialog();
     this.sessionUserService.postVerify(data).subscribe(
       res=>{
         console.log('es',res);
-        alert(`A verification email has been sent to: ${this.USER.correo}`);
+        this.dialog.closeAll();
+        this.openDialog2(`A verification email has been sent to: ${this.USER.correo}`, "User Verify");
         this._router.navigate(['/home-user/user/profile']);
       },
       error=>{
-        console.error(error); 
-        alert(`A verification email has been sent to: ${this.USER.correo}`);
+        console.error(error);
+        this.dialog.closeAll(); 
+        this.openDialog2(`A verification email has not been sent to: ${this.USER.correo}`, 'User Verify');
         this._router.navigate(['/home-user/user/profile']);
         // this.msjErrorCuenta = "The username or password are not correct"
       }
@@ -77,4 +84,25 @@ export class UserVerifyComponent implements OnInit {
     // this._router.navigate(['/home-user']);
   }
 
+  openDialog() {
+    this.dialog.open(ChargedComponent, {
+      data: {
+        animal: 'panda'
+      }
+    });
+
+    // this.dialog.closeAll();
+  }
+
+  openDialog2(data: string, title: string) {
+    this.dialog.open(MsjAcceptComponent, {
+      data: {data: {
+        msj: data,
+        title: title
+      }
+      }
+    });
+  }
+
+  
 }

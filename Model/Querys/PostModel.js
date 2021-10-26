@@ -6,6 +6,7 @@ const Service = require('../Initialization/Service');
 async function createPost(req,res){
     return await Post.create({
         cuenta: req.user,
+        titulo: req.body.titulo,
         fecha_publicacion: Date.now(),
         costo: req.body.costo,
         divisa: req.body.divisa,

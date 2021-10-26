@@ -46,10 +46,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Materials
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule } from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { SearchAllUsersComponent } from './components/search-all-users/search-all-users.component';
 import { AddServiceComponent } from './components/add-service/add-service.component';
+import { StackServicesComponent } from './components/stack-services/stack-services.component';
+import { ChargedComponent } from './components/dialogs/charged/charged.component';
+import { MsjAcceptComponent } from './components/dialogs/msj-accept/msj-accept.component';
+import { ShopProductsComponent } from './components/shop-products/shop-products.component';
+import { ShopServicesComponent } from './components/shop-services/shop-services.component';
+import { ServiceShopComponent } from './components/service-shop/service-shop.component';
+import { CardCartProductComponent } from './components/shop-products/card-cart-product/card-cart-product.component';
+import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/verify-confirm.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +98,15 @@ import { AddServiceComponent } from './components/add-service/add-service.compon
     AffiliatesComponent,
     AddContactComponent,
     SearchAllUsersComponent,
-    AddServiceComponent
+    AddServiceComponent,
+    StackServicesComponent,
+    ChargedComponent,
+    MsjAcceptComponent,
+    ShopProductsComponent,
+    ShopServicesComponent,
+    ServiceShopComponent,
+    CardCartProductComponent,
+    VerifyConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +117,9 @@ import { AddServiceComponent } from './components/add-service/add-service.compon
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
     // Ng2SearchPipeModule
   ],
   providers: [

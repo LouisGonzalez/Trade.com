@@ -24,4 +24,13 @@ export class AffiliatesService {
     });
   }
 
+  getIdBusiness(data:any):Observable<any>{
+    return this.http.post(this.URL_API+'/getIdBusiness',data, {
+      withCredentials: true
+    })
+  }
+
+  findAffiliates(data:any){
+    return this.http.post(this.URL_API+'/findAffiliates',data);
+  }
 }

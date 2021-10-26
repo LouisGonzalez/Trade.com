@@ -62,4 +62,13 @@ PostController.onePost = async (req, res) =>{
     }
 }
 
+PostController.getMyArticles = async (req, res) => {
+    return await PostModel.returnMyArticles(req, res);
+}
+
+PostController.getMyServices = async (req, res) => {
+    return await PostModel.returnMyServices(req, res);
+}
+
+
 module.exports = PostController;

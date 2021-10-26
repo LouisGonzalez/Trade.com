@@ -4,7 +4,7 @@
         <input type="text" placeholder="Search.." id="myInput"  [(ngModel)]="searchInput"  (keyup)="filterFunction()">
   <!--      <ng-container #container ></ ng-container > -->
       <div *ngIf="searchInput != ''">
-        <a *ngFor="let carrito of arraySearch" (click)="funcionClick(carrito.id_cuenta)" >{{carrito.user}}</a>
+        <a *ngFor="let carrito of arraySearch" (click)="funcionClick(carrito.StandardAccount?.id_cuenta)" >{{carrito.user}}</a>
       </div>
   </div>
 </div>

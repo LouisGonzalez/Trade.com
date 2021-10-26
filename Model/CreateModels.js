@@ -38,6 +38,7 @@ Account.hasOne(Standard, {
         allowNull: false
     }
 });
+Standard.belongsTo(Account, {foreignKey: 'cuenta_general'});
 
 //Cuenta_empresarial
 Account.hasOne(Business, {
@@ -64,6 +65,9 @@ Standard.hasMany(Member, {
         allowNull: false
     }
 });
+Member.belongsTo(Standard, {foreignKey: "id_usuario"});
+
+
 
 //Verificado
 Account.hasOne(Verification, {
@@ -99,6 +103,7 @@ Account.hasMany(Post, {
         allowNull: false
     }
 });
+Post.belongsTo(Account, { foreignKey: "cuenta"});
 
 //Servicio
 Post.hasOne(Service, {
@@ -108,6 +113,7 @@ Post.hasOne(Service, {
         allowNull: false
     }
 });
+Service.belongsTo(Post, { foreignKey: "id_post" });
 
 //Articulo
 Post.hasOne(Article, {
@@ -117,6 +123,7 @@ Post.hasOne(Article, {
         allowNull: false
     }
 });
+Article.belongsTo(Post, { foreignKey: "id_post" });
 
 //Conversacion
 Account.hasMany(Conversation, {

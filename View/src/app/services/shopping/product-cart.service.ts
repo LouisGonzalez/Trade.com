@@ -24,6 +24,12 @@ export class  ProductCartService {
     });
   }
 
+  getTotalCart(){
+    return this.http.get<any>(this.URL_API+'/totalCart',{
+      withCredentials:true
+    });
+  }
+
   deleteCart(data: any){
     return this.http.delete<any>(this.URL_API+`/Cart/${data}`,{
       withCredentials:true

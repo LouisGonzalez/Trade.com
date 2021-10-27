@@ -13,8 +13,8 @@ export class ShopProductsComponent implements OnInit {
 
   listProducts: Array<Post> = [];
   listaCart: Array<ProductCart> = [];
-
-  despleged: boolean = false;
+  total: any = 0;
+  despleged: boolean = true;
 
   constructor(private articleSevice: ArticlesService, private productCartSevice: ProductCartService) { }
 
@@ -42,6 +42,19 @@ export class ShopProductsComponent implements OnInit {
         // console.log('cart',res);
         this.listaCart = [];
         this.listaCart = res;
+        this.getTotalCart();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getTotalCart(){
+    this.productCartSevice.getTotalCart().subscribe(
+      res =>{
+        this.total = res;
+        console.log('total:',this.total)
       },
       error => {
         console.log(error);

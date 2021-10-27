@@ -21,6 +21,8 @@ Router.patch('/Cart',isLoggedIn, ShopController.updateCart);
 
 Router.get('/Shop', ShopController.getAll);
 
+Router.get('/totalCart',isLoggedIn, ShopController.totalCart);
+
 Router.post('/Buy',isLoggedIn, ShopController.buy);
 
 Router.post('/transaction',isLoggedIn, TransactionController.transaction);

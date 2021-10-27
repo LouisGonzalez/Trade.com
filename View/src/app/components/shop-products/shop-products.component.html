@@ -35,12 +35,13 @@
                         
                     </div>
                     <hr>
+                    <div class="card-cart-product">
+                        <p class="line-cart">Total: {{total}} USD <span>&nbsp;&nbsp;&nbsp;</span></p>
+                    </div>
+                    <!-- <hr style="background: rebeccapurple; height: 0px;"> -->
                     <div *ngIf="despleged" >
                         <div class="target-cart-shop">
                             <!-- <div style="height: 0px;"></div> -->
-                            <div class="card-cart-product">
-                                <p class="line-cart">Total 0 <span>&nbsp;&nbsp;&nbsp;</span></p>
-                            </div>
                             <app-card-cart-product *ngFor="let productCart of listaCart; let i = index" [productCart]="productCart" [index]="i" (mycart)="deleteCart($event)"></app-card-cart-product>
                         </div>
                     </div>

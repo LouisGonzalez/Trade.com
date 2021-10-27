@@ -211,10 +211,10 @@
     /* margin-bottom: 75px; */
     /* min-width: 180vh;
     min-height: 100vh; */
-    min-width: 300px;
+    min-width: 310px;
     min-height: 50px;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 10px;
+    max-height: 410px;
     border-radius: 10px;
     
 
@@ -290,10 +290,10 @@
 
 .target-cart-shop {
     overflow: auto;
-    min-width: 300px;
+    min-width: 310px;
     min-height: 50px;
-    max-width: 300px;
-    max-height: 220px;
+    max-width: 310px;
+    max-height: 300px;
     border-radius: 10px;
 }
 

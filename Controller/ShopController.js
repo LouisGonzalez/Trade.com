@@ -26,7 +26,7 @@ ShopController.addPost = async (req,res)=>{
             "precio": post.costo
         });
     }
-    res.send("B")
+    res.status(200).json({message: "AddPost"});
 }
 
 ShopController.getAll= (req,res)=>{
@@ -36,6 +36,7 @@ ShopController.getAll= (req,res)=>{
 
 ShopController.deleteAll = (req,res)=>{
     req.session.cart = [];
+    res.status(200).json({message: "Clean Cart"});
 }
 
 ShopController.deletePost = (req,res)=>{
@@ -44,6 +45,7 @@ ShopController.deletePost = (req,res)=>{
             object.splice(index,1);
         }
     })
+    res.status(200).json({message: "Delete Cart"});
 }
 
 ShopController.updateCart = (req,res)=>{
@@ -70,6 +72,10 @@ ShopController.buy = async (req,res) =>{
     totalV = total(req);
     const a = TransactionModel.buy(req,res,totalV);
     console.log(a);
+}
+ShopController.totalCart  = async (req,res) =>{
+    totalV = total(req);
+    res.status(200).json(totalV);
 }
 
 function total(req){

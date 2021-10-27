@@ -10,6 +10,16 @@ async function createTransaction(req,res){
     })
 }
 
+async function buyTransaction(user,receptor,monto,divisa){
+    return await Transaction.create({
+        cuenta_emisora: user,
+        cuenta_receptora: receptor,
+        monto: monto,
+        valisa: divisa,
+        fecha: Date.now(),  
+    })
+}
+
 module.exports = {
-    createTransaction
+    createTransaction, buyTransaction
 }

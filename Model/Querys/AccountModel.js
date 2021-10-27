@@ -124,7 +124,8 @@ async function allUser(req,res){
         },
         include:[{
             model: StandardAccount,
-            model: BusinessAccount  
+            model: BusinessAccount
+            //required:true
         }]
     })
 }

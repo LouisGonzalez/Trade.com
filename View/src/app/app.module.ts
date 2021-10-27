@@ -49,7 +49,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SearchUserComponent } from './components/search-user/search-user.component';
-import { AddContactComponent } from './components/add-contact/add-contact.component';
+import { AddContactComponent } from './components/dialogs/add-contact/add-contact.component';
 import { SearchAllUsersComponent } from './components/search-all-users/search-all-users.component';
 import { AddServiceComponent } from './components/add-service/add-service.component';
 import { StackServicesComponent } from './components/stack-services/stack-services.component';
@@ -60,6 +60,12 @@ import { ShopServicesComponent } from './components/shop-services/shop-services.
 import { ServiceShopComponent } from './components/service-shop/service-shop.component';
 import { CardCartProductComponent } from './components/shop-products/card-cart-product/card-cart-product.component';
 import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/verify-confirm.component';
+import { MyContactsComponent } from './components/my-contacts/my-contacts.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -106,7 +112,8 @@ import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/
     ShopServicesComponent,
     ServiceShopComponent,
     CardCartProductComponent,
-    VerifyConfirmComponent
+    VerifyConfirmComponent,
+    MyContactsComponent
   ],
   imports: [
     BrowserModule,
@@ -119,9 +126,18 @@ import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatSelectModule,
+    MatProgressSpinnerModule, 
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatFormFieldModule,
     // Ng2SearchPipeModule
   ],
+  // exports: [
+  //   MatButtonModule,
+  //   MatFormFieldModule
+  // ],
   providers: [
     CookieService
   ],

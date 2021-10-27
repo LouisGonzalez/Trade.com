@@ -35,12 +35,12 @@ ShopController.getAll= (req,res)=>{
 }
 
 ShopController.deleteAll = (req,res)=>{
-    res.session.cart = [];
+    req.session.cart = [];
 }
 
 ShopController.deletePost = (req,res)=>{
     req.session.cart.forEach((cart, index, object)=>{
-        if(cart.id == req.body.id){
+        if(cart.id == req.params.id){
             object.splice(index,1);
         }
     })

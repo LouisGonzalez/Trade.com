@@ -14,10 +14,10 @@
         <div class="option-article">
           <!-- <button class="btn btn--radius-2 btn--red" type="submit">+1 Add Carret</button>
           <button class="btn btn--radius-2 btn--green" type="submit">View</button> -->
-            <form action="POST">
-              <input class="input-cart-add" type="number" class="" style="margin-right: 5px !important; width: 70px; text-align: right;" min="1" step="1" value="1">
+            <form action="POST" [formGroup]="cantidadForm">
+              <input formControlName="cantidad" class="input-cart-add" type="number" class="" style="margin-right: 5px !important; width: 70px; text-align: right;" min="1" step="1" value="1">
               <!-- <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Add Carret</button> -->
-              <a class="icn-cart-add" style="margin-right: 5px !important;"><mat-icon>add_shopping_cart</mat-icon></a>
+              <a class="icn-cart-add" style="margin-right: 5px !important;" (click)="setCart()"><mat-icon>add_shopping_cart</mat-icon></a>
               <!-- <button class="btn btn-primary btn--green" style="margin-right: 5px !important;">View</button> -->
             </form>
             

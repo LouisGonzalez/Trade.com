@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '../../models/find-members.mode';
+import { User } from '../../models/user/user';
 import { AffiliatesService } from '../../services/affiliates.service';
 import { FormControl, FormGroup, Validators, NgForm, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -63,7 +63,7 @@ export class AffiliatesComponent implements OnInit {
 
     this.memberForm = this.formBuilder.group({
 //      id_cuenta_empresarial: this.businessAccount.id_cuenta,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
-      id_cuenta_empresarial: 1,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
+      id_cuenta_empresarial: this.localUser,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_usuario: idUsuario       
     })
     this.affiliateService.createMember(this.memberForm.value).subscribe(
@@ -79,16 +79,22 @@ export class AffiliatesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.arraySearch.length);
-    // let v = this.arraySearch.length;
-    this.affiliateService.getUsers().subscribe(
+    this.setAffiliate();
+  }
+
+  setAffiliate(){
+    // 
+    
+    this.affiliateService.getAllUserNotAffiliate().subscribe(
       response => {
-        console.log("d",response);
-        this.arraySearch = response.Users;
+        // console.log('adfaa',response);
+        this.arraySearch = response;
+        console.log(response);
         for(let i = 0; i < this.arraySearch.length; i++){
-          if(this.arraySearch[i].StandardAccount == null){
+          if(this.arraySearch[i].StandardAccount == undefined){
             this.arraySearch.splice(i,1);
             i--;
+            // console.log(this.arraySearch.length);
           }
         }
       },

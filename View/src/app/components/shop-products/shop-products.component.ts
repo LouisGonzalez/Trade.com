@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post/post';
+import { ProductCart } from 'src/app/models/shopping/product-cart';
 import { ArticlesService } from 'src/app/services/products/articles.service';
+import { ProductCartService } from 'src/app/services/shopping/product-cart.service';
 
 @Component({
   selector: 'app-shop-products',
@@ -10,13 +12,15 @@ import { ArticlesService } from 'src/app/services/products/articles.service';
 export class ShopProductsComponent implements OnInit {
 
   listProducts: Array<Post> = [];
+  listaCart: Array<ProductCart> = [];
 
   despleged: boolean = false;
 
-  constructor(private articleSevice: ArticlesService) { }
+  constructor(private articleSevice: ArticlesService, private productCartSevice: ProductCartService) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.getCartAll();
   }
 
 
@@ -24,12 +28,44 @@ export class ShopProductsComponent implements OnInit {
     this.articleSevice.getAllProducts().subscribe(
       res => {
         this.listProducts = res;
-        console.log(this.listProducts);
+        // console.log(this.listProducts);
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  getCartAll(){
+    this.productCartSevice.getCartAll().subscribe(
+      res =>{
+        // console.log('cart',res);
+        this.listaCart = [];
+        this.listaCart = res;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  postCart(event: any){
+    console.log(event);
+    this.productCartSevice.postCart(event).subscribe(
+      res =>{
+        console.log(res);
+        this.getCartAll();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    // this.getCartAll();
+  }
+
+  deleteCart(event:any){
+    console.log(event);
+    this.getCartAll();
   }
 
   setDespleged(){
@@ -38,6 +74,23 @@ export class ShopProductsComponent implements OnInit {
     }else{
       this.despleged = true;
     }
+    this.getCartAll();
+  }
+
+  cleanCart(){
+    this.productCartSevice.deleteCartAll().subscribe(
+      res =>{
+        console.log('borro todo:',res);
+        this.getCartAll();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  payShop(){
+
   }
 
 }

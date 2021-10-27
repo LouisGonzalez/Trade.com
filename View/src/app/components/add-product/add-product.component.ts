@@ -72,6 +72,7 @@ export class AddProductComponent implements OnInit {
     console.log(this.postForm.value)
     this.articleService.postProduct(this.postForm.value).subscribe(
       res => {
+        console.log(res);
         // this.reloadPage();
         this.openDialog2("The Item Has Been Entered Correctly","Post Product or Article");
         // this._router.navigate(['/home-user/my-posts/post-product']);

@@ -12,11 +12,15 @@ export class AddContactService {
   constructor(private http: HttpClient) { }
 
   getMyContacts(data:any):Observable<any>{
-    return this.http.post(this.URL_API+'/getContacts',data);
+    return this.http.post(this.URL_API+'/getContacts',data, {
+      withCredentials: true
+    })
   }
 
   createContact(data:any):Observable<any>{
-    return this.http.post(this.URL_API+'/createContact',data);
+    return this.http.post<any>(this.URL_API+'/createContact',data, {
+      withCredentials: true
+    })
   }
 
 }

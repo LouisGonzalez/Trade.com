@@ -35,4 +35,10 @@ export class ArticlesService {
     });
   }
 
+  getOneProduct(data: any){
+    return this.http.get<Post>(this.URL_API+`/post/${data}`,{
+      withCredentials:true
+    });
+  }
+
 }

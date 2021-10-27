@@ -294,6 +294,7 @@
     min-height: 50px;
     max-width: 300px;
     max-height: 220px;
+    border-radius: 10px;
 }
 
 .target-cart-shop::-webkit-scrollbar-track:hover, 
@@ -329,6 +330,7 @@
 
 .target-cart-shop:hover {
     background: white;
+    border-radius: 10px;
 }
 
 .card-cart-product {
@@ -360,14 +362,12 @@
     min-width: 70%;
     max-width: 70%;
     width: 70%;
-    height: 20px;
+    min-height: 20px;
     float: left;
     display: flex;
     margin-top: -10px;
     padding-bottom: 10px;
 }
-
-
 
 .cart-rgh {
     position: relative;
@@ -402,6 +402,24 @@
 
 .icn-cart-rm:hover{
     background: #E3E3E3;
+}
+
+.opt-cart-11 {
+    width: 100px;
+    height: 30px;
+    /* background: blue; */
+}
+
+.opt-cart-12 {
+    width: 100px;
+    height: 30px;
+    /* background: red; */
+}
+
+.opt-cart-13 {
+    width: 100px;
+    height: 30px;
+    /* background: #9053c7; */
 }
 
 .line-cart {

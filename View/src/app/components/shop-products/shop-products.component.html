@@ -10,14 +10,27 @@
             </div>
             <div>
                 <div class="target-white-product-shop">
-                    <app-product-shop *ngFor="let product of listProducts; let i = index" [product]="product"></app-product-shop>
+                    <app-product-shop *ngFor="let product of listProducts; let i = index" [product]="product" (mycart)="postCart($event)"></app-product-shop>
                 </div>
                 <span style="padding-right: 25px;"></span>
                 <div class="target-white-carret">
                     <div class="opt-cart">
-                        <a class="icn-cart" (click)="setDespleged()">
-                            <mat-icon>shopping_cart</mat-icon>
-                        </a>
+                        <div class="opt-cart-11 line-cart">
+                            <a class="icn-cart" (click)="cleanCart()">
+                                <mat-icon> cancel_presentation</mat-icon>
+                            </a>
+                        </div>
+                        <div class="opt-cart-12 line-cart">
+                            <a class="icn-cart" (click)="setDespleged()">
+                                <mat-icon>shopping_cart</mat-icon>
+                            </a>
+                        </div>
+                        <div class="opt-cart-13 line-cart">
+                            <a class="icn-cart" (click)="payShop()">
+                                <mat-icon>payment</mat-icon>
+                            </a>
+                        </div>
+                        
                         <!-- <mat-icon>add_shopping_cart</mat-icon> -->
                         
                     </div>
@@ -28,14 +41,7 @@
                             <div class="card-cart-product">
                                 <p class="line-cart">Total 0 <span>&nbsp;&nbsp;&nbsp;</span></p>
                             </div>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
-                            <app-card-cart-product></app-card-cart-product>
+                            <app-card-cart-product *ngFor="let productCart of listaCart; let i = index" [productCart]="productCart" [index]="i" (mycart)="deleteCart($event)"></app-card-cart-product>
                         </div>
                     </div>
                 </div>

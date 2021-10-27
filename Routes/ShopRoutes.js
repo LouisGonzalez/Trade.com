@@ -10,7 +10,7 @@ Router.use(isLoggedIn,ShopController.createCart);
 
 Router.get('/CartAll',isLoggedIn,ShopController.getAll);
 
-Router.delete('/Cart', isLoggedIn, ShopController.deletePost);
+Router.delete('/Cart/:id', isLoggedIn, ShopController.deletePost);
 
 Router.post('/Cart', isLoggedIn, ShopController.addPost);
 

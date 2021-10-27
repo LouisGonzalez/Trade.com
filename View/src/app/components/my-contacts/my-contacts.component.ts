@@ -1,31 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
+import { HomeUserService } from 'src/app/services/home-service/home-user.service';
 import { SessionUserService } from 'src/app/services/home-service/session-user.service';
-import { ProfileService } from 'src/app/services/profile-user/profile.service';
-import {HomeUserService} from '../../services/home-service/home-user.service';
 
 @Component({
-  selector: 'app-global-user',
-  templateUrl: './global-user.component.html',
-  styleUrls: ['./global-user.component.css']
+  selector: 'app-my-contacts',
+  templateUrl: './my-contacts.component.html',
+  styleUrls: ['./my-contacts.component.css']
 })
-export class GlobalUserComponent implements OnInit {
+export class MyContactsComponent implements OnInit {
 
   users: Array<User> = [];
   public USER: User = new User();
   isCompany: boolean = false;
-
-  constructor(private _router:Router, 
-    public homeUserService: HomeUserService, 
-    public sessionUserService: SessionUserService,
-    public profileService: ProfileService) { }
+  
+  constructor(private _router:Router, public homeUserService: HomeUserService, public sessionUserService: SessionUserService) { }
 
   ngOnInit(): void {
     // this.getIsLogged();
-    this.getUser();
-    this.getAllUser();
-    
   }
 
   logout(){
@@ -47,8 +40,7 @@ export class GlobalUserComponent implements OnInit {
       if(this.USER.StandardAccount==undefined){
         this.isCompany = true;
       }
-      // this.getAllUser();
-      // this.users.push(this.USER);
+      this.users.push(this.USER);
     });
   }
 
@@ -61,18 +53,6 @@ export class GlobalUserComponent implements OnInit {
         this.getUser();
       }
     });
-  }
-
-  getAllUser(){
-    this.profileService.getAllUser().subscribe(
-      res => {
-        console.log('a',res);
-        this.users = res;
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 
 }

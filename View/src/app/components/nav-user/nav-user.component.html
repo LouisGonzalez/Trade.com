@@ -49,6 +49,7 @@
                 <ul class="dropdown">
                   <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li>
                   <li><a [routerLink]="['/home-user/users/followed-users']">Contact Users</a></li>
+                  <!-- <li><a [routerLink]="['/home-user/users/my-contacts']">My Contact</a></li> -->
                   <!-- <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li> -->
                   <li *ngIf="isCompany && USER.verificado"><a [routerLink]="['/home-user/users/affiliate-user']" >Affiliate User</a></li>
                   <li class="disabled" *ngIf="isCompany && !USER.verificado"><a [routerLink]="['/home-user/users/affiliates']" >Affiliates</a></li>

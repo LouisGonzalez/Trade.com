@@ -43,6 +43,7 @@ const Search = require('./Routes/SearchRoutes');
 const AuthRoutes = require('./Routes/AuthRoutes');
 const Member = require('./Routes/MemberRoutes');
 const Notify = require('./Routes/NotifyRoutes');
+const Exchange = require('./Routes/ExchangeRoutes');
 const Contact = require('./Routes/ContactRoutes');
 
 //inicializaciones
@@ -88,7 +89,9 @@ app.use(Search);
 app.use(AuthRoutes);
 app.use(Member);
 app.use(Notify);
+//p.use(Exchange);
 app.use(Contact);
+
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);

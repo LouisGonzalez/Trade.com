@@ -11,19 +11,29 @@ WalletController.createWallet = async (req,res) => {
 }
 
 WalletController.addCredit = async (req,res) =>{
-    const walletUser = await Wallet.existWallet(req , res);
-    if(walletUser == undefined){
-        await Wallet.createWallet(req,res);
-    }else{
-        await Wallet.addCredit(req.res);
-    }
+    return await addCreditWallet(req.user, req.body.divisa, req.body.monto);
 }
 
 WalletController.withdrawalsCredit = async (req,res) =>{
-    const walletUser = await Wallet.existWallet(req , res);
+    return await withdrawalsCreditWallet(req.user, req.body.divisa, req.body.monto);
+}
+
+WalletController.addCreditWallet = async (user, divisa, monto) =>{
+    const walletUser = await Wallet.existWallet(user, divisa);
     if(walletUser == undefined){
-        res.json("error");
+        return await Wallet.createWallet(user, divisa, monto);
     }else{
-        await Wallet.withdrawalsCredit(req,res);
+        return await Wallet.addCredit(user, divisa, monto);
     }
 }
+
+WalletController.withdrawalsCreditWallet = async (user,divisa,monto) => {
+    const walletUser = await Wallet.existWallet(user,divisa);
+    if(walletUser == undefined){
+        console.log("error");
+    }else{
+        return await Wallet.withdrawalsCredit(user,divisa,monto);
+    }
+}
+
+module.exports = WalletController;

@@ -57,6 +57,7 @@ Business.hasMany(Member, {
         allowNull: false
     }
 });
+Member.belongsTo(Business, {foreignKey: "id_cuenta_empresarial"})
 
 Standard.hasMany(Member, {
     onDelete: 'CASCADE',

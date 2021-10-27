@@ -55,5 +55,6 @@ Router.delete('/deleteContact', Contact.deleteContact);
 
 //Rutas afiliacion
 Router.delete('/deleteAffiliate', Member.deleteAffiliate);
+Router.post('/getNoAffiliates', Member.returnNoAffiliates);
 
 module.exports = Router;

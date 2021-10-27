@@ -2,7 +2,7 @@
 const express = require('express');
 //db
 const Post = require('../Model/Querys/PostModel');
-const TransactionModel = require('../Model/Querys/TransactionModel');
+const TransactionModel = require('../Model/Querys/BuyModel');
 const ShopController = {};
 
 ShopController.createCart = (req,res,next) => {    

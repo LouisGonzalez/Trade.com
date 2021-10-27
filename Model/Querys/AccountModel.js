@@ -2,6 +2,7 @@
 const Account = require('../Initialization/Account');
 const StandardAccount = require('../Initialization/StandardAccount');
 const BusinessAccount = require('../Initialization/BusinessAccount');
+const Wallet = require('../Initialization/Wallet')
 const { Op } = require("sequelize");
 
 async function createAccountLogger(req, pass){
@@ -16,7 +17,13 @@ async function createAccountLogger(req, pass){
         password: pass,
         verificado: false,
         activa: true
-    });
+    }).then(
+        await Wallet.create({
+            cuenta: req.body.id,
+            divisa: "USD",
+            monto: 0
+        })
+    );
 }
 
 async function readUserStandardLoggedInformation(req){
@@ -104,7 +111,22 @@ async function allUser(req,res){
     })
 }
 
+async function oneUser(req,res){
+    return await Account.findOne({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            id_cuenta:req.body.id            
+        },
+        include:[{
+            model: StandardAccount,
+            model: BusinessAccount  
+        }]
+    })
+}
+
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, allUser
+    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, 
+    readUserLoggedInformation, searchUserByPK, allUser, oneUser
 }

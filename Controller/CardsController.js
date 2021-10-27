@@ -3,6 +3,7 @@ const passport = require('passport');
 
 const CardModel = require('../Model/Querys/CardModel');
 const SimulationBank = require('./SimulatorBank');
+const WalletController = require('./WalletController');
 
 const ExternalAccount = {};
 
@@ -15,7 +16,7 @@ ExternalAccount.addCardView = async (req,res)=>{
 }
 
 ExternalAccount.getCards = async(re,res)=>{
-    const tarjeta = await CardModel.tarjetas(req);
+    const tarjeta = await CardModel.cards(req);
 }
 
 ExternalAccount.addCard = async (req,res) =>{    
@@ -42,7 +43,7 @@ ExternalAccount.addCredit = async (req,res) =>{
     const card = await CardModel.existCard(req);
     if(card != undefined){
         if(SimulationBank.bankResponse){
-            //agregar credito
+            await WalletController.addCredit(req,res);
             //mensaje exito
         }else{
             //mensaje credito rechazado

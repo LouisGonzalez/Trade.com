@@ -3,26 +3,28 @@ import { User } from '../../models/find-members.mode';
 import { AffiliatesService } from '../../services/affiliates.service';
 import { FormControl, FormGroup, Validators, NgForm, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
-import { BusinessClass } from '../../models/business.model';
-
+import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
 
 @Component({
-  selector: 'app-affiliates',
-  templateUrl: './affiliates.component.html',
-  styleUrls: ['./affiliates.component.css']
+  selector: 'app-search-user',
+  templateUrl: './search-user.component.html',
+  styleUrls: ['./search-user.component.css']
 })
-export class AffiliatesComponent implements OnInit {
+export class SearchUserComponent implements OnInit {
 
   searchInput:string;
-  arraySearch: Array<User> = [];
+  arraySearch:User[];
   memberForm: FormGroup;
-  businessForm: FormGroup;
-  businessAccount: BusinessClass;
-  @Input() localUser: string;
+  @Input() localUser: any;
+
+  @Input() userO: any;
+  @Input() userOf: User;
+  isCompany: boolean = false;
+  cuenta_d: any;
   
 
 
-  constructor(private _router:Router,private affiliateService: AffiliatesService, public formBuilder: FormBuilder) { 
+  constructor(private emmitChatService:EmmitChatService, private _router:Router,private affiliateService: AffiliatesService, public formBuilder: FormBuilder) { 
     this.searchInput = "";
   }
 
@@ -32,7 +34,9 @@ export class AffiliatesComponent implements OnInit {
 
   funcionClick(idUsuario:any){
     // console.log("Buss:",this.localUser,", usuario:",idUsuario);
-     this.createMember(idUsuario);
+    // this.createMember(idUsuario);
+    this.cuenta_d = idUsuario;
+    this.activateChat();
   }
 
   filterFunction(){
@@ -52,18 +56,8 @@ export class AffiliatesComponent implements OnInit {
 
 
   createMember(idUsuario:any){
-    this.businessForm = this.formBuilder.group({
-      cuenta_general: this.localUser
-    })
-    this.affiliateService.getIdBusiness(this.businessForm.value).subscribe(
-      response => {
-        this.businessAccount = response.Business;
-      }
-    )
-
     this.memberForm = this.formBuilder.group({
-//      id_cuenta_empresarial: this.businessAccount.id_cuenta,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
-      id_cuenta_empresarial: 1,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
+      id_cuenta_empresarial: this.localUser,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_usuario: idUsuario       
     })
     this.affiliateService.createMember(this.memberForm.value).subscribe(
@@ -78,12 +72,11 @@ export class AffiliatesComponent implements OnInit {
     )
   }
 
+  
+
   ngOnInit(): void {
-    // console.log(this.arraySearch.length);
-    // let v = this.arraySearch.length;
     this.affiliateService.getUsers().subscribe(
       response => {
-        console.log("d",response);
         this.arraySearch = response.Users;
         for(let i = 0; i < this.arraySearch.length; i++){
           if(this.arraySearch[i].StandardAccount == null){
@@ -91,11 +84,20 @@ export class AffiliatesComponent implements OnInit {
             i--;
           }
         }
-      },
-      error => {
-        console.error(error);
       }
-    );
+    )
+  }
+
+  activateChat(){
+    console.log('adfa');
+    let data = {
+      cuenta_dos: this.userO,
+      // cuenta_uno: this.userOf.user
+      cuenta_uno: this.cuenta_d
+    }
+    console.log("Cu",data);
+    this.emmitChatService.onChatListen(data);
+    // this.chatH.hola();
   }
 
 }

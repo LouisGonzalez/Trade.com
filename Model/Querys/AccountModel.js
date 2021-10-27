@@ -44,6 +44,19 @@ async function readUserBussinesLoggedInformation(req){
             id_cuenta:req.user
         },
         include:[{
+            model: StandardAccount,
+            model: BusinessAccount,
+            required: true           
+        }]
+    });
+}
+
+async function readUserBussinesLoggedInformation(req){
+    return await Account.findOne({
+        where:{
+            id_cuenta:req.user
+        },
+        include:[{
             model: BusinessAccount,
             required: true           
         }]
@@ -95,6 +108,11 @@ function updateAccount(req,res){
     });
 }
 
+
+async function searchAccounts(){
+    return await Account.findAll();
+}
+
 async function allUser(req,res){
     return await Account.findAll({
         attributes: { exclude: ['password'] },
@@ -125,8 +143,17 @@ async function oneUser(req,res){
     })
 }
 
+const returnAccounts = async(req, res) => {
+    try {
+        const Account = await searchAccounts();
+        return res.status(200).json({Account});
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
 
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, 
-    readUserLoggedInformation, searchUserByPK, allUser, oneUser
+    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, 
+    readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, allUser, 
+    oneUser, returnAccounts
 }

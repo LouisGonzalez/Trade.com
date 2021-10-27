@@ -4,7 +4,7 @@ const express = require('express');
 const StandardAccountModel = require('../Model/Querys/StandardAccountModel');
 const BusinessAccountModel = require('../Model/Querys/BusinessAccountModel');
 const AccountModel = require('../Model/Querys/AccountModel');
-const Account = require('../Model/Initialization/Account');
+const BusinessModel = require('../Model/Querys/BusinessAccountModel');
 
 const AccountController = {};
 
@@ -56,9 +56,13 @@ AccountController.allUser = async (req,res) =>{
     res.json(a);
 }
 
-AccountController.oneUser = async (req,res)=>{
+AccountController.oneUser = async (req, res) =>{
     const user = await AccountModel.oneUser(req,res);
-        res.json(user);    
+    res.json(user);
+}
+
+AccountController.getIdBusiness = async (req, res) => {
+    return await BusinessModel.returnIdBusiness(req, res);
 }
 
 module.exports = AccountController;

@@ -13,11 +13,24 @@ export class AffiliatesService {
   constructor(private http: HttpClient) { }
 
   getUsers():Observable<any>{
-    return this.http.get<User>(this.URL_API+'/searchStandard');
+    return this.http.get(this.URL_API+'/searchStandard',{
+      withCredentials:true
+    });
   }
 
   createMember(data:any){
-    return this.http.post<User>(this.URL_API+'/createMember',data);
+    return this.http.post<User>(this.URL_API+'/createMember',data,{
+      withCredentials:true
+    });
   }
 
+  getIdBusiness(data:any):Observable<any>{
+    return this.http.post(this.URL_API+'/getIdBusiness',data, {
+      withCredentials: true
+    })
+  }
+
+  findAffiliates(data:any){
+    return this.http.post(this.URL_API+'/findAffiliates',data);
+  }
 }

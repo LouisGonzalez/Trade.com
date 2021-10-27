@@ -15,5 +15,4 @@ SearchController.findStandardUsers = async (req, res) => {
 
 
 
-
 module.exports = SearchController;

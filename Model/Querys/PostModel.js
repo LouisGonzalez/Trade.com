@@ -35,7 +35,8 @@ async function updatePost(req,res){
         divisa: req.body.divisa,
         intercambio: req.body.intercambio,
         descripcion: req.body.descripcion,
-        invisible: req.body.invisible
+        invisible: req.body.invisible,
+        titulo: req.body.titulo
     },{
         where:{
             id: req.body.id,        

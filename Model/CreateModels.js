@@ -280,6 +280,7 @@ Proposal.hasOne(Proposal, {
 });
 
 //Intercambio
+/*
 Proposal.hasOne(Exchange, {
     onDelete: 'CASCADE',
     foreignKey: {
@@ -295,7 +296,7 @@ Exchange.hasMany(PostExchange, {
         name: 'id_intercambio',
         allowNull: false
     }
-});
+});*/
 
 Post.hasMany(PostExchange, {
     onDelete: 'CASCADE',

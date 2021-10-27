@@ -72,9 +72,10 @@ export class ShopProductsComponent implements OnInit {
     if(this.despleged){
       this.despleged = false;
     }else{
+      this.getCartAll();
       this.despleged = true;
     }
-    this.getCartAll();
+    
   }
 
   cleanCart(){

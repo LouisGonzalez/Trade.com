@@ -32,7 +32,7 @@ export class ProductShopComponent implements OnInit {
         id: this.product.Article?.id,
         cantidad: this.cantidadForm.get('cantidad')?.value,
         divisa: this.product.divisa,
-        precio: 55
+        costo: this.product.costo
       }
     );
   }

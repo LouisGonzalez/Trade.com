@@ -4,7 +4,8 @@ const sequelize = require('../Db');
 const PostExchange = sequelize.define('PostExchange', {
     id_intercambio: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        primaryKey: true,
+        autoIncrement: true
     },
     post: {
         type: DataTypes.INTEGER,
@@ -17,6 +18,14 @@ const PostExchange = sequelize.define('PostExchange', {
     tipo: {
         type: DataTypes.STRING(50),
         allowNull: false
+    },
+    estado:{
+        type: DataTypes.BOOLEAN,
+        allowNull:false
+    },
+    id_user:{
+        type: DataTypes.INTEGER,
+        allowNull:false
     }
 } , { 
         sequelize,

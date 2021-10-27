@@ -5,7 +5,8 @@ export class ProductCart {
     // id_producto: number;
     cantidad: any;
     divisa: string;
-    precio: any;
+    precio?: any;
+    costo: any;
 
     post?: Post;
 }

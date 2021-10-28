@@ -67,7 +67,7 @@ app.use(session({
     //     httpOnly:true,
     //     secure:false
     // },
-   store: new MySQLStore(database)
+  // store: new MySQLStore(database)
 }))
 
 app.use(express.json());

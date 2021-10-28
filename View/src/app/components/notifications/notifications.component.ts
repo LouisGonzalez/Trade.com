@@ -55,7 +55,7 @@ setupSocketConnection(){
     this.notifyService.getMyNotifications(this.userForm.value).subscribe(
       response => {
         this.arraySearch = response.Notify;
-        this.totalNotify = this.arraySearch.length;
+        this.totalNotify = this.arraySearch?.length;
         console.log('arr',response);
       },
       error => {

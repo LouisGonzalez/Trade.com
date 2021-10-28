@@ -85,17 +85,17 @@ app.use(passport.session());
 app.use(express.static('View'));
 
 //Agregar a app
-app.use(Account);
-app.use(Logger);
-app.use(Post);
-app.use(Card);
-app.use(Shop);
-app.use(Search);
-app.use(AuthRoutes);
-app.use(Member);
-app.use(Notify);
+app.use("/api",Account);
+app.use("/api",Logger);
+app.use("/api",Post);
+app.use("/api",Card);
+app.use("/api",Shop);
+app.use("/api",Search);
+app.use("/api",AuthRoutes);
+app.use("/api",Member);
+app.use("/api",Notify);
 //p.use(Exchange);
-app.use(Contact);
+app.use("/api",Contact);
 
 
 server.listen(PORT, function(){

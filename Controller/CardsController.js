@@ -19,19 +19,21 @@ ExternalAccount.getCards = async(re,res)=>{
     const tarjeta = await CardModel.cards(req);
 }
 
-ExternalAccount.addCard = async (req,res) =>{    
+ExternalAccount.addCard = async (req,res) =>{  
+    console.log(req.body);  
     const card = await CardModel.existCard(req);
     if(card == undefined){
         if(SimulationBank.bankResponse){
-            return await CardModel.createCard(req);
+            await CardModel.createCard(req);
+            res.json({});
             //mensaje exito
         }else{
             //mensaje credito rechazado
-            res.send("tarjeta ha sido rechazada por el banco");
+            res.json({message:"tarjeta ha sido rechazada por el banco"});
         }
     }else{
         //tarjeta ya existe
-        res.send("La tarjeta ya existe");
+        res.json({message:"La tarjeta ya existe"});
     }
 }
 

@@ -64,8 +64,13 @@ import { MyContactsComponent } from './components/my-contacts/my-contacts.compon
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatTableModule} from '@angular/material/table';
+import { MatInputModule} from '@angular/material/input';
+import { MatTableModule} from '@angular/material/table';
+import { MyCardsComponent } from './components/my-cards/my-cards.component';
+import { AddCardComponent } from './components/my-cards/add-card/add-card.component';
+import { WalletComponent } from './components/my-cards/wallet/wallet.component';
+import { TransfersComponent } from './components/my-cards/transfers/transfers.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -113,7 +118,11 @@ import {MatTableModule} from '@angular/material/table';
     ServiceShopComponent,
     CardCartProductComponent,
     VerifyConfirmComponent,
-    MyContactsComponent
+    MyContactsComponent,
+    MyCardsComponent,
+    AddCardComponent,
+    WalletComponent,
+    TransfersComponent
   ],
   imports: [
     BrowserModule,
@@ -131,6 +140,7 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatInputModule,
     MatTableModule,
+    MatPaginatorModule,
     MatFormFieldModule,
     // Ng2SearchPipeModule
   ],

@@ -104,10 +104,10 @@
                                   <!-- <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/edit-profile']" >Edit</a>
                                   <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/verify-account']" >Verify Account</a> -->
                                     <!-- <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button> -->
-                                    <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button>
+                                    <button *ngIf="isCompanyProf" class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button>
                                     <button class="btn btn-primary" style="margin-right: 5px !important;">Add Contact</button>
                                     <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Remove Contact</button>
-                                    <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Disaffiliate</button>
+                                    <button *ngIf="isCompanyProf" class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Disaffiliate</button>
                                     <button class="btn btn-outline-secondary btn--blue" (click)="activateChat()">Message</button>
                                 </div>
                               </div>

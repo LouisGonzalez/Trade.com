@@ -20,6 +20,7 @@ import { StackServicesComponent } from './components/stack-services/stack-servic
 import { ShopProductsComponent } from './components/shop-products/shop-products.component';
 import { ShopServicesComponent } from './components/shop-services/shop-services.component';
 import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/verify-confirm.component';
+import { MyCardsComponent } from './components/my-cards/my-cards.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -44,7 +45,7 @@ const routes: Routes = [
   {path:'home-user/users/profile2/:user',component:ProfUsersComponent},
   {path:'home-user/posts/post-product',component:ShopProductsComponent},
   {path:'home-user/posts/post-service',component:ShopServicesComponent},
-  // {path:'home-user/my-posts/post-article',component:UserVerifyComponent},
+  {path:'home-user/wallet/my-cards',component:MyCardsComponent},
   // {path:'home-user/my-posts/post-article',component:UserVerifyComponent},
   
   // {path:'verify-account/:id',component:UserVerifyComponent}

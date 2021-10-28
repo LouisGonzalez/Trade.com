@@ -36,4 +36,9 @@ WalletController.withdrawalsCreditWallet = async (user,divisa,monto) => {
     }
 }
 
+WalletController.getWallet = async(req,res)=>{
+    const walletUser = await Wallet.Wallets(req.user);
+    res.json(walletUser);
+}
+
 module.exports = WalletController;

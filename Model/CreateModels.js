@@ -200,7 +200,7 @@ Invoice.hasMany(BuySell, {
         allowNull: false
     }
 });
-
+BuySell.belongsTo(Post, {foreignKey: 'id_post'});
 //Factura
 Account.hasMany(Invoice, {
     onDelete: 'CASCADE',

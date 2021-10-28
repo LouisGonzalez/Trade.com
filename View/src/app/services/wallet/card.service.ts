@@ -22,14 +22,20 @@ export class CardService {
     });
   }
 
+  getMyCards(){
+    return this.http.get<any>(this.URL_API+'/myCards',{
+      withCredentials:true
+    });
+  }
+
   postAddCard(data: any){
     return this.http.post<any>(this.URL_API+'/addCard', data,{
       withCredentials:true
     });
   }
 
-  deleteCards(){
-    return this.http.delete<any>(this.URL_API+'/cards',{
+  deleteCards(tarjeta: string){
+    return this.http.delete<any>(this.URL_API+`/cards/${tarjeta}`,{
       withCredentials:true
     });
   }

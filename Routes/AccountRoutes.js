@@ -7,7 +7,7 @@ const SearchController = require('../Controller/SearchController');
 const Member = require('../Controller/MemberController');
 const Post = require('../Controller/PostController');
 const Contact = require('../Controller/ContactController');
-
+const WalletController = require('../Controller/WalletController');
 
 const {isLoggedIn} = require('../Lib/auth');
 
@@ -56,5 +56,7 @@ Router.delete('/deleteContact', Contact.deleteContact);
 
 //Rutas afiliacion
 Router.post('/deleteAffiliate', Member.deleteAffiliate);
+
+Router.get('/myWallet', isLoggedIn, WalletController.getWallet);
 
 module.exports = Router;

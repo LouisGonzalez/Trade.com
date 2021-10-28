@@ -15,7 +15,7 @@ export class AddCardComponent implements OnInit {
   seccionSelect: number = 1;
   @Input() USER: User;
   formCard : FormGroup=new FormGroup({
-    user: new FormControl(null,Validators.required),
+    user: new FormControl(null,null),
     fecha_corte: new FormControl(null,Validators.required),
     codigo_seguridad: new FormControl(null, Validators.required),
     tarjeta: new FormControl(null,Validators.required)
@@ -32,10 +32,11 @@ export class AddCardComponent implements OnInit {
   }
 
   createCard(){
-    if(this.formCard.valid){
+    if(!this.formCard.valid){
+      // console.log(this.formCard.value);
       return;
     }
-    // console.log(this.formCard.value);
+    console.log(this.formCard.value);
     this.cardSevice.postAddCard(this.formCard.value).subscribe(
       res => {
         if(res.message!=undefined){
@@ -45,7 +46,7 @@ export class AddCardComponent implements OnInit {
         }
       },
       error => {
-
+        console.log(error);
       }
     );
   }

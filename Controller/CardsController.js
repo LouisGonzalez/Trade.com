@@ -15,8 +15,10 @@ ExternalAccount.addCardView = async (req,res)=>{
     //regresar vista agregar tarjeta
 }
 
-ExternalAccount.getCards = async(re,res)=>{
+ExternalAccount.getCards = async(req,res)=>{
     const tarjeta = await CardModel.cards(req);
+    console.log('entro',tarjeta);
+    res.json(tarjeta);
 }
 
 ExternalAccount.addCard = async (req,res) =>{  
@@ -38,7 +40,8 @@ ExternalAccount.addCard = async (req,res) =>{
 }
 
 ExternalAccount.deleteCard = async (req,res) =>{
-    return await CardModel.deleteCard(req);
+    await CardModel.deleteCard(req);
+    res.json({});
 }
 
 ExternalAccount.addCredit = async (req,res) =>{

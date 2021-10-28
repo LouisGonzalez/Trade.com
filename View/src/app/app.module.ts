@@ -71,6 +71,8 @@ import { AddCardComponent } from './components/my-cards/add-card/add-card.compon
 import { WalletComponent } from './components/my-cards/wallet/wallet.component';
 import { TransfersComponent } from './components/my-cards/transfers/transfers.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -142,6 +144,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCheckboxModule,
+    
     // Ng2SearchPipeModule
   ],
   // exports: [

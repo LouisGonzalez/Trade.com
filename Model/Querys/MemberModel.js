@@ -49,6 +49,14 @@ const returnUsers = async (req, res) => {
     }
 }
 
+function verifyMember(exist){
+    if(exist){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 async function createMember(req, res)  {
     const exist = await Membership.findOne({
         where: {
@@ -126,6 +134,6 @@ const returnNoAffiliates = async (req, res) => {
 
 
 module.exports = {
-    searchUsers, returnUsers, createMember, returnAffilites, deleteAffiliate, returnAffilites, returnNoAffiliates
+    searchUsers, returnUsers, createMember, returnAffilites, deleteAffiliate, returnAffilites, returnNoAffiliates, verifyMember
 
 }

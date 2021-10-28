@@ -51,7 +51,7 @@ async function readUserBussinesLoggedInformation(req){
     });
 }
 
-async function readUserBussinesLoggedInformation(req){
+async function readUserBussinesLoggedInformation2(req){
     return await Account.findOne({
         where:{
             id_cuenta:req.user
@@ -60,14 +60,6 @@ async function readUserBussinesLoggedInformation(req){
             model: BusinessAccount,
             required: true           
         }]
-    });
-}
-
-async function deleteAccount(req, res){
-    return await Account.update({
-        activa:false
-    },{
-        id_cuenta: req.user
     });
 }
 

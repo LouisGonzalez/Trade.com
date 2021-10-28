@@ -48,6 +48,19 @@ passport.use('local.login', new localStrategy({
     }
 }))
 
+function verifyLocalUser(activa, pass){
+    if(activa){
+        if(pass){
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+
 passport.serializeUser((usr, done)=>{
     return done(null,usr);
 })
@@ -57,3 +70,7 @@ passport.deserializeUser(async (usr,done)=>{
       const usuario = await AccountModel.findOne({where:{id_cuenta:usr}});
       return done(null,usuario.id_cuenta);
 })
+
+module.exports = {
+    verifyLocalUser
+}

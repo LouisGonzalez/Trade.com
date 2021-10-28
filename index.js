@@ -2,7 +2,7 @@
 const express = require('express');
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
-
+const path = require('path');
 
 
 //Cors
@@ -25,13 +25,12 @@ const {database} = require('./key');
 
 
 //Definicion de puerto
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 //Passport
 const passport = require('passport')
 const session = require('express-session')
-const mysqlstore = require('express-mysql-session')
-const MySQLStore = require('express-mysql-session')(session);
+const MySQLStore = require('express-mysql-session')
 
 //Rutas
 const Account = require('./Routes/AccountRoutes');
@@ -49,12 +48,10 @@ const Contact = require('./Routes/ContactRoutes');
 //inicializaciones
 require('./Lib/Passport');
 
+
 //middleware
-const corsOptions = {origin: "http://localhost:4200"}
-app.use(cors({
-    origin: "http://localhost:4200",
-    credentials: true
-}));
+
+app.use(cors(corsOptions))
 app.use(cookieParser());
 app.use(bodyParser());
 
@@ -77,30 +74,32 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static('View'));
+
 
 //Agregar a app
-app.use(Account);
-app.use(Logger);
-app.use(Post);
-app.use(Card);
-app.use(Shop);
-app.use(Search);
-app.use(AuthRoutes);
-app.use(Member);
-app.use(Notify);
+app.use("/api",Account);
+app.use("/api",Logger);
+app.use("/api",Post);
+app.use("/api",Card);
+app.use("/api",Shop);
+app.use("/api",Search);
+app.use("/api",AuthRoutes);
+app.use("/api",Member);
+app.use("/api",Notify);
 //p.use(Exchange);
-app.use(Contact);
+app.use("/api",Contact);
+
+
 
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);
 
     //Conexion a la base de datos
-    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
+//    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
         sequelize.sync({force: false}).then(() => {
         console.log("Conexion establecida");
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
-    }))
+    })
 })

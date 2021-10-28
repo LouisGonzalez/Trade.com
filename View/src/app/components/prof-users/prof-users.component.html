@@ -8,7 +8,7 @@
                     
                 </div>
             </div>
-            <div class="target-white-2" style="margin-top: 75px;">
+            <div class="target-white-3" style="margin-top: 75px;">
                 <p></p>
             <div class="container .container-template">
                 <div class="main-body">
@@ -103,11 +103,12 @@
                                 <div class="col-sm-12">
                                   <!-- <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/edit-profile']" >Edit</a>
                                   <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/verify-account']" >Verify Account</a> -->
-                                    <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button>
-                                    <button class="btn btn-primary" style="margin-right: 5px !important;">Follow</button>
-                                    <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Unfollow</button>
-                                    <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Disaffiliate</button>
-                                    <button class="btn btn-outline-secondary btn--blue">Message</button>
+                                    <!-- <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button> -->
+                                    <button *ngIf="isCompanyProf" class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button>
+                                    <button class="btn btn-primary" style="margin-right: 5px !important;">Add Contact</button>
+                                    <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Remove Contact</button>
+                                    <button *ngIf="isCompanyProf" class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Disaffiliate</button>
+                                    <button class="btn btn-outline-secondary btn--blue" (click)="activateChat()">Message</button>
                                 </div>
                               </div>
                             </div>
@@ -182,11 +183,9 @@
                                 <div class="col-sm-12">
                                   <!-- <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/edit-profile']" >Edit</a>
                                   <a class="btn btn-info " style="margin:5px" target="__blank" [routerLink]="['/home-user/user/profile/verify-account']" >Verify Account</a> -->
-                                    <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button>
-                                    <button class="btn btn-primary" style="margin-right: 5px !important;">Follow</button>
-                                    <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Unfollow</button>
-                                    <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Disaffiliate</button>
-                                    <button class="btn btn-outline-secondary btn--blue">Message</button>
+                                  <button class="btn btn-primary" style="margin-right: 5px !important;">Add Contact</button>
+                                  <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Remove Contact</button>
+                                  <button class="btn btn-outline-secondary btn--blue" (click)="activateChat()">Message</button>
                                 </div>
                               </div>
 

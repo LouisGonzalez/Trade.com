@@ -10,9 +10,11 @@ SearchController.findPost = async (req, res) => {
 }
 
 SearchController.findStandardUsers = async (req, res) => {
-    return await MemberModel.returnUsers(req, res);
+    // return await MemberModel.returnUsers(req, res);
+    const user = await MemberModel.returnUsers(req, res);
+    
+    res.json(user);
 }
-
 
 
 

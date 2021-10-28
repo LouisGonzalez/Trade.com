@@ -4,6 +4,7 @@ const express = require('express');
 const StandardAccountModel = require('../Model/Querys/StandardAccountModel');
 const BusinessAccountModel = require('../Model/Querys/BusinessAccountModel');
 const AccountModel = require('../Model/Querys/AccountModel');
+const BusinessModel = require('../Model/Querys/BusinessAccountModel');
 
 const AccountController = {};
 
@@ -48,6 +49,42 @@ AccountController.updateUserStandard = async (req,res)=>{
 AccountController.updateUserBusiness = async (req,res)=>{
     await AccountModel.updateAccount(req,res);    
     await BusinessAccountModel.updateAccount(req);
+}
+
+AccountController.allUsersProf = async (req,res) =>{
+    const user = await AccountModel.allUser(req,res);
+    
+    res.json(user);
+}
+
+// AccountController.oneUser = async (req, res) =>{
+//     const user = await AccountModel.oneUser(req,res);
+//     res.json(user);
+// }
+
+AccountController.oneUser = async (req,res)=>{
+    const user = await AccountModel.oneUserStardad(req,res);
+    console.log('Fua',user);
+    if(user != null){
+        res.json(user);
+    }else{
+        const buss = await AccountModel.oneUserBussines(req,res);
+        console.log('Fua2',buss);
+        res.json(buss);
+    }
+}
+
+AccountController.allUser = async (req, res) => {
+    return await AccountModel.returnAccounts(req, res);
+}
+
+AccountController.getIdBusiness = async (req, res) => {
+    return await BusinessModel.returnIdBusiness(req, res);
+}
+
+AccountController.getUnitUser = async (req, res) => {
+    const User = await AccountModel.returnUnitUser(req, res);
+    res.json(User);
 }
 
 module.exports = AccountController;

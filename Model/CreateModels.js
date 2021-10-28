@@ -38,6 +38,7 @@ Account.hasOne(Standard, {
         allowNull: false
     }
 });
+Standard.belongsTo(Account, {foreignKey: 'cuenta_general'});
 
 //Cuenta_empresarial
 Account.hasOne(Business, {
@@ -56,6 +57,7 @@ Business.hasMany(Member, {
         allowNull: false
     }
 });
+Member.belongsTo(Business, {foreignKey: "id_cuenta_empresarial"})
 
 Standard.hasMany(Member, {
     onDelete: 'CASCADE',
@@ -64,6 +66,9 @@ Standard.hasMany(Member, {
         allowNull: false
     }
 });
+Member.belongsTo(Standard, {foreignKey: "id_usuario"});
+
+
 
 //Verificado
 Account.hasOne(Verification, {
@@ -99,6 +104,7 @@ Account.hasMany(Post, {
         allowNull: false
     }
 });
+Post.belongsTo(Account, { foreignKey: "cuenta"});
 
 //Servicio
 Post.hasOne(Service, {
@@ -108,6 +114,7 @@ Post.hasOne(Service, {
         allowNull: false
     }
 });
+Service.belongsTo(Post, { foreignKey: "id_post" });
 
 //Articulo
 Post.hasOne(Article, {
@@ -117,6 +124,7 @@ Post.hasOne(Article, {
         allowNull: false
     }
 });
+Article.belongsTo(Post, { foreignKey: "id_post" });
 
 //Conversacion
 Account.hasMany(Conversation, {
@@ -193,7 +201,7 @@ Invoice.hasMany(BuySell, {
         allowNull: false
     }
 });
-
+BuySell.belongsTo(Post, {foreignKey: 'id_post'});
 //Factura
 Account.hasMany(Invoice, {
     onDelete: 'CASCADE',
@@ -273,6 +281,7 @@ Proposal.hasOne(Proposal, {
 });
 
 //Intercambio
+/*
 Proposal.hasOne(Exchange, {
     onDelete: 'CASCADE',
     foreignKey: {
@@ -288,7 +297,7 @@ Exchange.hasMany(PostExchange, {
         name: 'id_intercambio',
         allowNull: false
     }
-});
+});*/
 
 Post.hasMany(PostExchange, {
     onDelete: 'CASCADE',
@@ -341,6 +350,7 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 });
+Notifications.belongsTo(Account, { foreignKey: 'usuario_recibe' });
 
 
 Account.hasMany(Notifications, {
@@ -350,5 +360,6 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 })
+Notifications.belongsTo(Account, { foreignKey: 'usuario_envia'});
 
 // Service.belongsTo(Post);

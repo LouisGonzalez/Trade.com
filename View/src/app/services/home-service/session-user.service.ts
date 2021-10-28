@@ -46,4 +46,10 @@ export class SessionUserService {
       withCredentials:true
     });
   }
+
+  postConfirmVerify(data: any){
+    return this.http.get<any>(this.URL_API+`/verification2?token=${data.token}&email=${data.email}&jwtToken=${data.jwtToken}`,{
+      withCredentials:true
+    });
+  }
 }

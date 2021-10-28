@@ -28,6 +28,25 @@ async function createContact(req, res){
     })
 }
 
+//elimina un contacto de la lista de contactos
+async function deleteContact(req, res){
+    try{
+        Contact.destroy({
+            where: {
+                cuenta: req.body.cuenta,
+                cuenta_contacto: req.body.cuenta_contacto
+            }
+        }).then(post =>{
+            return res.status(200).json({ mensaje: "Data eliminada con exito" });
+        })
+    }catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
+
+
+
 module.exports = {
-    returnContacts, createContact
+    returnContacts, createContact, deleteContact
 }

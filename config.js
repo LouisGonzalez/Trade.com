@@ -1,5 +1,4 @@
 module.exports = {
-
     database: {
             username: "root",
             password: "root",
@@ -7,5 +6,4 @@ module.exports = {
             host: "localhost",
             user:"root"         
     }
-
 }

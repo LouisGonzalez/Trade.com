@@ -10,7 +10,7 @@
             </div>
             <div class="target-white-8">
                 <div class="wrapper-users">
-                    <app-card-user-affiliate *ngFor="let user of users; let i=index" [userOf]="user"></app-card-user-affiliate>
+                    <app-card-user-affiliate *ngFor="let user of users; let i=index" [userOf]="user" [id_cuenta_empresarial]="USER.BusinessAccount?.id_cuenta"></app-card-user-affiliate>
                 </div>
             </div>
         </div>

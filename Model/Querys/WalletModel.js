@@ -3,49 +3,57 @@ const {Op} = require('sequelize');
 //Modelo db
 const Wallet = require('../Initialization/Wallet');
 
-async function createWallet(req,res){
+async function createWallet(user, divisa, monto){
     return await Wallet.create({
-        cuenta: req.body.user,
-        divisa: req.body.divisa,
-        monto: req.body.monto
+        cuenta: user,
+        divisa: divisa,
+        monto: monto
     })
 }
 
-async function addCredit(req,res){
-    return await Wallet.update({
-        monto: req.body.monto
+async function addCredit(user, divisa, monto){
+    return await Wallet.increment({
+        'monto': monto
     },{
         where:{
-            cuenta: req.body.user,
-            divisa: req.body.divisa
+            cuenta: user,
+            divisa: divisa
         }
     })
 }
 
-async function withdrawalsCredit(req,res){
-    return await Wallet.update({
-        monto: req.body.monto
+async function withdrawalsCredit(user, divisa, monto){
+    return await Wallet.increment({
+        'monto': -monto
     },{
         where:{
-            cuenta: req.body.user,
-            divisa: req.body.divisa,
+            cuenta: user,
+            divisa: divisa,
             monto:{
-                [Op.lte]: req.body.monto
+                [Op.gte]: monto
             }           
         }
     })
 }
 
-async function existWallet(req, res){
+async function existWallet(user, divisa){
     return await Wallet.findOne({
         where:{
-            cuenta: req.body.user,
-            divisa: req.body.divisa
+            cuenta: user,
+            divisa: divisa
         }
     })
 }
 
+async function Wallets(user){
+    return await Wallet.findOne({
+        attributes: { exclude: ['id','cuenta'] },
+        where:{
+            cuenta: user
+        }
+    })
+}
 
 module.exports = {
-    createWallet, addCredit, withdrawalsCredit, existWallet
+    createWallet, addCredit, withdrawalsCredit, existWallet, Wallets
 }

@@ -1,11 +1,12 @@
 .notification {
-    background-color: #555;
+    background-color: transparent;
     color: white;
     text-decoration: none;
-    padding: 15px 26px;
+    padding: 3px;
     position: relative;
     display: inline-block;
-    border-radius: 2px;
+    border-radius: 10px;
+    cursor: pointer;
   }
   
   .notification:hover {
@@ -14,23 +15,14 @@
   
   .notification .badge {
     position: absolute;
+    font-size: 10px;
     top: -10px;
     right: -10px;
-    padding: 5px 10px;
-    border-radius: 50%;
+    padding: 3px 6px;
+    border-radius: 100%;
     background: red;
     color: white;
   }
-
-
-
-
-
-
-
-
-
-
   /* Dropdown Button */
 .dropbtn {
   background-color: #04AA6D;
@@ -88,4 +80,7 @@
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display:block;
+  float: right;
+}

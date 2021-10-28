@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '../../models/find-members.mode';
+import { User } from '../../models/user/user';
 import { AffiliatesService } from '../../services/affiliates.service';
 import { FormControl, FormGroup, Validators, NgForm, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+import { BusinessClass } from 'src/app/models/business.model';
 
 
 @Component({
@@ -13,8 +14,10 @@ import { Router } from '@angular/router';
 export class AffiliatesComponent implements OnInit {
 
   searchInput:string;
-  arraySearch:User[];
+  arraySearch: Array<User> = [];
   memberForm: FormGroup;
+  businessForm: FormGroup;
+  businessAccount: BusinessClass;
   @Input() localUser: string;
   
 
@@ -29,7 +32,7 @@ export class AffiliatesComponent implements OnInit {
 
   funcionClick(idUsuario:any){
     // console.log("Buss:",this.localUser,", usuario:",idUsuario);
-    this.createMember(idUsuario);
+     this.createMember(idUsuario);
   }
 
   filterFunction(){
@@ -49,7 +52,17 @@ export class AffiliatesComponent implements OnInit {
 
 
   createMember(idUsuario:any){
+    this.businessForm = this.formBuilder.group({
+      cuenta_general: this.localUser
+    })
+    this.affiliateService.getIdBusiness(this.businessForm.value).subscribe(
+      response => {
+        this.businessAccount = response.Business;
+      }
+    )
+
     this.memberForm = this.formBuilder.group({
+//      id_cuenta_empresarial: this.businessAccount.id_cuenta,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_cuenta_empresarial: this.localUser,     //ESTE DATO DEBE SER CAMBIADO A DINAMICO
       id_usuario: idUsuario       
     })
@@ -65,20 +78,30 @@ export class AffiliatesComponent implements OnInit {
     )
   }
 
-  
-
   ngOnInit(): void {
-    this.affiliateService.getUsers().subscribe(
+    this.setAffiliate();
+  }
+
+  setAffiliate(){
+    // 
+    
+    this.affiliateService.getAllUserNotAffiliate().subscribe(
       response => {
-        this.arraySearch = response.Users;
+        // console.log('adfaa',response);
+        this.arraySearch = response;
+        console.log(response);
         for(let i = 0; i < this.arraySearch.length; i++){
-          if(this.arraySearch[i].StandardAccount == null){
+          if(this.arraySearch[i].StandardAccount == undefined){
             this.arraySearch.splice(i,1);
             i--;
+            // console.log(this.arraySearch.length);
           }
         }
+      },
+      error => {
+        console.error(error);
       }
-    )
+    );
   }
 
 }

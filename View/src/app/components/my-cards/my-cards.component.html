@@ -1,0 +1,29 @@
+<app-nav-user></app-nav-user>
+      
+  
+    <div class="hero" >
+        <div class=".container-template conteiner-login100">
+            <div class="target-options min-ww">
+                <div class="line-f" style="padding-right: 10px;">
+                    <button class="btn-add-card btn-add-card-ltr" (click)="activateAddCard()">Add card</button>
+                </div>
+                <div class="line-f" style="padding-right: 10px; float: right;">
+                    <button class="btn-add-card" (click)="activateWallet()">Wallet</button>
+                </div>
+                <div class="line-f" style="padding-right: 10px; float: right;">
+                    <button class="btn-add-card " (click)="activateTransfer()">Transefers</button>
+                </div>
+            </div>
+            <div class="target-white-5">
+                <div *ngIf="modAddCard" class="">
+                    <app-add-card [USER]="USER"></app-add-card>
+                </div>
+                <div *ngIf="modWallet" class="">
+                    <app-wallet></app-wallet>
+                </div>
+                <div *ngIf="modTransfer" class="">
+                    <app-transfers></app-transfers>
+                </div>
+            </div>
+        </div>
+    </div>

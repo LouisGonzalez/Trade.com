@@ -3,9 +3,10 @@ const { sequelize } = require("../Initialization/Post");
 const BuyAndSell = require('../Initialization/BuyAndSell');
 const Invoice = require('../Initialization/Invoice');
 const Article = require('../Initialization/Article');
+const Post = require('../Initialization/Post');
 const PostModel = require('./PostModel');
 const TransactionController = require('../../Controller/TransactionCotroller');
-const { Op } = require('sequelize');
+const { Op, Model } = require('sequelize');
 
 async function buy(req, res, total) {
     await Invoice.create({
@@ -43,6 +44,35 @@ async function buy(req, res, total) {
     res.send("Fun");
 }
 
+async function reporteCompras(req,res){
+    return await Invoice.findAll({
+        where:{
+            cuenta_efectiva: req.user
+        },
+        include:[{
+            model:BuyAndSell,
+            required:true,
+            include:[{
+                model:Post,
+                required:true
+            }]
+        }
+        ]
+    })
+}
+
+async function reporteVentas(req,res){
+    return await BuyAndSell.findAll({
+        include:[{
+            model:Post,
+            required:true,
+            where:{
+                cuenta: req.user
+            }
+        }]
+    })
+}
+
 module.exports = {
-    buy
+    buy,reporteCompras, reporteVentas
 }

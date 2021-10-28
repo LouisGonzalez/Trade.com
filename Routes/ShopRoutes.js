@@ -5,7 +5,8 @@ const Router = express.Router();
 const {isLoggedIn, isNotLoggedIn} = require('../Lib/auth');
 
 const ShopController = require('../Controller/ShopController');
-const TransactionController = require('../Controller/TransactionCotroller')
+const TransactionController = require('../Controller/TransactionCotroller');
+const Transaction = require('../Model/Initialization/Transaction');
 
 Router.use(isLoggedIn,ShopController.createCart);
 
@@ -26,5 +27,9 @@ Router.get('/totalCart',isLoggedIn, ShopController.totalCart);
 Router.post('/Buy',isLoggedIn, ShopController.buy);
 
 Router.post('/transaction',isLoggedIn, TransactionController.transaction);
+
+Router.get('/ventas', isLoggedIn, ShopController.getVentas);
+
+Router.get('/compras', isLoggedIn, ShopController.getCompras);
 
 module.exports = Router;

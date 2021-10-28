@@ -17,7 +17,7 @@ ExternalAccount.addCardView = async (req,res)=>{
 
 ExternalAccount.getCards = async(req,res)=>{
     const tarjeta = await CardModel.cards(req);
-    console.log('entro',tarjeta);
+    // console.log('entro',tarjeta);
     res.json(tarjeta);
 }
 

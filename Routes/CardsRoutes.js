@@ -22,4 +22,6 @@ Router.get('/myCards', isLoggedIn, ExternalAccount.getCards);
 
 Router.post('/addCredit',isLoggedIn, ExternalAccount.addCredit);
 
+Router.get('/userCards', isLoggedIn, ExternalAccount.getCards);
+
 module.exports = Router;

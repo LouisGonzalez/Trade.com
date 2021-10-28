@@ -49,6 +49,7 @@ export class SignInComponent implements OnInit {
   }
 
   login(){
+    console.log("hola       ");
     if(!this.loginForm.valid){
       this.msjError = "You must fill in all the fields";
       console.log('Invalid:');

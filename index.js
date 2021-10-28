@@ -2,7 +2,7 @@
 const express = require('express');
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
-
+const path = require('path');
 
 
 //Cors
@@ -48,10 +48,6 @@ const Contact = require('./Routes/ContactRoutes');
 //inicializaciones
 require('./Lib/Passport');
 
-app.use(express.static(__dirname+'/View/dist/View'));
-app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
-});
 
 //middleware
 const corsOptions = {origin: "https://comercio-electronico.herokuapp.com/"}
@@ -95,6 +91,12 @@ app.use("/api",Member);
 app.use("/api",Notify);
 //p.use(Exchange);
 app.use("/api",Contact);
+
+
+app.use(express.static(__dirname+'/View/dist/View'));
+app.get('/*',function(req,res){
+    res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
+});
 
 
 server.listen(PORT, function(){

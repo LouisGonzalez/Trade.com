@@ -25,7 +25,7 @@ const {database} = require('./key');
 
 
 //Definicion de puerto
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 //Passport
 const passport = require('passport')

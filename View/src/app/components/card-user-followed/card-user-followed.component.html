@@ -5,11 +5,9 @@
         </div>
         <div class="data-profile"> 
             <div class="mt-3">
-                <h4><a [routerLink]="['/home-user/users/profile/',userOf.id_cuenta]">{{userOf.user}}</a></h4>
-                <p class="text-secondary mb-1" *ngIf="isCompany">{{userOf.BusinessAccount?.empresa}}</p>
-                <p class="text-secondary mb-1" *ngIf="!isCompany">{{userOf.StandardAccount?.nombres}} {{userOf.StandardAccount?.apellidos}}</p>
+                <h4><a [routerLink]="['/home-user/users/profile/',userOf.cuenta_contacto]">{{userOf.nickname}}</a></h4>
+                <p class="text-secondary mb-1" *ngIf="isCompany">{{userOf.descripcion}}</p>
                 <!-- <p class="text-muted font-size-sm">{{userOf.correo}}</p> -->
-                <p class="text-muted font-size-sm">{{userOf.pais}}</p>
                 <!-- <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button> -->
                 <!-- <button class="btn btn-primary" style="margin-right: 5px !important;">Follow</button> -->
                 <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Remove Contact</button>

@@ -28,7 +28,7 @@ ShopController.addPost = async (req, res) => {
             "precio": post.costo
         });
     }
-    res.send("B")
+    res.status(200).json({message: "AddPost"});
 }
 
 ShopController.getAll = (req, res) => {
@@ -36,18 +36,19 @@ ShopController.getAll = (req, res) => {
     res.json(req.session.cart);
 }
 
-ShopController.deleteAll = (req, res) => {
+
+ShopController.deleteAll = (req,res)=>{
     req.session.cart = [];
-    res.json(req.session.cart)
+    res.status(200).json({message: "Clean Cart"});
 }
 
-ShopController.deletePost = (req, res) => {
-    req.session.cart.forEach((cart, index, object) => {
-        if (cart.id == req.body.id) {
-            object.splice(index, 1);
-            res.json(req.session.cart);
+ShopController.deletePost = (req,res)=>{
+    req.session.cart.forEach((cart, index, object)=>{
+        if(cart.id == req.params.id){
+            object.splice(index,1);
         }
     })
+    res.status(200).json({message: "Delete Cart"});
 }
 
 ShopController.updateCart = (req, res) => {
@@ -90,6 +91,10 @@ async function ff(req,res){
         }
     });
     return true;
+}
+ShopController.totalCart  = async (req,res) =>{
+    totalV = total(req);
+    res.status(200).json(totalV);
 }
 
 function total(req) {

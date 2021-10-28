@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Contact } from 'src/app/models/user/contact';
 import { User } from 'src/app/models/user/user';
 
 @Component({
@@ -8,8 +9,8 @@ import { User } from 'src/app/models/user/user';
 })
 export class CardUserFollowedComponent implements OnInit {
 
-  @Output() userO = new EventEmitter<User>();
-  @Input() userOf: User;
+  // @Output() userO = new EventEmitter<User>();
+  @Input() userOf: Contact;
   isCompany: boolean = false;
 
   constructor() { }
@@ -19,9 +20,7 @@ export class CardUserFollowedComponent implements OnInit {
   }
 
   setIsCompany(){
-    if(this.userOf.BusinessAccount!=undefined){
       this.isCompany = true;
-    }
   }
 
 }

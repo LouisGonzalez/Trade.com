@@ -10,10 +10,10 @@
                 <p class="text-secondary mb-1" *ngIf="!isCompany">{{userOf.StandardAccount?.nombres}} {{userOf.StandardAccount?.apellidos}}</p>
                 <!-- <p class="text-muted font-size-sm">{{userOf.correo}}</p> -->
                 <p class="text-muted font-size-sm">{{userOf.pais}}</p>
-                <button class="btn btn-primary" style="margin-right: 5px !important;">Affiliate</button>
+                <button *ngIf="!isAffiliate" class="btn btn-primary" style="margin-right: 5px !important;" (click)="setAffiliate()" >Affiliate</button>
                 <!-- <button class="btn btn-primary" style="margin-right: 5px !important;">Follow</button> -->
                 <!-- <button class="btn btn-primary" style="margin-right: 5px !important;">Unfollow</button> -->
-                <!-- <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Disaffiliate</button> -->
+                <button *ngIf="isAffiliate" class="btn btn-secondary btn--red" style="margin-right: 5px !important;" (click)="rmAffiliate()">Disaffiliate</button>
                 <button class="btn btn-outline-secondary btn--blue">Message</button>
             </div>
         </div>

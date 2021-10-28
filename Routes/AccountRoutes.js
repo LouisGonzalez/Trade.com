@@ -22,8 +22,9 @@ Router.get('/logged', isLoggedIn,AccountController.readUser);
 Router.get('/oneUser',AccountController.oneUser);
 
 Router.get('/allUsers', AccountController.allUser);
+Router.get('/allUsersProf', AccountController.allUsersProf);
 
-Router.get('/user',isLoggedIn,AccountController.oneUser);
+Router.get('/user/:id',isLoggedIn,AccountController.oneUser);
 
 //UPDATE STANDARD
 Router.patch('/user/standard', AccountController.updateUserStandard);
@@ -54,6 +55,6 @@ Router.post('/getMyServices', Post.getMyServices);
 Router.delete('/deleteContact', Contact.deleteContact);
 
 //Rutas afiliacion
-Router.delete('/deleteAffiliate', Member.deleteAffiliate);
+Router.post('/deleteAffiliate', Member.deleteAffiliate);
 
 module.exports = Router;

@@ -15,6 +15,11 @@ import { PageAffiliatesComponent } from './components/page-affiliates/page-affil
 import { GlobalUserComponent } from './components/global-user/global-user.component';
 import { ProfUsersComponent } from './components/prof-users/prof-users.component';
 import { FollowedUsersComponent } from './components/followed-users/followed-users.component';
+import { AddServiceComponent } from './components/add-service/add-service.component';
+import { StackServicesComponent } from './components/stack-services/stack-services.component';
+import { ShopProductsComponent } from './components/shop-products/shop-products.component';
+import { ShopServicesComponent } from './components/shop-services/shop-services.component';
+import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/verify-confirm.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -24,9 +29,12 @@ const routes: Routes = [
   {path:'home-user/user/profile',component:ProfileUserComponent},
   {path:'home-user/user/profile/edit-profile',component:EditProfileComponent},
   {path:'home-user/user/profile/verify-account',component:UserVerifyComponent},
+  {path:'verification2/:token/:email/:jwtToken',component:VerifyConfirmComponent},
 
-  {path:'home-user/my-posts/post-article',component:AddProductComponent},
-  {path:'home-user/my-posts/my-articles-posted',component:StackProductComponent},
+  {path:'home-user/my-posts/post-product',component:AddProductComponent},
+  {path:'home-user/my-posts/post-service',component:AddServiceComponent},
+  {path:'home-user/my-posts/my-products-posted',component:StackProductComponent},
+  {path:'home-user/my-posts/my-services-posted',component:StackServicesComponent},
   {path:'home-user/users/affiliate-user',component:PageAffiliateUserComponent},
   {path:'home-user/users/affiliates',component:PageAffiliatesComponent},
   {path:'home-user/users/global-users',component:GlobalUserComponent},
@@ -34,6 +42,8 @@ const routes: Routes = [
   {path:'home-user/users/followed-users',component:FollowedUsersComponent},
   {path:'home-user/users/profile/:id_cuenta',component:ProfUsersComponent},
   {path:'home-user/users/profile2/:user',component:ProfUsersComponent},
+  {path:'home-user/posts/post-product',component:ShopProductsComponent},
+  {path:'home-user/posts/post-service',component:ShopServicesComponent},
   // {path:'home-user/my-posts/post-article',component:UserVerifyComponent},
   // {path:'home-user/my-posts/post-article',component:UserVerifyComponent},
   

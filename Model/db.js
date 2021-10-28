@@ -7,17 +7,6 @@ const sequelize =  new Sequelize(
     database.password, {
         host: database.host,
         dialect: "mysql"
-/*        dialectOptions: {
-            ssl: {
-                required:true,
-                rejectUnauthorized: false
-            }
-        },
-        pool: {
-            max: 5,
-            min: 0,
-            idle: 10000
-        }*/
     }
     
 );

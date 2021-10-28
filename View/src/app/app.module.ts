@@ -61,20 +61,20 @@ import { ServiceShopComponent } from './components/service-shop/service-shop.com
 import { CardCartProductComponent } from './components/shop-products/card-cart-product/card-cart-product.component';
 import { VerifyConfirmComponent } from './components/user-verify/verify-confirm/verify-confirm.component';
 import { MyContactsComponent } from './components/my-contacts/my-contacts.component';
+import { MyCardsComponent } from './components/my-cards/my-cards.component';
+import { AddCardComponent } from './components/my-cards/add-card/add-card.component';
+import { WalletComponent } from './components/my-cards/wallet/wallet.component';
+import { TransfersComponent } from './components/my-cards/transfers/transfers.component';
+import { ModalAddCreditComponent } from './components/dialogs/modal-add-credit/modal-add-credit.component';
+import { BuyComponent } from './components/shop-products/buy/buy.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule} from '@angular/material/input';
 import { MatTableModule} from '@angular/material/table';
-import { MyCardsComponent } from './components/my-cards/my-cards.component';
-import { AddCardComponent } from './components/my-cards/add-card/add-card.component';
-import { WalletComponent } from './components/my-cards/wallet/wallet.component';
-import { TransfersComponent } from './components/my-cards/transfers/transfers.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
-import { ModalAddCreditComponent } from './components/dialogs/modal-add-credit/modal-add-credit.component';
-import { BuyComponent } from './components/shop-products/buy/buy.component';
 
 @NgModule({
   declarations: [

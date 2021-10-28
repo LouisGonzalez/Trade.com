@@ -145,15 +145,25 @@ export class BuyComponent implements OnInit {
   }
 
   finaliceCompra(){
-    console.log("dsd");
+    // console.log("dsd");
     this.buyService.postBuy(this.listaCart).subscribe(
       res => {
         console.log(res);
-        this.openDialog2("Buy",res.message);
+        this.openDialog2(res.message,"Buy");
+        this.buyService.deleteCartAll().subscribe(
+          rs => {
+            console.log(rs);
+            this.listaCart = [];
+            this.dataSource = new MatTableDataSource(this.listaCart);
+          },
+          err => {
+            console.log(err);
+          }
+        );
       },
       error => {
         console.log(error);
-        this.openDialog2("Buy","Compra no Realizada");
+        this.openDialog2("Compra no Realizada","Buy");
       }
     );
   }

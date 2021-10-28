@@ -41,7 +41,7 @@ async function buy(req, res, total) {
             await TransactionController.shop(req.user, post.cuenta, cart.divisa, cart.total);
         })
     })
-    res.send("Fun");
+    // res.send("Fun");
 }
 
 async function reporteCompras(req,res){

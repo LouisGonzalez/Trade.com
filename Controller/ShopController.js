@@ -75,9 +75,10 @@ ShopController.buy = async (req, res) => {
     totalV = total(req);
     const stock = await ff(req,res);
     const wallet = await WalletModel.existWallet(req.user, req.session.cart[0].divisa);    
-    console.log("el valor es: ", stock );
+    console.log("el valor es: ", wallet );
     if (wallet.monto >= totalV && stock) {
         await BuyModel.buy(req,res,totalV);
+        // req.session.cart = [];
         res.json({message: "Compra Existosa"});
     } else {
         res.json({message: "error no cuenta con suficiente dinero en su cuenta"});

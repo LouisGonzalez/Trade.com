@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from 'src/app/models/product-search.model';
+import { Product } from 'src/app/models/products/product';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,18 @@ export class ArticlesService {
 
   getAllProducts(){
     return this.http.get<Post[]>(this.URL_API+'/post/Article',{
+      withCredentials:true
+    });
+  }
+
+  getAllMyProducts(data: any){
+    return this.http.post<any>(this.URL_API+'/getMyArticles',data,{
+      withCredentials:true
+    });
+  }
+
+  getAllMyServices(data: any){
+    return this.http.post<any>(this.URL_API+'/getMyServices',data,{
       withCredentials:true
     });
   }

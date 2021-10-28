@@ -33,4 +33,10 @@ export class BuyService {
       withCredentials:true
     });
   }
+
+  deleteCartAll(){
+    return this.http.delete<any>(this.URL_API+'/CartAll',{
+      withCredentials:true
+    });
+  }
 }

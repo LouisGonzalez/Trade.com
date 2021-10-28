@@ -44,6 +44,7 @@ export class ModalAddCreditComponent implements OnInit {
       res => {
         console.log(res);
         this.openDialog2("Add Credit of the Wallet",res.message);
+        this.refresh();
       },
       error => {
         console.log(error);
@@ -72,5 +73,6 @@ export class ModalAddCreditComponent implements OnInit {
       }
     });
   }
+  refresh(): void { window.location.reload(); }
 
 }

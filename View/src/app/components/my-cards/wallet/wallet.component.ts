@@ -125,11 +125,14 @@ export class WalletComponent implements OnInit, AfterViewInit {
     }
   }
 
+  refresh(): void { window.location.reload(); }
+
   ngOnInit(): void {
     this.getAllCards();
     this.getMyWallet();
     this.ngAfterViewInit();
     
   }
+
 
 }

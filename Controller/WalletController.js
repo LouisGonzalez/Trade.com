@@ -11,7 +11,7 @@ WalletController.createWallet = async (req,res) => {
 }
 
 WalletController.addCredit = async (req,res) =>{
-    return await addCreditWallet(req.user, req.body.divisa, req.body.monto);
+    return await WalletController.addCreditWallet(req.user, req.body.divisa, req.body.monto);
 }
 
 WalletController.withdrawalsCredit = async (req,res) =>{

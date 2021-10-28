@@ -75,6 +75,8 @@ import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
+import { ListProductsComponent } from './components/stack-product/list-products/list-products.component';
+import { ListServicesComponent } from './components/stack-services/list-services/list-services.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +130,9 @@ import { MatSortModule } from '@angular/material/sort';
     WalletComponent,
     TransfersComponent,
     ModalAddCreditComponent,
-    BuyComponent
+    BuyComponent,
+    ListProductsComponent,
+    ListServicesComponent
   ],
   imports: [
     BrowserModule,

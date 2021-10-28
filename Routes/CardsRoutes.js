@@ -18,4 +18,6 @@ Router.post('/addCard', isLoggedIn, ExternalAccount.addCard);
 
 Router.delete('/cards', isLoggedIn, ExternalAccount.deleteCard);
 
+Router.get('/userCards', isLoggedIn, ExternalAccount.getCards);
+
 module.exports = Router;

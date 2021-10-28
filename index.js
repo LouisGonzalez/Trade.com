@@ -94,7 +94,7 @@ app.use("/api",Contact);
 
 
 app.use(express.static(__dirname+'/View/dist/View'));
-app.get('/*',function(req,res){
+app.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
 });
 

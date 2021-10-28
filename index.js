@@ -31,7 +31,7 @@ const PORT = process.env.PORT || 8080;
 const passport = require('passport')
 const session = require('express-session')
 const mysqlstore = require('express-mysql-session')
-const MySQLStore = require('express-mysql-session')(session);
+const MySQLStore = require('connect-pg-simple')(session);
 
 //Rutas
 const Account = require('./Routes/AccountRoutes');

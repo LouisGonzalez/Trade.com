@@ -1,0 +1,36 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BuyService {
+
+  readonly URL_API = "http://localhost:3000";
+
+  constructor(private http: HttpClient) { }
+
+  getVentas(){
+    return this.http.get<any>(this.URL_API+'/ventas',{
+      withCredentials:true
+    });
+  }
+
+  getComprast(){
+    return this.http.get<any>(this.URL_API+'/compras',{
+      withCredentials:true
+    });
+  }
+
+  postBuy(data: any){
+    return this.http.post<any>(this.URL_API+'/Buy',data,{
+      withCredentials:true
+    });
+  }
+
+  postTransaction(data: any){
+    return this.http.post<any>(this.URL_API+'/transaction', data,{
+      withCredentials:true
+    });
+  }
+}

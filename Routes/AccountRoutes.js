@@ -9,6 +9,7 @@ const Post = require('../Controller/PostController');
 const Contact = require('../Controller/ContactController');
 const Notify = require('../Controller/NotifyController');
 
+const WalletController = require('../Controller/WalletController');
 
 const {isLoggedIn} = require('../Lib/auth');
 
@@ -65,5 +66,6 @@ Router.post('/deleteAffiliate', Member.deleteAffiliate);
 //Rutas notificaciones
 Router.post('/notify', Notify.findNotifications);
 Router.post('/allNotify', Notify.findAllNotifications);
+Router.get('/myWallet', isLoggedIn, WalletController.getWallet);
 
 module.exports = Router;

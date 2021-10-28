@@ -76,7 +76,7 @@
             <a >{{userName}}</a>
             <ul class="dropdown">
               <li><a [routerLink]="['/home-user/user/profile']">Profile</a></li>
-              <li><a [routerLink]="['/home-user/user/profile']">My Card's</a></li>
+              <li><a [routerLink]="['/home-user/wallet/my-cards']">My Card's</a></li>
               <li><a (click)="logout()" >Logout</a></li>
               <!-- <li><a href="">Blog Single</a></li>
               <li><a href="">Portfolio</a></li>
@@ -101,6 +101,20 @@
         <div *ngIf="!isCompany" class="ml-auto">
           <!-- <app-notifications></app-notifications> -->
           <!-- <a href="" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a> -->
+
+            <!-- <app-notifications></app-notifications> -->
+            <!-- <a href="" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a> -->
+          
+          <div *ngIf="isCompany" class="ml-auto" style="padding-right: 10px;">
+            
+            <a  [routerLink]="['/home-user/my-posts/post-product']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Product</a>
+            <span style="padding-right: 5px;"></span>
+            <a [routerLink]="['/home-user/my-posts/post-service']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Service</a>
+            <!-- <a href="" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a> -->
+            
+          </div>
+          <!-- <app-notifications [userO]="USER.id_cuenta" [localUser]="USER.user"></app-notifications> -->
+          <a class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
         </div>
         <div *ngIf="isCompany" class="ml-auto" style="padding-right: 10px;">
           

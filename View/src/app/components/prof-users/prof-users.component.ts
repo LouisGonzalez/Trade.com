@@ -20,6 +20,7 @@ export class ProfUsersComponent implements OnInit {
   @Input() userOf: User;
 
   isCompany: boolean = false;
+  isCompanyProf: boolean = false;
 
   constructor(private rutaActiva: ActivatedRoute,private _router:Router, 
     public homeUserService: HomeUserService, 
@@ -64,7 +65,11 @@ export class ProfUsersComponent implements OnInit {
   getUser(){
     this.homeUserService.getUser().subscribe((res) => {
       this.homeUserService.selectedUser = res;
-      this.userO = this.homeUserService.selectedUser.user;
+      this.userO = this.homeUserService.selectedUser;
+      if(this.userO.BusinessAccount!=undefined){
+        this.isCompanyProf = true;
+      }
+      console.log(this.userO);
       // this.USER = this.homeUserService.selectedUser;
       // if(this.USER.StandardAccount==undefined){
       //   this.isCompany = true;

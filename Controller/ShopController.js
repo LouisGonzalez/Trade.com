@@ -78,8 +78,9 @@ ShopController.buy = async (req, res) => {
     console.log("el valor es: ", stock );
     if (wallet.monto >= totalV && stock) {
         await BuyModel.buy(req,res,totalV);
+        res.json({message: "Compra Existosa"});
     } else {
-        res.json("error no cuenta con suficiente dinero en su cuenta");
+        res.json({message: "error no cuenta con suficiente dinero en su cuenta"});
     }
 }
 
@@ -92,9 +93,20 @@ async function ff(req,res){
     });
     return true;
 }
+
 ShopController.totalCart  = async (req,res) =>{
     totalV = total(req);
     res.status(200).json(totalV);
+}
+
+ShopController.getVentas = async (req,res)=>{
+    const ventas = await BuyModel.reporteVentas(req,res);
+    res.json(ventas);
+}
+
+ShopController.getCompras = async (req,res)=>{
+    const compras = await BuyModel.reporteCompras(req,res);
+    res.json(compras);
 }
 
 function total(req) {
@@ -105,6 +117,5 @@ function total(req) {
     });
     return totalV;
 }
-
 
 module.exports = ShopController;

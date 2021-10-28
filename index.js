@@ -55,6 +55,7 @@ app.use(cors({
     origin: "https://comercio-electronico.herokuapp.com/",
     credentials: true
 }));
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser());
 
@@ -77,7 +78,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static('View'));
+
+//app.use(express.static('View'));
+
+
 
 //Agregar a app
 app.use("/api",Account);
@@ -92,9 +96,8 @@ app.use("/api",Notify);
 //p.use(Exchange);
 app.use("/api",Contact);
 
-
 app.use(express.static(__dirname+'/View/dist/View'));
-app.get('/',function(req,res){
+app.get('/*',function(req,res){
     res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
 });
 

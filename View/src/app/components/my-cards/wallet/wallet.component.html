@@ -20,7 +20,7 @@
                     Add Monto
                 </th>
                 <td mat-cell *matCellDef="let row">
-                    <button (click)="deleteCard(row)" mat-raised-button color="warn"><mat-icon>add</mat-icon></button>
+                    <button (click)="addCredit(row)" mat-raised-button color="warn"><mat-icon>add</mat-icon></button>
                 </td>
               </ng-container>
         
@@ -57,18 +57,27 @@
           </ng-container>
       
           <!-- Name Column -->
-          <ng-container matColumnDef="activa">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
-            <td mat-cell *matCellDef="let row"> {{(row.activa)? 'Activa':'Descativada'}} </td>
+          <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> state </th>
+            <td mat-cell *matCellDef="let row"> {{(row.activa)? "Activate":"Descativate "}} </td>
           </ng-container> 
 
-          <ng-container matColumnDef="button">
+          <ng-container matColumnDef="button1">
             <th mat-header-cell *matHeaderCellDef>
                 Delete Card
             </th>
             <td mat-cell *matCellDef="let row">
                 <button *ngIf="row.activa" (click)="deleteCard(row)" mat-raised-button color="warn"><mat-icon>close</mat-icon></button>
                 <button *ngIf="!row.activa" (click)="deleteCard(row)" mat-raised-button color="warn" [disabled]="true"><mat-icon>close</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="button2">
+            <th mat-header-cell *matHeaderCellDef>
+                Add Credit
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <button *ngIf="row.activa" (click)="addCreditCard(row)" mat-raised-button color="warn">	<mat-icon>add</mat-icon></button>
             </td>
           </ng-container>
       

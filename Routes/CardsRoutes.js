@@ -20,4 +20,6 @@ Router.delete('/cards/:tarjeta', isLoggedIn, ExternalAccount.deleteCard);
 
 Router.get('/myCards', isLoggedIn, ExternalAccount.getCards);
 
+Router.post('/addCredit',isLoggedIn, ExternalAccount.addCredit);
+
 module.exports = Router;

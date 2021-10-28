@@ -6,6 +6,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Wallet } from 'src/app/models/wallet/wallet';
 import { WalletService } from 'src/app/services/wallet/wallet.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAddCreditComponent } from '../../dialogs/modal-add-credit/modal-add-credit.component';
 
 @Component({
   selector: 'app-wallet',
@@ -14,7 +16,7 @@ import { WalletService } from 'src/app/services/wallet/wallet.service';
 })
 export class WalletComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['no_tarjeta', 'fecha_corte', 'activa', 'button'];
+  displayedColumns: string[] = ['no_tarjeta', 'fecha_corte', 'state', 'button1', 'button2'];
   displayedColumnsWll: string[] = ['monto', 'divisa', 'button'];
 
   listCards: Array<Card> = [];
@@ -25,7 +27,7 @@ export class WalletComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private cardService: CardService, private walletService: WalletService) { 
+  constructor(private cardService: CardService, private walletService: WalletService,public dialog: MatDialog) { 
     this.dataSource = new MatTableDataSource(this.listCards);
     this.dataSourceWll = new MatTableDataSource(this.listWll);
     // this.dataSource.paginator = this.paginator;
@@ -91,6 +93,22 @@ export class WalletComponent implements OnInit, AfterViewInit {
         console.log(error);
       }
     );
+  }
+
+  addCredit(row:any){
+    // console.log(row);
+    
+    // this.dialog.open(ModalAddCreditComponent,{
+    //   data: row
+    // });
+  }
+
+  addCreditCard(row:any){
+    console.log(row);
+    
+    this.dialog.open(ModalAddCreditComponent,{
+      data: row
+    });
   }
 
   ngAfterViewInit() {

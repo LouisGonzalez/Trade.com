@@ -49,11 +49,14 @@ ExternalAccount.addCredit = async (req,res) =>{
     if(card != undefined){
         if(SimulationBank.bankResponse){
             await WalletController.addCredit(req,res);
+            res.json({message:"mensaje exito"});
             //mensaje exito
         }else{
+            res.json({message:"mensaje credito rechazado"});
             //mensaje credito rechazado
         }
     }else{
+        res.json({message:"tarjeta no existe"});
         //tarjeta no existe
     }
 }

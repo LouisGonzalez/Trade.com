@@ -15,4 +15,12 @@ export class WalletService {
       withCredentials:true
     });
   }
+
+  postAddCreditWll(data: any){
+    return this.http.post<any>(this.URL_API+'/addCredit', data,{
+      withCredentials:true
+    });
+  }
+
+  
 }

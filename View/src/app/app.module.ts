@@ -73,6 +73,8 @@ import { TransfersComponent } from './components/my-cards/transfers/transfers.co
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
+import { ModalAddCreditComponent } from './components/dialogs/modal-add-credit/modal-add-credit.component';
+import { BuyComponent } from './components/shop-products/buy/buy.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +126,9 @@ import { MatSortModule } from '@angular/material/sort';
     MyCardsComponent,
     AddCardComponent,
     WalletComponent,
-    TransfersComponent
+    TransfersComponent,
+    ModalAddCreditComponent,
+    BuyComponent
   ],
   imports: [
     BrowserModule,

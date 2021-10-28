@@ -2,6 +2,7 @@
 const Account = require('../Initialization/Account');
 const StandardAccount = require('../Initialization/StandardAccount');
 const BusinessAccount = require('../Initialization/BusinessAccount');
+const Wallet = require('../Initialization/Wallet')
 const { Op } = require("sequelize");
 
 async function createAccountLogger(req, pass){
@@ -16,7 +17,13 @@ async function createAccountLogger(req, pass){
         password: pass,
         verificado: false,
         activa: true
-    });
+    }).then(
+        await Wallet.create({
+            cuenta: req.body.id,
+            divisa: "USD",
+            monto: 0
+        })
+    );
 }
 
 async function readUserStandardLoggedInformation(req){
@@ -26,6 +33,19 @@ async function readUserStandardLoggedInformation(req){
         },
         include:[{
             model: StandardAccount,
+            required: true           
+        }]
+    });
+}
+
+async function readUserBussinesLoggedInformation(req){
+    return await Account.findOne({
+        where:{
+            id_cuenta:req.user
+        },
+        include:[{
+            model: StandardAccount,
+            model: BusinessAccount,
             required: true           
         }]
     });
@@ -57,10 +77,12 @@ async function readUserLoggedInformation(req){
 
 async function deleteAccount(req, res){
     return await Account.update({
-        activa:false
+        activa: false       
     },{
-        id_cuenta: req.user
-    })     
+        where:{
+            id_cuenta: req.user
+        }
+    })
 }
 
 async function searchUserByPK(idUser){
@@ -86,6 +108,7 @@ function updateAccount(req,res){
     });
 }
 
+
 async function searchAccounts(){
     return await Account.findAll();
 }
@@ -101,24 +124,58 @@ async function allUser(req,res){
         },
         include:[{
             model: StandardAccount,
-            model: BusinessAccount  
+            model: BusinessAccount
+            //required:true
         }]
     })
 }
 
 async function oneUser(req,res){
-    return await Account.findAll({
+    return await Account.findOne({
         attributes: { exclude: ['password'] },
         where:{
             activa: true,
-            id_cuenta: req.body.id,
+            // id_cuenta: req.body.id,
+            id_cuenta: req.params.id,
             [Op.not]:[
                 {id_cuenta: req.user}
             ]
         },
         include:[{
             model: StandardAccount,
-            model: BusinessAccount  
+            model: BusinessAccount,
+            required: true   
+        }]
+    })
+}
+
+async function oneUserStardad(req,res){
+    return await Account.findOne({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            id_cuenta: req.params.id,
+            [Op.not]:[
+                {id_cuenta: req.user}
+            ]
+        },
+        include:[{
+            model: StandardAccount,
+            required: true 
+        }]
+    })
+}
+
+async function oneUserBussines(req,res){
+    return await Account.findOne({
+        attributes: { exclude: ['password'] },
+        where:{
+            activa: true,
+            id_cuenta: req.params.id
+        },
+        include:[{
+            model: BusinessAccount,
+            required: true 
         }]
     })
 }
@@ -132,6 +189,35 @@ const returnAccounts = async(req, res) => {
     }
 }
 
+
+async function unitUserByReq(req, res){
+    return await Account.findOne({
+        where: {
+            id_cuenta: req.body.id_cuenta
+        }
+    })
+}
+
+const returnUnitUser = async(req, res) => {
+    try {
+        return await unitUserByReq(req,res);
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
+
 module.exports = {
-    deleteAccount, updateAccount, createAccountLogger,readUserStandardLoggedInformation, readUserBussinesLoggedInformation, readUserLoggedInformation, searchUserByPK, returnAccounts, allUser, oneUser
+    deleteAccount, 
+    updateAccount, 
+    createAccountLogger,
+    readUserStandardLoggedInformation, 
+    readUserBussinesLoggedInformation, 
+    readUserLoggedInformation, 
+    searchUserByPK, 
+    returnAccounts, 
+    allUser, oneUser,
+    oneUserStardad,
+    oneUserBussines,
+    returnUnitUser
 }

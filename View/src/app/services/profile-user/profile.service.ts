@@ -24,7 +24,14 @@ export class ProfileService {
 
   getAllUser(){
     
-    return this.http.get<User[]>(this.URL_API+'/allUsers',{
+    return this.http.get<User[]>(this.URL_API+'/allUsersProf',{
+      withCredentials:true
+    });
+  }
+
+  getOneUser(data: any){
+    
+    return this.http.get<User>(this.URL_API+`/user/${data}`,{
       withCredentials:true
     });
   }

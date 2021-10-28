@@ -3,7 +3,7 @@
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50 container-login100">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
-                <div class="card-heading">
+                <div class="card-heading" style="background: #9053c7;">
                     <h2 class="title">Register of user/company</h2>
                 </div>
                 <div class="card-body">
@@ -26,7 +26,7 @@
                     <div *ngIf="isUser">
                         <form method="POST" [formGroup]="registerForm">
                             <div class="form-row m-b-40">
-                                <div class="name font-robo">Name *</div>
+                                <div class="name font-robo">Name <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="row row-space">
                                         <div class="col-2">
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name font-robo">UserName *</div>
+                                <div class="name font-robo">UserName <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="user" class="input--style-5 font-robo" type="text" name="user" placeholder="UserName">
@@ -62,7 +62,7 @@
                                 </div>
                             </div> -->
                             <div class="form-row ">
-                                <div class="name font-robo">Email *</div>
+                                <div class="name font-robo">Email <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="correo" class="input--style-5 font-robo" type="email" name="correo" data-validate="Valid email is required: ex@abc.xyz" placeholder="Email" required>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="form-row ">
-                                <div class="name font-robo">Password *</div>
+                                <div class="name font-robo">Password <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="password" class="input--style-5 font-robo" type="password" name="password" data-validate = "Password is required" placeholder="Password" required>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name font-robo">Country *</div>
+                                <div class="name font-robo">Country <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="pais" class="input--style-5 font-robo" type="text" name="pais" placeholder="Country">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="form-row m-b-40">
-                                <div class="name font-robo">Phone *</div>
+                                <div class="name font-robo">Phone <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="row row-refine">
                                         <div class="col-3">
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name font-robo">Date of birth *</div>
+                                <div class="name font-robo">Date of birth <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="fecha_nacimiento" class="input--style-4 font-robo" type="date" name="fecha_nacimiento" placeholder="Date of birth">
@@ -116,7 +116,7 @@
                             
                             <div *ngIf="isUser">
                                 <div class="form-row">
-                                    <div class="name font-robo">No. ID User *</div>
+                                    <div class="name font-robo">No. ID User <span style="color: red;">*</span></div>
                                     <div class="value">
                                         <div class="input-group">
                                             <input formControlName="id" class="input--style-5 font-robo" type="text" name="pais" placeholder="ID User">
@@ -127,7 +127,7 @@
                             
                             <div *ngIf="isCompany">
                                 <div class="form-row">
-                                    <div class="name font-robo">No. Company *</div>
+                                    <div class="name font-robo">No. Company <span style="color: red;">*</span></div>
                                     <div class="value">
                                         <div class="input-group">
                                             <input formControlName="id_company" class="input--style-5 font-robo" type="text" name="pais" placeholder="No. Company">
@@ -158,7 +158,7 @@
                     <div *ngIf="isCompany">
                         <form method="POST" [formGroup]="registerFormC">
                             <div class="form-row m-b-40">
-                                <div class="name font-robo">Empresa *</div>
+                                <div class="name font-robo">Empresa <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <div class="col-10">
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name font-robo">UserName *</div>
+                                <div class="name font-robo">UserName <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="user" class="input--style-5 font-robo" type="text" name="user" placeholder="UserName">
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name font-robo">Description *</div>
+                                <div class="name font-robo">Description <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group col-10">
                                         <!-- <input formControlName="descripcion" class="input--style-5 font-robo" type="text" name="user" placeholder="Description"> -->
@@ -214,7 +214,7 @@
                                 </div>
                             </div> -->
                             <div class="form-row ">
-                                <div class="name font-robo">Email *</div>
+                                <div class="name font-robo">Email <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="correo" class="input--style-5 font-robo" type="email" name="correo" data-validate="Valid email is required: ex@abc.xyz" placeholder="Email" required>
@@ -222,7 +222,7 @@
                                 </div>
                             </div>
                             <div class="form-row ">
-                                <div class="name font-robo">Password *</div>
+                                <div class="name font-robo">Password <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="password" class="input--style-5 font-robo" type="password" name="password" data-validate = "Password is required" placeholder="Password" required>
@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name font-robo">Country *</div>
+                                <div class="name font-robo">Country <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input formControlName="pais" class="input--style-5 font-robo" type="text" name="pais" placeholder="Country">
@@ -238,7 +238,7 @@
                                 </div>
                             </div>
                             <div class="form-row m-b-40">
-                                <div class="name font-robo">Phone *</div>
+                                <div class="name font-robo">Phone <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="row row-refine">
                                         <div class="col-3">
@@ -260,7 +260,7 @@
                             
                             <div *ngIf="isCompany">
                                 <div class="form-row">
-                                    <div class="name font-robo">No. Company *</div>
+                                    <div class="name font-robo">No. Company <span style="color: red;">*</span></div>
                                     <div class="value">
                                         <div class="input-group">
                                             <input formControlName="id" class="input--style-5 font-robo" type="text" name="pais" placeholder="No. Company">

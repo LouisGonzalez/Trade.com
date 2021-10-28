@@ -32,9 +32,9 @@ export class SearchAllUsersComponent implements OnInit {
     document.getElementById("myDropdown")?.classList.toggle("show");
   }
 
-  functionClick(){
-    console.log('existiendo...',this.userO);
-    this._router.navigate(['/home-user/users/profile2/:user']);
+  functionClick(i: number){
+    console.log('existiendo...',this.arraySearch[i]);
+    this._router.navigate(['/home-user/users/profile/',this.arraySearch[i].id_cuenta]);
   }
 
   filterFunction(){

@@ -1,11 +1,12 @@
 .notification {
-    background-color: #555;
+    background-color: transparent;
     color: white;
     text-decoration: none;
     padding: 3px;
     position: relative;
     display: inline-block;
     border-radius: 10px;
+    cursor: pointer;
   }
   
   .notification:hover {

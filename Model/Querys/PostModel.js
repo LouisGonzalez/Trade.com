@@ -7,6 +7,7 @@ const Account = require('../Initialization/Account');
 async function createPost(req,res){
     return await Post.create({
         cuenta: req.user,
+        titulo: req.body.titulo,
         fecha_publicacion: Date.now(),
         costo: req.body.costo,
         divisa: req.body.divisa,
@@ -34,7 +35,8 @@ async function updatePost(req,res){
         divisa: req.body.divisa,
         intercambio: req.body.intercambio,
         descripcion: req.body.descripcion,
-        invisible: req.body.invisible
+        invisible: req.body.invisible,
+        titulo: req.body.titulo
     },{
         where:{
             id: req.body.id,        

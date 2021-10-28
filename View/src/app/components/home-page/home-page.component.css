@@ -27,3 +27,42 @@
     background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
     background: linear-gradient(-135deg, #c850c0, #4158d0);
   }
+
+  .my-title {
+    font-size: 150px;
+    height: 300px;
+    width: 300px;
+    color: white;
+    padding-top: 190px;
+    /* padding-left: 300px;
+    padding-right: 300px; */
+    padding-left: 29%;
+    padding-right: 10%;
+    /* background: red; */
+    text-align: center center center center;
+    align-items: center center center center;
+  }
+
+.lt-title-1{
+  font-family: inherit;
+}
+
+.lt-title-2{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.lt-title-3{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lt-title-4{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.lt-title-5{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lt-title-6{
+  font-family: Arial, Helvetica, sans-serif;
+}

@@ -17,4 +17,8 @@ NotifyController.updateViewNotify = async(req, res) => {
     return await NotifyModel.updateViewNotifications(req, res);
 }
 
+NotifyController.findAllNotifications = async(req, res) => {
+    return await NotifyModel.returnAllNotifications(req, res);
+}
+
 module.exports = NotifyController;

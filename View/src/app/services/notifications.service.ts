@@ -17,6 +17,12 @@ export class NotificationsService {
     });
   }
 
+  getAllNotifications(data:any):Observable<any>{
+    return this.http.post(this.URL_API+'/allNotify',data, {
+      withCredentials: true
+    })
+  }
+
 /*  createNotify(data:any):Observable<any>{
     return this.http.post(this.URL_API+'/notify',data);
   }*/

@@ -17,7 +17,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ProfileUserComponent } from './components/profile-user/profile-user.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
-import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { EditProductComponent } from './components/stack-product/edit-product/edit-product.component';
 import { StackProductComponent } from './components/stack-product/stack-product.component';
 import { ChatGlobalComponent } from './components/chat-global/chat-global.component';
 import { UserVerifyComponent } from './components/user-verify/user-verify.component';

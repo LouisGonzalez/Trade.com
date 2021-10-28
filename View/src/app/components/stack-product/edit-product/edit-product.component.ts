@@ -5,6 +5,7 @@ import { ArticlesService } from 'src/app/services/products/articles.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ChargedComponent } from '../../dialogs/charged/charged.component';
 import { MsjAcceptComponent } from '../../dialogs/msj-accept/msj-accept.component';
+import { Post } from 'src/app/models/post/post';
 
 @Component({
   selector: 'app-edit-product',
@@ -17,6 +18,7 @@ export class EditProductComponent implements OnInit {
   stockMin: any = 0;
   intercambiable:boolean = false;
   visible:boolean = true;
+  postAc: Post;
 
   postForm : FormGroup=new FormGroup({
     titulo: new FormControl(null,Validators.required),
@@ -30,10 +32,11 @@ export class EditProductComponent implements OnInit {
     minimo_stock: new FormControl(null,Validators.required),
   });
 
-  constructor(public dialog: MatDialog, 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: number,public dialog: MatDialog, 
     private _router:Router, public articleService: ArticlesService) { }
 
   ngOnInit(): void {
+    this.getProducto();
   }
 
   setIntercambiable(data: boolean){
@@ -93,8 +96,50 @@ export class EditProductComponent implements OnInit {
     window.location.reload();
   }
 
-  edit(){
+  getProducto(){
+    console.log('Ro',this.data);
     
+    this.articleService. getOneProduct(this.data).subscribe(
+      res => {
+        
+        this.postAc = res;
+        // console.log(this.postAc);
+        this.setForm();
+      },
+      error => {
+        console.log(error);
+        
+      }
+    );
+  }
+
+  setForm(){
+    this.postForm.get('titulo')?.setValue( this.postAc.titulo);
+    this.postForm.get('costo')?.setValue( this.postAc.costo);
+    this.postForm.get('divisa')?.setValue(this.postAc.divisa);
+    this.postForm.get('intercambios')?.setValue(this.postAc.intercambio);
+    this.postForm.get('descripcion')?.setValue(this.postAc.descripcion);
+    this.postForm.get('invisible')?.setValue(this.postAc.invisible);
+    this.postForm.get('stock')?.setValue(this.postAc.Article?.stock);
+    this.postForm.get('minimo_stock')?.setValue(this.postAc.Article?.minimo_stock);
+  }
+
+  edit(){
+    if(!this.postForm.valid){
+      return;
+    }
+    this.articleService.updateOneProduct(this.postForm.valid).subscribe(
+      res => {
+        
+        // this.postAc = res;
+        console.log(res);
+        // this.setForm();
+      },
+      error => {
+        console.log(error);
+        
+      }
+    );
   }
 
 }

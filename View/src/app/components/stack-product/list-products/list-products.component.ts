@@ -72,7 +72,10 @@ export class ListProductsComponent implements OnInit {
   }
 
   edit(row: any){
-    this.dialog.open(EditProductComponent);
+    console.log('re',row.id_post);
+    this.dialog.open(EditProductComponent, {
+      data: row.id_post
+    });
   }
 
 }

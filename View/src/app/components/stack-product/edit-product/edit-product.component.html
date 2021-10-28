@@ -1,20 +1,18 @@
 
 <div mat-dialog-content class="">
-<div class="target-white-2">
-    <div class="page-wrapper p-t-45 p-b-50">
-        <div class="wrapper wrapper--w790">
+
             <div class="card card-5" style="border-radius: 10px;">
                 <div class="card-heading" style="background: #9053c7;">
                     <h2 class="title">Post Producto</h2>
-                </div>asdfasdfasd
+                </div>
                 <div class="card-body" >
                     <div >
-                        <form method="POST" >
+                        <form method="POST" [formGroup]='postForm'>
                             <div class="form-row">
                                 <div class="name font-robo">Title <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input formControlName="titulo" class="input--style-5 font-robo" type="text" name="user" placeholder="Title">
+                                        <input formControlName="titulo" class="input--style-5 font-robo" type="text" name="user" placeholder="Title" [value]="postAc?.titulo">
                                     </div>
                                 </div>
                             </div>
@@ -22,7 +20,7 @@
                                 <div class="name font-robo">Cost <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input formControlName="costo" class="input--style-5 font-robo" type="number" name="user" min="0.00" placeholder="Cost" required>
+                                        <input formControlName="costo" class="input--style-5 font-robo" type="number" name="user" min="0.00" placeholder="Cost" required [value]="postAc?.costo">
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +28,7 @@
                                 <div class="name font-robo">Badge <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input formControlName="divisa" class="input--style-5 font-robo" type="text" name="user" placeholder="Title">
+                                        <input formControlName="divisa" class="input--style-5 font-robo" type="text" name="user" placeholder="Title" [value]="postAc?.divisa">
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +36,7 @@
                                 <div class="name font-robo">Description <span style="color: red;">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <p><textarea formControlName="descripcion" class="input--style-6 font-robo" cols="55" rows="2" name="comment" placeholder="Description Product"></textarea></p>
+                                        <p><textarea formControlName="descripcion" class="input--style-6 font-robo" cols="55" rows="2" name="comment" placeholder="Description Product">{{postAc?.descripcion}}</textarea></p>
                                     </div>
                                 </div>
                             </div>
@@ -47,11 +45,13 @@
                                 <span style="padding-right: 15px;"></span>
                                 <div class="p-t-15">
                                     <label class="radio-container m-r-55">Yes
-                                        <input (click)="setIntercambiable(true)" type="radio" name="exist">
+                                        <input *ngIf="postAc?.intercambio" (click)="setIntercambiable(true)" type="radio" name="exist" checked>
+                                        <input *ngIf="!postAc?.intercambio" (click)="setIntercambiable(true)" type="radio" name="exist">
                                         <span  class="checkmark"></span>
                                     </label>
                                     <label class="radio-container">No
-                                        <input (click)="setIntercambiable(false)" type="radio" name="exist">
+                                        <input *ngIf="!postAc?.intercambio" (click)="setIntercambiable(false)" type="radio" name="exist" checked>
+                                        <input *ngIf="postAc?.intercambio" (click)="setIntercambiable(false)" type="radio" name="exist">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -61,11 +61,13 @@
                                 <span style="padding-right: 15px;"></span>
                                 <div class="p-t-15">
                                     <label class="radio-container m-r-55">Yes
-                                        <input (click)="setVisible(true)" type="radio" name="exist2">
+                                        <input *ngIf="!postAc?.invisible" (click)="setVisible(true)" type="radio" name="exist2" checked>
+                                        <input *ngIf="postAc?.invisible" (click)="setVisible(true)" type="radio" name="exist2">
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-container">No
-                                        <input (click)="setVisible(false)" type="radio" name="exist2">
+                                        <input *ngIf="postAc?.invisible" (click)="setVisible(false)" type="radio" name="exist2" checked>
+                                        <input *ngIf="!postAc?.invisible" (click)="setVisible(false)" type="radio" name="exist2" >
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -77,13 +79,13 @@
                                     <div class="row row-refine">
                                         <div class="col-6">
                                             <div class="input-group-desc">
-                                                <input formControlName="minimo_stock" (ngModelChange)="seStockMin()" class="input--style-5 font-robo" type="range" min="0" max="500" name="extension" placeholder="Stock Minime">
+                                                <input formControlName="minimo_stock" (ngModelChange)="seStockMin()" class="input--style-5 font-robo" type="range" min="0" max="500" name="extension" placeholder="Stock Minime" [value]="postAc?.Article?.minimo_stock">
                                                 <label class="label--desc font-robo">Stock Minime: {{stockMin}}</label>
                                             </div>
                                         </div>
                                         <div class="col-6 ">
                                             <div class="input-group-desc">
-                                                <input formControlName="stock" (ngModelChange)="seStock()" class="input--style-5 font-robo" type="range" min="0" max="10000" name="telefono" placeholder="Stock Initial">
+                                                <input formControlName="stock" (ngModelChange)="seStock()" class="input--style-5 font-robo" type="range" min="0" max="10000" name="telefono" placeholder="Stock Initial" [value]="postAc?.Article?.stock">
                                                 <label class="label--desc font-robo">Stock Initial: {{stockInitial}}</label>
                                             </div>
                                         </div>
@@ -91,21 +93,18 @@
                                 </div>
                             </div>
                             <div class="form-row m-b-0">
-                                <button class="btn btn--radius-2 btn--green font-robo btn-primary" type="submit" (click)="sendPost()" >Register</button>
+                                <button class="btn btn--radius-2 btn--green font-robo btn-primary" type="submit" (click)="edit()" >Register</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-</div>
 
 <div mat-dialog-actions style="text-align: center;">
     
     <button mat-button mat-dialog-close class="btn btn-secondary btn--red">Close</button>
     <span style="padding-right: 5px;"></span>
-    <button mat-button class="btn btn-primary btn--green" (click)="edit()" >Add</button>
+    <!-- <button mat-button class="btn btn-primary btn--green" (click)="edit()" >Add</button> -->
   </div>

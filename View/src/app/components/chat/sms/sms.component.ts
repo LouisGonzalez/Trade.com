@@ -2,8 +2,9 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { io } from 'socket.io-client';
 import { ComponentFactoryResolver, ElementRef, ViewContainerRef } from '@angular/core';
+import { GLOBAL } from 'src/app/services/global';
 
-const SOCKET_ENDPOINT = 'localhost:3000';
+const SOCKET_ENDPOINT = GLOBAL.URL;
 
 @Component({
   selector: 'app-sms',

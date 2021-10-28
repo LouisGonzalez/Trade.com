@@ -7,6 +7,8 @@ const SearchController = require('../Controller/SearchController');
 const Member = require('../Controller/MemberController');
 const Post = require('../Controller/PostController');
 const Contact = require('../Controller/ContactController');
+const Notify = require('../Controller/NotifyController');
+
 
 
 const {isLoggedIn} = require('../Lib/auth');
@@ -19,9 +21,16 @@ const AccountController = require('../Controller/AccountController');
 //READ
 Router.get('/logged', isLoggedIn,AccountController.readUser);
 
-Router.get('/allUsers', AccountController.allUser);
+Router.post('/unitUser', AccountController.getUnitUser);
 
-Router.get('/user',isLoggedIn,AccountController.oneUser);
+Router.get('/allUsersss', isLoggedIn, AccountController.allUser);
+
+Router.get('/oneUser',AccountController.oneUser);
+
+Router.get('/allUsers', AccountController.allUser);
+Router.get('/allUsersProf', AccountController.allUsersProf);
+
+Router.get('/user/:id',isLoggedIn,AccountController.oneUser);
 
 //UPDATE STANDARD
 Router.patch('/user/standard', AccountController.updateUserStandard);
@@ -29,10 +38,9 @@ Router.patch('/user/standard', AccountController.updateUserStandard);
 //UPDATE BUSINESS
 Router.patch('/user/business', AccountController.updateUserBusiness);
 
+
 //DELETE
-Router.delete('/user', AccountController.deleteUser);
-
-
+Router.delete('/user', isLoggedIn,AccountController.deleteUser);
 
 //RUTAS MemberRoutes
 Router.post('/findAffiliates', Member.findAffiliates);
@@ -51,10 +59,14 @@ Router.post('/getMyArticles', Post.getMyArticles);
 Router.post('/getMyServices', Post.getMyServices);
 
 //Rutas contact
-Router.delete('/deleteContact', Contact.deleteContact);
+Router.post('/deleteContact', Contact.deleteContact);
 
 //Rutas afiliacion
 Router.delete('/deleteAffiliate', Member.deleteAffiliate);
 Router.post('/getNoAffiliates', Member.returnNoAffiliates);
+
+//Rutas notificaciones
+Router.post('/notify', Notify.findNotifications);
+Router.post('/allNotify', Notify.findAllNotifications);
 
 module.exports = Router;

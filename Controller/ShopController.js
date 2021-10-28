@@ -2,7 +2,7 @@
 const express = require('express');
 //db
 const Post = require('../Model/Querys/PostModel');
-const TransactionModel = require('../Model/Querys/TransactionModel');
+const TransactionModel = require('../Model/Querys/BuyModel');
 const ShopController = {};
 
 ShopController.createCart = (req,res,next) => {    
@@ -14,19 +14,19 @@ ShopController.createCart = (req,res,next) => {
     next();
 }
 
-ShopController.addPost = (req,res)=>{   
+ShopController.addPost = async (req,res)=>{   
     const existe = existPost(req,res);
     console.log(existe);
     if(!existe){  
-        const post = Post.onePost(req.body.id);
+        const post = await Post.onePost(req.body.id);
         req.session.cart.push({
             "id": req.body.id,
             "cantidad":req.body.cantidad,
             "divisa": post.divisa,
-            "precio": post.precio
+            "precio": post.costo
         });
     }
-    res.send("B")
+    res.status(200).json({message: "AddPost"});
 }
 
 ShopController.getAll= (req,res)=>{
@@ -35,15 +35,17 @@ ShopController.getAll= (req,res)=>{
 }
 
 ShopController.deleteAll = (req,res)=>{
-    res.session.cart = [];
+    req.session.cart = [];
+    res.status(200).json({message: "Clean Cart"});
 }
 
 ShopController.deletePost = (req,res)=>{
     req.session.cart.forEach((cart, index, object)=>{
-        if(cart.id == req.body.id){
+        if(cart.id == req.params.id){
             object.splice(index,1);
         }
     })
+    res.status(200).json({message: "Delete Cart"});
 }
 
 ShopController.updateCart = (req,res)=>{
@@ -67,17 +69,21 @@ function existPost(req,res){
 }
 
 ShopController.buy = async (req,res) =>{
-    total = total(req);
-    const a = TransactionModel.buy(req,res,total);
+    totalV = total(req);
+    const a = TransactionModel.buy(req,res,totalV);
     console.log(a);
+}
+ShopController.totalCart  = async (req,res) =>{
+    totalV = total(req);
+    res.status(200).json(totalV);
 }
 
 function total(req){
-    total = 0
+    totalV = 0
     req.session.cart.forEach(cart => {
-        total+=cart.precio * cart.cantidad;     
+        totalV+=cart.precio * cart.cantidad;     
     });
-    return total;
+    return totalV;
 }
 
 

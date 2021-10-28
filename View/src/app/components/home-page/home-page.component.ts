@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionUserService } from '../../services/home-service/session-user.service';
-
+import { io } from "socket.io-client";;
 
 import {HomeUserService} from '../../services/home-service/home-user.service';
+import { GLOBAL } from 'src/app/services/global';
 
+const SOCKET_ENDPOINT = GLOBAL.URL;
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -14,7 +16,7 @@ export class HomePageComponent implements OnInit {
 
 
   userName: string = "";
-
+  socket:any;
   constructor(private _router:Router, public homeUserService: HomeUserService, public sessionUserService: SessionUserService) { }
 
   ngOnInit(): void {
@@ -35,6 +37,9 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  newUser(){
+    this.socket.emit('new user', this.userName);
+ }
   getLogin(){
     this.homeUserService.getLogin().subscribe(
       data=>{

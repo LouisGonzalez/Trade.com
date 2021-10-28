@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../../models/user/user';
+import { GLOBAL } from '../global';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class SessionUserService {
 
   selectedUser: User;
 
-  readonly URL_API = "http://localhost:3000";
+  readonly URL_API = GLOBAL.URL;
 
   constructor(private http: HttpClient) { 
     this.selectedUser = new User();
@@ -43,6 +44,12 @@ export class SessionUserService {
 
   postVerify(data: any){
     return this.http.post<any>(this.URL_API+'/verification',data,{
+      withCredentials:true
+    });
+  }
+
+  postConfirmVerify(data: any){
+    return this.http.get<any>(this.URL_API+`/verification2?token=${data.token}&email=${data.email}&jwtToken=${data.jwtToken}`,{
       withCredentials:true
     });
   }

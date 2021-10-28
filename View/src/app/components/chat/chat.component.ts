@@ -7,8 +7,9 @@ import { ComponentFactoryResolver, ElementRef, ViewContainerRef } from '@angular
 import { SmsComponent } from './sms/sms.component';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
+import { GLOBAL } from 'src/app/services/global';
 
-const SOCKET_ENDPOINT = 'localhost:3000';
+const SOCKET_ENDPOINT = GLOBAL.URL;
 
 @Component({
   selector: 'app-chat',

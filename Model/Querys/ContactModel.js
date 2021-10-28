@@ -30,6 +30,8 @@ async function createContact(req, res){
 
 //elimina un contacto de la lista de contactos
 async function deleteContact(req, res){
+
+    console.log("HOA MUY BUENAS TARDES");
     try{
         Contact.destroy({
             where: {

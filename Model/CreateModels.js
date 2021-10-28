@@ -152,6 +152,7 @@ Conversation.hasMany(Message, {
     }
 });
 
+
 Account.hasMany(Message, {
     onDelete: 'CASCADE',
     foreignKey: {
@@ -262,6 +263,7 @@ Account.hasMany(ContactBook, {
         allowNull: false
     }
 });
+ContactBook.belongsTo(Account, {foreignKey: "cuenta"});
 
 Account.hasMany(ContactBook, {
     onDelete: 'CASCADE',
@@ -270,6 +272,7 @@ Account.hasMany(ContactBook, {
         allowNull: false
     }
 });
+ContactBook.belongsTo(Account, {foreignKey: "cuenta_contacto"});
 
 //Propuesta
 Proposal.hasOne(Proposal, {
@@ -281,6 +284,7 @@ Proposal.hasOne(Proposal, {
 });
 
 //Intercambio
+/*
 Proposal.hasOne(Exchange, {
     onDelete: 'CASCADE',
     foreignKey: {
@@ -296,7 +300,7 @@ Exchange.hasMany(PostExchange, {
         name: 'id_intercambio',
         allowNull: false
     }
-});
+});*/
 
 Post.hasMany(PostExchange, {
     onDelete: 'CASCADE',
@@ -349,6 +353,7 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 });
+Notifications.belongsTo(Account, {foreignKey: 'usuario_recibe'});
 
 
 Account.hasMany(Notifications, {
@@ -358,5 +363,6 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 })
+Notifications.belongsTo(Account, {foreignKey: 'usuario_envia'});
 
 // Service.belongsTo(Post);

@@ -1,5 +1,7 @@
 const hbs = require('nodemailer-express-handlebars');
 const nodemailer = require('nodemailer');
+// const page = "http://localhost:3000";
+const page = "https://comercio-electronico.herokuapp.com/";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -37,7 +39,8 @@ async function sendVerificationEmail(email, token, jwtToken){
       to: email,
       subject: 'Verifica tu cuenta',
       context: {
-        verificationLink: `http://localhost:3000/verification2?token=${token}&email=${email}&jwtToken=${jwtToken}`
+        // verificationLink: `${page}/verification2?token=${token}&email=${email}&jwtToken=${jwtToken}`
+        verificationLink: `${page}/verification2/${token}/${email}/${jwtToken}`
       },
       template: 'verification'
     };

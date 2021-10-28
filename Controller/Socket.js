@@ -97,6 +97,7 @@ module.exports = async function(io){
                 nick: myNick
               });
               //Crea la notificacion
+              console.log('buenas tardes sfasfa');
               NotifyQuery.createNotification(idSend.id_cuenta, idReceive.id_cuenta,'Mensaje','Nuevo mensaje!');
               io.to(users[userReceive]).emit('send notifications');
               

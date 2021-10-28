@@ -41,8 +41,9 @@ const returnAffilites = async(req, res) => {
 
 const returnUsers = async (req, res) => {
     try {
-        const Users = await searchUsers();
-        return res.status(200).json({Users});
+        // const Users = await searchUsers();
+        // return res.status(200).json({Users});
+        return await searchUsers();
     } catch(error){
         return res.status(500).send(error.message);
     }

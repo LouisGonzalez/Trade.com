@@ -43,15 +43,21 @@ const Search = require('./Routes/SearchRoutes');
 const AuthRoutes = require('./Routes/AuthRoutes');
 const Member = require('./Routes/MemberRoutes');
 const Notify = require('./Routes/NotifyRoutes');
+const Exchange = require('./Routes/ExchangeRoutes');
 const Contact = require('./Routes/ContactRoutes');
 
 //inicializaciones
 require('./Lib/Passport');
 
+app.use(express.static(__dirname+'/View/dist/View'));
+app.get('/',function(req,res){
+    res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
+});
+
 //middleware
-const corsOptions = {origin: "http://localhost:4200"}
+const corsOptions = {origin: "https://comercio-electronico.herokuapp.com/"}
 app.use(cors({
-    origin: "http://localhost:4200",
+    origin: "https://comercio-electronico.herokuapp.com/",
     credentials: true
 }));
 app.use(cookieParser());
@@ -66,7 +72,7 @@ app.use(session({
     //     httpOnly:true,
     //     secure:false
     // },
-   store: new MySQLStore(database)
+    store: new MySQLStore(database)
 }))
 
 app.use(express.json());
@@ -88,16 +94,18 @@ app.use(Search);
 app.use(AuthRoutes);
 app.use(Member);
 app.use(Notify);
+//p.use(Exchange);
 app.use(Contact);
+
 
 server.listen(PORT, function(){
     console.log(`la app ha sido arrancada en ${PORT}`);
 
     //Conexion a la base de datos
-    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
+//    sequelize.query('SET FOREIGN_KEY_CHECKS = 0').then(
         sequelize.sync({force: false}).then(() => {
         console.log("Conexion establecida");
     }).catch(error => {
         console.log("Se ha producido un error al momento de intentar conectar con la db",error);
-    }))
+    })
 })

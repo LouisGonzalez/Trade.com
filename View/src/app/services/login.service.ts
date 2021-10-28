@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { UserLogin } from '../models/user-login';
+import { GLOBAL } from './global';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class LoginService {
 
   public userLogin: UserLogin;
 
-  readonly URL_API = "http://localhost:3000";
+  readonly URL_API = GLOBAL.URL;
 
   constructor(private http: HttpClient) {
     this.userLogin = new UserLogin();

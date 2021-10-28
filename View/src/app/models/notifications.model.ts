@@ -1,3 +1,5 @@
+import { User } from "./user/user";
+
 export class Notifications {
     id:                 number;
     usuario_recibe:     string;
@@ -5,6 +7,8 @@ export class Notifications {
     tipo:               string;
     descripcion:        string;
     leido:              boolean;
+    Account:            User;
 }
+
 
 //solo mostrar el ultimo mensaje que un usuario le envio a otro

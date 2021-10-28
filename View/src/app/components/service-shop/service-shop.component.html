@@ -1,0 +1,20 @@
+
+    <div class="article">
+        <div class="image-article">
+            <img class="img-art" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="IMG">
+        </div>
+        <div class="descript-article">
+            <h3><b class="title-1">Name: {{service.titulo}}</b></h3>
+            <!-- <b class="txt-2">State: </b> {{(service.Article?.stock>0)? "Disponible" : "Agotado"}}<br> -->
+            <!-- <b class="txt-2">Reference: </b> Disponible<br> -->
+            <b class="txt-2">Interchangeable: </b> <b style="color: #5AD300;" *ngIf="service.intercambio"> Yes</b><b style="color: red;" *ngIf="!service.intercambio"> No</b><br>
+            <b class="txt-2">Description: </b> {{service.descripcion}} <br>
+            <b class="txt-2">Cost: </b> {{service.costo}} {{service.divisa}}
+        </div>
+        <div class="option-article">
+        <!-- <button class="btn btn--radius-2 btn--red" type="submit">+1 Add Carret</button>
+        <button class="btn btn--radius-2 btn--green" type="submit">View</button> -->
+            <button class="btn btn-secondary btn--red" style="margin-right: 5px !important;">Add Carret</button>
+            <button class="btn btn-primary btn--green" style="margin-right: 5px !important;">View</button>
+        </div>
+    </div>

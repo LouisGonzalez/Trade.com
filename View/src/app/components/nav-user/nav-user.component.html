@@ -12,25 +12,44 @@
   <header class="site-navbar mt-3">
     <div class="container-fluid">
       <div class="row align-items-center">
-        <div class="site-logo col-6"><a [routerLink]="['/home-user']">Trade</a></div>
-
+        <div class="site-logo col-6">
+          <app-notifications [userO]="USER.id_cuenta" [localUser]="USER"></app-notifications>
+          <span style="padding-right: 5px;"></span>
+          <a [routerLink]="['/home-user']">Trade</a>
+          <span style="padding-right: 10px;"></span>
+          <!-- <app-notifications [userO]="USER.id_cuenta" [localUser]="USER.user"></app-notifications> -->
+        </div>
+        
         <nav class="mx-auto site-navigation">
           <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
             <li><a [routerLink]="['/home-user']" class="nav-link active">Home</a></li>
             <!-- <li><a href="">About</a></li> -->
+            <li *ngIf="!isCompany" class="has-children">
+              <a>TradeShop</a>
+              <ul class="dropdown">
+                <!-- <li><a href="">Job Single</a></li> -->
+                <li><a [routerLink]="['/home-user/posts/post-product']">Product Shop</a></li>
+                <li><a [routerLink]="['/home-user/posts/post-service']">Service Shop</a></li>
+                <!-- <li><a [routerLink]="['/home-user/my-posts/post-product']">Post a Article</a></li>
+                <li><a [routerLink]="['/home-user/my-posts/post-service']">Post a Service</a></li> -->
+              </ul>
+            </li>
             <li *ngIf="isCompany" class="has-children">
               <a>My posts</a>
               <ul class="dropdown">
                 <!-- <li><a href="">Job Single</a></li> -->
-                <li><a [routerLink]="['/home-user/my-posts/my-articles-posted']">My articles posted</a></li>
-                <li><a [routerLink]="['/home-user/my-posts/post-article']">Post a Article</a></li>
+                <li><a [routerLink]="['/home-user/my-posts/my-products-posted']">My Products posted</a></li>
+                <li><a [routerLink]="['/home-user/my-posts/my-services-posted']">My Services posted</a></li>
+                <li><a [routerLink]="['/home-user/my-posts/post-product']">Post a Article</a></li>
+                <li><a [routerLink]="['/home-user/my-posts/post-service']">Post a Service</a></li>
               </ul>
             </li>
             <li class="has-children">
                 <a >Users</a>
                 <ul class="dropdown">
                   <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li>
-                  <li><a [routerLink]="['/home-user/users/followed-users']">Followed Users</a></li>
+                  <li><a [routerLink]="['/home-user/users/followed-users']">Contact Users</a></li>
+                  <!-- <li><a [routerLink]="['/home-user/users/my-contacts']">My Contact</a></li> -->
                   <!-- <li><a [routerLink]="['/home-user/users/global-users']">Search User</a></li> -->
                   <li *ngIf="isCompany && USER.verificado"><a [routerLink]="['/home-user/users/affiliate-user']" >Affiliate User</a></li>
                   <li class="disabled" *ngIf="isCompany && !USER.verificado"><a [routerLink]="['/home-user/users/affiliates']" >Affiliates</a></li>
@@ -69,7 +88,8 @@
             </li>
             
             <li *ngIf="isCompany" class="d-lg-none">
-                <a [routerLink]="['/home-user/my-posts/post-article']"><span class="mr-2">+</span> Post a Article</a>
+                <a [routerLink]="['/home-user/my-posts/post-product']"><span class="mr-2">+</span> Post a Product</a>
+                <a [routerLink]="['/home-user/my-posts/post-service']"><span class="mr-2">+</span> Post a Service</a>
             </li>
             
             <!-- <li class="d-lg-none"><a href="">Log In</a></li> -->
@@ -84,11 +104,13 @@
           </div>
           <div *ngIf="isCompany" class="ml-auto" style="padding-right: 10px;">
             
-            <a [routerLink]="['/home-user/my-posts/post-article']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Article</a>
+            <a  [routerLink]="['/home-user/my-posts/post-product']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Product</a>
+            <span style="padding-right: 5px;"></span>
+            <a [routerLink]="['/home-user/my-posts/post-service']" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Service</a>
             <!-- <a href="" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a> -->
             
           </div>
-          <app-notifications [userO]="USER.id_cuenta" [localUser]="USER.user"></app-notifications>
+          <!-- <app-notifications [userO]="USER.id_cuenta" [localUser]="USER.user"></app-notifications> -->
           <a class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
         </div>
 

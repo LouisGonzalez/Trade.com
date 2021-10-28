@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user/user';
+import { GLOBAL } from './global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AffiliatesService {
 
-  readonly URL_API = "http://localhost:3000";
+  readonly URL_API = GLOBAL.URL;
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,12 @@ export class AffiliatesService {
     });
   }
 
+  deleteMember(data:any){
+    return this.http.post<any>(this.URL_API+'/deleteAffiliate',data,{
+      withCredentials:true
+    });
+  }
+
   getIdBusiness(data:any):Observable<any>{
     return this.http.post(this.URL_API+'/getIdBusiness',data, {
       withCredentials: true
@@ -31,6 +38,20 @@ export class AffiliatesService {
   }
 
   findAffiliates(data:any){
-    return this.http.post(this.URL_API+'/findAffiliates',data);
+    return this.http.post(this.URL_API+'/findAffiliates',data,{
+      withCredentials:true
+    });
+  }
+
+  getAllUserNotAffiliate(){
+    return this.http.get<User[]>(this.URL_API+'/searchStandard',{
+      withCredentials:true
+    });
+  }
+
+  postAllUserAffiliate(data: any){
+    return this.http.post<any>(this.URL_API+'/findAffiliates',data,{
+      withCredentials:true
+    });
   }
 }

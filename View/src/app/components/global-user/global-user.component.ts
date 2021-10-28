@@ -22,8 +22,10 @@ export class GlobalUserComponent implements OnInit {
     public profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.getIsLogged();
-    this.getAllUser()
+    // this.getIsLogged();
+    this.getUser();
+    this.getAllUser();
+    
   }
 
   logout(){
@@ -45,7 +47,8 @@ export class GlobalUserComponent implements OnInit {
       if(this.USER.StandardAccount==undefined){
         this.isCompany = true;
       }
-      this.users.push(this.USER);
+      // this.getAllUser();
+      // this.users.push(this.USER);
     });
   }
 
@@ -63,7 +66,8 @@ export class GlobalUserComponent implements OnInit {
   getAllUser(){
     this.profileService.getAllUser().subscribe(
       res => {
-        console.log(res);
+        console.log('a',res);
+        this.users = res;
       },
       error => {
         console.log(error);

@@ -9,7 +9,7 @@ const Exchange = sequelize.define('Exchange', {
     id_propuesta: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
 } , {
         sequelize,
         modelName: 'Exchange',

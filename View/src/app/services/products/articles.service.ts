@@ -55,7 +55,7 @@ export class ArticlesService {
   }
 
   updateOneProduct(data: any){
-    return this.http.patch<Post>(this.URL_API+`/post/`,data,{
+    return this.http.patch<Post>(this.URL_API+'/post/Article',data,{
       withCredentials:true
     });
   }

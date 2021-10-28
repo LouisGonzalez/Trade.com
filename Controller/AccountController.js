@@ -82,4 +82,9 @@ AccountController.getIdBusiness = async (req, res) => {
     return await BusinessModel.returnIdBusiness(req, res);
 }
 
+AccountController.getUnitUser = async (req, res) => {
+    const User = await AccountModel.returnUnitUser(req, res);
+    res.json(User);
+}
+
 module.exports = AccountController;

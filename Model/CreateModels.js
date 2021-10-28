@@ -57,6 +57,7 @@ Business.hasMany(Member, {
         allowNull: false
     }
 });
+Member.belongsTo(Business, {foreignKey: "id_cuenta_empresarial"})
 
 Standard.hasMany(Member, {
     onDelete: 'CASCADE',
@@ -349,6 +350,7 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 });
+Notifications.belongsTo(Account, { foreignKey: 'usuario_recibe' });
 
 
 Account.hasMany(Notifications, {
@@ -358,5 +360,6 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 })
+Notifications.belongsTo(Account, { foreignKey: 'usuario_envia'});
 
 // Service.belongsTo(Post);

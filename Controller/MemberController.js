@@ -17,6 +17,10 @@ MemberController.deleteAffiliate = async(req, res) => {
     return await MemberModel.deleteAffiliate(req, res);
 }
 
+MemberController.returnNoAffiliates = async(req, res) => {
+    const user = await MemberModel.returnNoAffiliates(req, res);
+    res.json(user);
+}
 
 
 module.exports = MemberController;

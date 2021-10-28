@@ -7,6 +7,8 @@ const SearchController = require('../Controller/SearchController');
 const Member = require('../Controller/MemberController');
 const Post = require('../Controller/PostController');
 const Contact = require('../Controller/ContactController');
+const Notify = require('../Controller/NotifyController');
+
 const WalletController = require('../Controller/WalletController');
 
 const {isLoggedIn} = require('../Lib/auth');
@@ -17,6 +19,8 @@ const SimulationBank = require('../Controller/SimulatorBank');
 const AccountController = require('../Controller/AccountController');
 
 //READ
+
+Router.post('/unitUser', AccountController.getUnitUser);
 Router.get('/logged', isLoggedIn,AccountController.readUser);
 
 Router.get('/oneUser',AccountController.oneUser);
@@ -52,11 +56,16 @@ Router.post('/getMyArticles', Post.getMyArticles);
 Router.post('/getMyServices', Post.getMyServices);
 
 //Rutas contact
-Router.delete('/deleteContact', Contact.deleteContact);
+Router.post('/deleteContact', Contact.deleteContact);
 
 //Rutas afiliacion
+Router.post('/getNoAffiliates', Member.returnNoAffiliates);
 Router.post('/deleteAffiliate', Member.deleteAffiliate);
 
+
+//Rutas notificaciones
+Router.post('/notify', Notify.findNotifications);
+Router.post('/allNotify', Notify.findAllNotifications);
 Router.get('/myWallet', isLoggedIn, WalletController.getWallet);
 
 module.exports = Router;

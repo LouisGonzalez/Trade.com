@@ -9,6 +9,7 @@
             <!-- <b class="txt-2">Reference: </b> Disponible<br> -->
             <b class="txt-2">Interchangeable: </b> <b style="color: #5AD300;" *ngIf="service.intercambio"> Yes</b><b style="color: red;" *ngIf="!service.intercambio"> No</b><br>
             <b class="txt-2">Description: </b> {{service.descripcion}} <br>
+            <b class="txt-2" style="cursor:pointer;" [routerLink]="['/home-user/users/profile/',userPost?.id_cuenta]">Publicated by: </b>  {{userPost?.user}} <br>
             <b class="txt-2">Cost: </b> {{service.costo}} {{service.divisa}}
         </div>
         <div class="option-article">

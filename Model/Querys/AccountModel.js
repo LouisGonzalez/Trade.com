@@ -189,6 +189,24 @@ const returnAccounts = async(req, res) => {
     }
 }
 
+
+async function unitUserByReq(req, res){
+    return await Account.findOne({
+        where: {
+            id_cuenta: req.body.id_cuenta
+        }
+    })
+}
+
+const returnUnitUser = async(req, res) => {
+    try {
+        return await unitUserByReq(req,res);
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
+
+
 module.exports = {
     deleteAccount, 
     updateAccount, 
@@ -200,5 +218,6 @@ module.exports = {
     returnAccounts, 
     allUser, oneUser,
     oneUserStardad,
-    oneUserBussines
+    oneUserBussines,
+    returnUnitUser
 }

@@ -3,6 +3,7 @@ const { Op, DataTypes } =require('sequelize');
 const Account = require('../Initialization/Account');
 const Standard = require('../Initialization/StandardAccount');
 const Post = require('../Initialization/Post');
+const BusinessAccount = require('../Initialization/BusinessAccount');
 
 async function searchUsers(){
     return await Account.findAll({
@@ -88,8 +89,43 @@ async function deleteAffiliate(req, res){
         return res.status(500).send(error.message);
     }
 }
+/*
+//Query para ver los no afiliados de una empresa
+async function getNoAffiliates(req, res){
+    return await Account.findAll({
+        where: {
+            id_cuenta: {
+                [Op.ne]: req.body.id_cuenta
+            }
+        },
+        include: {
+            model: Standard,
+            include: {
+                model: Membership,
+                where: {
+                    id_cuenta_empresarial: {
+                        [Op.ne]: req.body.id_cuenta_empresarial
+                    },
+                    id_usuario: {
+                        []
+                    }
+                },
+            }
+        }
+    }) 
+}
+*/
+
+const returnNoAffiliates = async (req, res) => {
+    try {
+        return await getNoAffiliates(req, res);
+    } catch(error){
+        return res.status(500).send(error.message);
+    }
+}
 
 
 module.exports = {
-    searchUsers, returnUsers, createMember, returnAffilites, deleteAffiliate
+    searchUsers, returnUsers, createMember, returnAffilites, deleteAffiliate, returnAffilites, returnNoAffiliates
+
 }

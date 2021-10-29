@@ -21,6 +21,7 @@ export class EditProductComponent implements OnInit {
   postAc: Post;
 
   postForm : FormGroup=new FormGroup({
+    id: new FormControl(null,Validators.required),
     titulo: new FormControl(null,Validators.required),
     costo: new FormControl(null,Validators.required),
     divisa: new FormControl('USD',null),
@@ -114,10 +115,11 @@ export class EditProductComponent implements OnInit {
   }
 
   setForm(){
+    this.postForm.get('id')?.setValue( this.postAc.id);
     this.postForm.get('titulo')?.setValue( this.postAc.titulo);
     this.postForm.get('costo')?.setValue( this.postAc.costo);
     this.postForm.get('divisa')?.setValue(this.postAc.divisa);
-    this.postForm.get('intercambios')?.setValue(this.postAc.intercambio);
+    this.postForm.get('intercambio')?.setValue(this.postAc.intercambio);
     this.postForm.get('descripcion')?.setValue(this.postAc.descripcion);
     this.postForm.get('invisible')?.setValue(this.postAc.invisible);
     this.postForm.get('stock')?.setValue(this.postAc.Article?.stock);
@@ -133,11 +135,12 @@ export class EditProductComponent implements OnInit {
         
         // this.postAc = res;
         console.log(res);
+        this.openDialog2('Update Article succesful','Update Article');
         // this.setForm();
       },
       error => {
         console.log(error);
-        
+        this.openDialog2('Update Article insuccesful','Update Article');
       }
     );
   }

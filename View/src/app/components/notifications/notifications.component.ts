@@ -11,7 +11,7 @@ import { EmmitChatService } from 'src/app/services/chat/emmit-chat.service';
 import { SessionUserService } from 'src/app/services/home-service/session-user.service';
 import { GLOBAL } from 'src/app/services/global';
 
-const SOCKET_ENDPOINT = GLOBAL.URL;
+const SOCKET_ENDPOINT = "/";
 
 @Component({
   selector: 'app-notifications',

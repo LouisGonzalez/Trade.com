@@ -54,7 +54,7 @@ export class ProfUsersComponent implements OnInit {
   activateChat(){
     console.log('adfa');
     let data = {
-      cuenta_dos: this.userO,
+      cuenta_dos: this.userO.user,
       cuenta_uno: this.USER.user
       // cuenta_uno: 'Yeferal'
     }

@@ -42,7 +42,8 @@ PostController.deletePost = async(req,res)=>{
 
 PostController.updateArticle = async(req, res)=>{
     const post = await PostModel.updateArticle(req,res);
-    await ArticleModel.updateArticle(req,res,post.id);
+    await ArticleModel.updateArticle(req,res,req.body.id);
+    res.json({message: 'true'});
 }
 
 PostController.updateService = async(req, res)=>{

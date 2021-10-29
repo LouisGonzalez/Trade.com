@@ -15,6 +15,11 @@ const cors = require('cors');
 //Socket.io
 
 const app = express();
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const server = createServer(app);
+const io = new Server(server, {  })
+require('./Controller/Socket')(io)
 
 
 /*
@@ -108,12 +113,6 @@ app.use(express.static(__dirname+'/View/dist/View'));
 app.get('/*',function(req,res){
     res.sendFile(path.join(__dirname+'/View/dist/View/index.html'));
 });
-
-const { createServer } = require("http");
-const { Server } = require("socket.io");
-const server = createServer(app);
-const io = new Server(server, {  })
-require('./Controller/Socket')(io)
 
 
 server.listen(PORT, function(){

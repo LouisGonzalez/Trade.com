@@ -130,7 +130,7 @@ export class EditProductComponent implements OnInit {
     if(!this.postForm.valid){
       return;
     }
-    this.articleService.updateOneProduct(this.postForm.valid).subscribe(
+    this.articleService.updateOneProduct(this.postForm.value).subscribe(
       res => {
         
         // this.postAc = res;

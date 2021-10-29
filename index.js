@@ -5,12 +5,16 @@ var cookieParser = require('cookie-parser')
 const path = require('path');
 
 
+//Definicion de puerto
+const PORT = process.env.PORT || 8080;
+
+
 //Cors
 const cors = require('cors');
 
 //Socket.io
 const { createServer } = require("http");
-const { Server } = require("socket.io");
+const { Server } = require("socket.io").listen(PORT);
 const app = express();
 const server = createServer(app);
 const io = new Server(server, { /* options */ })
@@ -24,8 +28,7 @@ const Models = require('./Model/CreateModels');
 const {database} = require('./key');
 
 
-//Definicion de puerto
-const PORT = process.env.PORT || 8080;
+
 
 //Passport
 const passport = require('passport')

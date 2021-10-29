@@ -19,7 +19,7 @@ Router.delete('/post',isLoggedIn,PostController.deletePost);
 
 Router.patch('/post/Service',isLoggedIn, PostController.updateService);
 
-Router.patch('/post/Article',isLoggedIn, PostController.updateArticle);
+Router.post('/post/Article',isLoggedIn, PostController.updateArticle);
 
 Router.get('/post/:id', isLoggedIn,PostController.onePost);
 

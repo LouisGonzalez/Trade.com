@@ -50,6 +50,7 @@ module.exports = async function(io){
 
         //escuchando
         socket.on('send message', async function(data, userSend, userReceive, anonimous) {
+          console.log("NETRO AQUI");
             initConv = userSend+userReceive;
             initConv2 = userReceive+userSend;          
             conversation = await Conversation.comprobateAnonymous(userSend, userReceive, anonimous);

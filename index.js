@@ -13,13 +13,22 @@ const PORT = process.env.PORT || 8080;
 const cors = require('cors');
 
 //Socket.io
+
+const app = express();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
-const app = express();
 const server = createServer(app);
-const io = new Server(server, { /* options */ })
+const io = new Server(server, {  })
+require('./Controller/Socket')(io)
+
+/*
+const app = express();
+const { createServer } = require("http");
+const server = createServer(app);
+const io = require("socket.io")(server);
 require('./Controller/Socket')(io);
 
+*/
 
 //Db
 const sequelize = require("./Model/Db");

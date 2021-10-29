@@ -110,6 +110,7 @@ export class SmsComponent implements OnInit {
 
   addMessage(){
     this.socket.emit('send message', this.message, this.username2, this.username, '0');
+    console.log("entro aqui para hacer un send  messsage");
     this.message = "";
   }
 

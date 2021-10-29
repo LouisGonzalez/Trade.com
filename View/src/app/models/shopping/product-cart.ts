@@ -7,6 +7,6 @@ export class ProductCart {
     divisa: string;
     precio?: any;
     costo: any;
-
+    total?:any
     post?: Post;
 }

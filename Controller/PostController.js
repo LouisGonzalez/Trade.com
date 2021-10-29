@@ -63,6 +63,7 @@ PostController.onePost = async (req, res) =>{
 }
 
 PostController.getMyArticles = async (req, res) => {
+    console.log('Entro: ',req.body.cuenta);
     return await PostModel.returnMyArticles(req, res);
 }
 

@@ -11,7 +11,7 @@ WalletController.createWallet = async (req,res) => {
 }
 
 WalletController.addCredit = async (req,res) =>{
-    return await addCreditWallet(req.user, req.body.divisa, req.body.monto);
+    return await WalletController.addCreditWallet(req.user, req.body.divisa, req.body.monto);
 }
 
 WalletController.withdrawalsCredit = async (req,res) =>{
@@ -34,6 +34,11 @@ WalletController.withdrawalsCreditWallet = async (user,divisa,monto) => {
     }else{
         return await Wallet.withdrawalsCredit(user,divisa,monto);
     }
+}
+
+WalletController.getWallet = async(req,res)=>{
+    const walletUser = await Wallet.Wallets(req.user);
+    res.json(walletUser);
 }
 
 module.exports = WalletController;

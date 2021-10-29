@@ -141,7 +141,8 @@ async function allUser(req,res){
         },
         include:[{
             model: StandardAccount,
-            model: BusinessAccount  
+            model: BusinessAccount
+            //required:true
         }]
     })
 }
@@ -204,6 +205,17 @@ const returnAccounts = async(req, res) => {
         return res.status(500).send(error.message);
     }
 }
+
+
+async function unitUserByReq(req, res){
+    return await Account.findOne({
+        where: {
+            id_cuenta: req.body.id_cuenta
+        }
+    })
+}
+
+
 
 module.exports = {
     deleteAccount, 

@@ -62,7 +62,6 @@ export class AddProductComponent implements OnInit {
   }
 
   sendPost(){
-    
     if(!this.postForm.valid){
       console.log(this.postForm.valid);
       console.log(this.postForm.value)

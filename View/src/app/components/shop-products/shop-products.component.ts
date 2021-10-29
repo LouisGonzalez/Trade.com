@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Post } from 'src/app/models/post/post';
 import { ProductCart } from 'src/app/models/shopping/product-cart';
 import { ArticlesService } from 'src/app/services/products/articles.service';
 import { ProductCartService } from 'src/app/services/shopping/product-cart.service';
+import { BuyComponent } from './buy/buy.component';
 
 @Component({
   selector: 'app-shop-products',
@@ -16,7 +18,9 @@ export class ShopProductsComponent implements OnInit {
   total: any = 0;
   despleged: boolean = true;
 
-  constructor(private articleSevice: ArticlesService, private productCartSevice: ProductCartService) { }
+  constructor(private articleSevice: ArticlesService, 
+    private productCartSevice: ProductCartService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -39,7 +43,7 @@ export class ShopProductsComponent implements OnInit {
   getCartAll(){
     this.productCartSevice.getCartAll().subscribe(
       res =>{
-        // console.log('cart',res);
+        console.log('ddddd',res);
         this.listaCart = [];
         this.listaCart = res;
         this.getTotalCart();
@@ -104,7 +108,7 @@ export class ShopProductsComponent implements OnInit {
   }
 
   payShop(){
-
+    this.dialog.open(BuyComponent);
   }
 
 }

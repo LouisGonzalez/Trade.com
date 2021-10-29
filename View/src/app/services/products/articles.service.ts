@@ -30,6 +30,18 @@ export class ArticlesService {
     });
   }
 
+  getAllMyProducts(data: any){
+    return this.http.post<any>(this.URL_API+'/getMyArticles',data,{
+      withCredentials:true
+    });
+  }
+
+  getAllMyServices(data: any){
+    return this.http.post<any>(this.URL_API+'/getMyServices',data,{
+      withCredentials:true
+    });
+  }
+
   getAllServices(){
     return this.http.get<Post[]>(this.URL_API+'/post/Service',{
       withCredentials:true
@@ -41,5 +53,12 @@ export class ArticlesService {
       withCredentials:true
     });
   }
+
+  updateOneProduct(data: any){
+    return this.http.patch<Post>(this.URL_API+'/post/Article',data,{
+      withCredentials:true
+    });
+  }
+
 
 }

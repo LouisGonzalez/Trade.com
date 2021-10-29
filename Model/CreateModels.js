@@ -202,7 +202,7 @@ Invoice.hasMany(BuySell, {
         allowNull: false
     }
 });
-
+BuySell.belongsTo(Post, {foreignKey: 'id_post'});
 //Factura
 Account.hasMany(Invoice, {
     onDelete: 'CASCADE',
@@ -353,7 +353,7 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 });
-Notifications.belongsTo(Account, {foreignKey: 'usuario_recibe'});
+Notifications.belongsTo(Account, { foreignKey: 'usuario_recibe' });
 
 
 Account.hasMany(Notifications, {
@@ -363,6 +363,6 @@ Account.hasMany(Notifications, {
         allowNull: false
     }
 })
-Notifications.belongsTo(Account, {foreignKey: 'usuario_envia'});
+Notifications.belongsTo(Account, { foreignKey: 'usuario_envia'});
 
 // Service.belongsTo(Post);

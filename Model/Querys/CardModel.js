@@ -16,7 +16,7 @@ async function deleteCard(req){
     },{
         where: {
             id_cuenta: req.user,
-            no_tarjeta:req.body.tarjeta
+            no_tarjeta: req.params.tarjeta
         }        
     })
 }
@@ -24,7 +24,7 @@ async function deleteCard(req){
 async function cards(req){
     return await Card.findAll({
         where:{
-            no_cuenta: req.user
+            id_cuenta: req.user
         }
     })
 }

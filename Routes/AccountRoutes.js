@@ -9,7 +9,7 @@ const Post = require('../Controller/PostController');
 const Contact = require('../Controller/ContactController');
 const Notify = require('../Controller/NotifyController');
 
-
+const WalletController = require('../Controller/WalletController');
 
 const {isLoggedIn} = require('../Lib/auth');
 
@@ -19,11 +19,13 @@ const SimulationBank = require('../Controller/SimulatorBank');
 const AccountController = require('../Controller/AccountController');
 
 //READ
+
+Router.post('/unitUser', AccountController.getUnitUser);
 Router.get('/logged', isLoggedIn,AccountController.readUser);
 
 Router.post('/unitUser', AccountController.getUnitUser);
 
-Router.get('/allUsersss', isLoggedIn, AccountController.allUser);
+
 
 Router.get('/oneUser',AccountController.oneUser);
 
@@ -37,7 +39,6 @@ Router.patch('/user/standard', AccountController.updateUserStandard);
 
 //UPDATE BUSINESS
 Router.patch('/user/business', AccountController.updateUserBusiness);
-
 
 //DELETE
 Router.delete('/user', isLoggedIn,AccountController.deleteUser);
@@ -62,8 +63,14 @@ Router.post('/getMyServices', Post.getMyServices);
 Router.post('/deleteContact', Contact.deleteContact);
 
 //Rutas afiliacion
-Router.delete('/deleteAffiliate', Member.deleteAffiliate);
 Router.post('/getNoAffiliates', Member.returnNoAffiliates);
+Router.post('/deleteAffiliate', Member.deleteAffiliate);
+
+
+//Rutas notificaciones
+Router.post('/notify', Notify.findNotifications);
+Router.post('/allNotify', Notify.findAllNotifications);
+Router.get('/myWallet', isLoggedIn, WalletController.getWallet);
 
 //Rutas notificaciones
 Router.post('/notify', Notify.findNotifications);

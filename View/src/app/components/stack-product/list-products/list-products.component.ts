@@ -8,6 +8,8 @@ import { Product } from 'src/app/models/products/product';
 import { ArticlesService } from 'src/app/services/products/articles.service';
 import { ProductCartService } from 'src/app/services/shopping/product-cart.service';
 import { EditProductComponent } from '../edit-product/edit-product.component';
+import { User } from 'src/app/models/user/user';
+import { SessionUserService } from 'src/app/services/home-service/session-user.service';
 
 @Component({
   selector: 'app-list-products',
@@ -18,7 +20,6 @@ export class ListProductsComponent implements OnInit {
 
   displayedColumns: string[] = ['titulo', 'fecha_publicacion', 'costo', 'divisa', 'intercambio', 'activo', 'invisible', 'minimo_stock', 'stock', 'button1'];
 
-
   listProducts: Array<Product> = [];
   dataSource: MatTableDataSource<Product>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,8 +27,10 @@ export class ListProductsComponent implements OnInit {
   // listaCart: Array<ProductCart> = [];
   total: any = 0;
   despleged: boolean = true;
+  USER: User;
 
   constructor(private articleSevice: ArticlesService, 
+    private sessionUserService: SessionUserService,
     private productCartSevice: ProductCartService,
     public dialog: MatDialog) {
         this.dataSource = new MatTableDataSource(this.listProducts);
@@ -37,7 +40,7 @@ export class ListProductsComponent implements OnInit {
 
     
   ngOnInit(): void {
-    this.getAllMyProducts();
+    this.getUser();
     this.ngAfterViewInit();
   }
 
@@ -46,8 +49,8 @@ export class ListProductsComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  getAllMyProducts(){
-    this.articleSevice.getAllMyProducts({cuenta:12345}).subscribe(
+  getAllMyProducts(id_cuenta: any){
+    this.articleSevice.getAllMyProducts({cuenta: id_cuenta}).subscribe(
       res => {
         this.listProducts = res.MyArticles;
         console.log(this.listProducts);
@@ -60,7 +63,6 @@ export class ListProductsComponent implements OnInit {
       }
     );
   }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log(filterValue);
@@ -76,6 +78,18 @@ export class ListProductsComponent implements OnInit {
     this.dialog.open(EditProductComponent, {
       data: row.id_post
     });
+  }
+
+  getUser(){
+    this.sessionUserService.getUser().subscribe(
+      res => {
+        this.USER = res;
+        this.getAllMyProducts(this.USER.id_cuenta);
+      },
+      error => {
+
+      }
+    );
   }
 
 }

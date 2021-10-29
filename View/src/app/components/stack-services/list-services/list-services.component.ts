@@ -8,6 +8,8 @@ import { Service } from 'src/app/models/products/service';
 // import { Product } from 'src/app/models/products/product';
 import { ArticlesService } from 'src/app/services/products/articles.service';
 import { ProductCartService } from 'src/app/services/shopping/product-cart.service';
+import { User } from 'src/app/models/user/user';
+import { SessionUserService } from 'src/app/services/home-service/session-user.service';
 
 @Component({
   selector: 'app-list-services',
@@ -26,9 +28,11 @@ export class ListServicesComponent implements OnInit {
   // listaCart: Array<ProductCart> = [];
   total: any = 0;
   despleged: boolean = true;
+  USER: User;
 
   constructor(private articleSevice: ArticlesService, 
     private productCartSevice: ProductCartService,
+    private sessionUserService: SessionUserService,
     public dialog: MatDialog) {
         this.dataSource = new MatTableDataSource(this.listServices);
         this.dataSource.paginator = this.paginator;
@@ -37,7 +41,7 @@ export class ListServicesComponent implements OnInit {
 
     
   ngOnInit(): void {
-    this.getAllMyServices();
+    this.getUser();
     this.ngAfterViewInit();
   }
 
@@ -46,8 +50,8 @@ export class ListServicesComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  getAllMyServices(){
-    this.articleSevice.getAllMyServices({cuenta:12345}).subscribe(
+  getAllMyProducts(id_cuenta: any){
+    this.articleSevice.getAllMyServices({cuenta: id_cuenta}).subscribe(
       res => {
         this.listServices = res.MyServices;
         console.log(this.listServices);
@@ -73,6 +77,18 @@ export class ListServicesComponent implements OnInit {
 
   edit(row: any){
     
+  }
+
+  getUser(){
+    this.sessionUserService.getUser().subscribe(
+      res => {
+        this.USER = res;
+        this.getAllMyProducts(this.USER.id_cuenta);
+      },
+      error => {
+
+      }
+    );
   }
 
 }

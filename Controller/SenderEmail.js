@@ -1,7 +1,7 @@
 const hbs = require('nodemailer-express-handlebars');
 const nodemailer = require('nodemailer');
 // const page = "http://localhost:3000";
-const page = "https://comercio-electronico.herokuapp.com/";
+const page = "https://comercio-electronico.herokuapp.com";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",

@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import { ComponentFactoryResolver, ElementRef, ViewContainerRef } from '@angular/core';
 import { GLOBAL } from 'src/app/services/global';
 
-const SOCKET_ENDPOINT = GLOBAL.URL;
+const SOCKET_ENDPOINT = "/";
 
 @Component({
   selector: 'app-sms',

@@ -19,7 +19,7 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 const server = createServer(app);
 const io = new Server(server, {  })
-require('./Controller/Socket')(io)
+require('./Controller/Socket')(io);
 
 
 /*
